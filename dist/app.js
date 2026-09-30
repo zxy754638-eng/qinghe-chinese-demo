@@ -42,7 +42,7 @@ const UI_TEXT=Object.freeze({
   '界面配色':'Color theme','四套低饱和主题，选择会保存在当前设备。':'Four calm color themes. Your choice is saved on this device.','青禾米绿':'Qinghe Sage','温暖、自然，当前默认':'Warm and natural · default','雾蓝杏仁':'Mist Blue','清爽、安静，适合长时间阅读':'Calm and clear for longer reading','茶棕月白':'Tea Brown','柔和、稳重，纸张感更强':'Soft, grounded and paper-like','紫藤岩灰':'Wisteria Gray','克制、现代，对比柔和':'Modern with gentle contrast',
   '内容体系':'Content system','课程、词典、语音和复习按同一套字段与审校流程组织。':'Lessons, dictionary, audio and review follow one shared content and editorial system.','HSK 1–6 场景课':'HSK 1–6 lessons','单课内容步骤':'Steps per lesson','混合复习类型':'Mixed review types','标准与慢速语音':'Normal & slow audio','正式发布前需要完成 HSK 最新大纲校准、母语教师审校、普通话审核，以及词典和音频的版本与许可记录。':'Before launch, content will be aligned to the latest HSK syllabus and reviewed by native teachers and Mandarin specialists, with dictionary and audio licensing records maintained.',
   '打开账户':'Open account','登录':'Sign in','正在检查登录状态':'Checking sign-in status','请稍候……':'Please wait…','青禾中文账户':'Qinghe account','登录后继续学习':'Sign in to continue learning','前往 Authing 安全登录页，使用邮箱或手机号码登录和注册。':'Continue to Authing’s secure page to sign in or register with email or phone.','密码和验证码不会交给青禾中文页面。':'Passwords and verification codes are never shared with the Qinghe page.','微信登录在 Authing 控制台启用后会自动出现在登录页。':'WeChat sign-in will appear after it is enabled in Authing.','当前 Demo 已接入账户身份，云端学习进度同步将在后端数据库接入后启用。':'Accounts are connected. Cloud progress sync will be enabled after a backend database is added.','登录 / 注册':'Sign in / Register','继续即表示你将前往 Authing 完成身份认证。':'Continue to Authing to verify your identity.','我的账户':'My account','学习者':'Learner','已登录':'Signed in','邮箱':'Email','未提供':'Not provided','手机号码':'Phone','账户服务':'Account service','账户已连接。当前 Demo 尚未开启云端学习进度同步。':'Account connected. Cloud progress sync is not enabled in this demo yet.','查看我的学习':'View my learning','退出登录':'Sign out','登录服务暂时不可用':'Sign-in is temporarily unavailable','请稍后重试。':'Please try again later.','重新连接':'Retry','正在完成登录':'Completing sign-in','身份验证成功后会自动返回学习页面。':'You’ll return to the learning page automatically after verification.','账户与登录':'Account & sign-in','未登录':'Not signed in','已连接 Authing':'Authing connected','账号登录已接入；当前 Demo 的学习进度仍保存在本机。':'Account sign-in is connected. Learning progress is still stored on this device in this demo.','管理账户':'Manage account',
-  '关闭':'Close','听发音':'Play audio','加入生词本':'Save word','核心语法 / 功能':'Core grammar / function','词汇主题':'Vocabulary theme','听力任务':'Listening task','口语输出':'Speaking output','复习重点：':'Review focus:','返回目录':'Back to catalog','（':'('
+  '关闭':'Close','听发音':'Play audio','加入生词本':'Save word','核心语法 / 功能':'Core grammar / function','词汇主题':'Vocabulary theme','听力任务':'Listening task','口语输出':'Speaking output','复习重点：':'Review focus:','返回目录':'Back to catalog','（':'(','已加入生词本':'Saved to your word list','12 分':'12 min'
 });
 const UI_TEXT_EN_TO_ZH=Object.freeze(Object.fromEntries(Object.entries(UI_TEXT).map(([zh,en])=>[en,zh])));
 const UI_SKIP_SELECTOR='script,style,[data-no-ui-translate],.auth-user-data,.word,.hanzi,.entry-word,.entry-pinyin,.modal-word,.modal-pinyin,.modal-meaning,#dictMeaning,#dictExplain,#dictCollocations,#dictExamples,#recentWords,#dialogueLines,#grammarName,#grammarExplain,#grammarPattern,#grammarExamples,#grammarPractice,#listeningQ,#listeningOptions,#shadowingTarget,#speechTranscript,#reviewQuestion,#reviewOptions,#reviewFeedback,.course-card h3,.course-scene,.course-focus,#courseModalTitle,#courseModalScene,#courseModalGrammar,#courseModalVocab,#courseModalListening,#courseModalSpeaking,#courseModalReview';
@@ -55,14 +55,56 @@ function translateUiValue(value){
   return translated===undefined?value:(match?match[1]+translated+match[3]:translated);
 }
 function shouldSkipUiText(node){const parent=node.parentElement;return !parent||Boolean(parent.closest(UI_SKIP_SELECTOR))}
+// 首次应用语言前先记录初始文本：切换时始终从初始文案出发翻译，
+// 既避免重复翻译累积出错，也能还原被浏览器“页面翻译”改坏的文字
+let uiOriginalText=null,uiOriginalAttrs=null;
+function captureUiOriginals(){
+  uiOriginalText=new WeakMap();uiOriginalAttrs=new WeakMap();
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  let node;while((node=walker.nextNode()))uiOriginalText.set(node,node.nodeValue);
+  document.querySelectorAll('[aria-label],[placeholder],[title]').forEach(el=>{
+    const o={};['aria-label','placeholder','title'].forEach(a=>{if(el.hasAttribute(a))o[a]=el.getAttribute(a)});
+    uiOriginalAttrs.set(el,o);
+  });
+}
+const UI_EN_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const UI_ZH_DAYS=['日','一','二','三','四','五','六'],UI_EN_DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function renderHomeHead(){
+  const now=new Date(),h=now.getHours();
+  const g=document.getElementById('homeGreeting'),d=document.getElementById('homeDate');
+  if(g)g.textContent=uiLanguage==='en'
+    ?(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+', Alex.'
+    :(h<12?'早上好':h<18?'下午好':'晚上好')+'，Alex。';
+  if(d)d.textContent=uiLanguage==='en'
+    ?(UI_EN_MONTHS[now.getMonth()]+' '+now.getDate()+' · '+UI_EN_DAYS[now.getDay()])
+    :((now.getMonth()+1)+'月'+now.getDate()+'日 · 星期'+UI_ZH_DAYS[now.getDay()]);
+}
 function applyUiLanguage(){
   if(applyingUiLanguage)return;applyingUiLanguage=true;
+  if(!uiOriginalText)captureUiOriginals();
   document.documentElement.lang=uiLanguage==='en'?'en':'zh-CN';
   document.body.dataset.uiLang=uiLanguage;
+  document.title=ui('青禾中文 · HSK 沉浸式学习','Qinghe Chinese · Immersive HSK Learning');
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
-  let node;while((node=walker.nextNode()))if(!shouldSkipUiText(node)){const next=translateUiValue(node.nodeValue);if(next!==node.nodeValue)node.nodeValue=next}
-  document.querySelectorAll('[aria-label],[placeholder],[title]').forEach(el=>['aria-label','placeholder','title'].forEach(attr=>{if(el.hasAttribute(attr)){const before=el.getAttribute(attr),next=translateUiValue(before);if(next!==before)el.setAttribute(attr,next)}}));
+  let node;
+  while((node=walker.nextNode())){
+    if(shouldSkipUiText(node))continue;
+    if(!uiOriginalText.has(node))uiOriginalText.set(node,node.nodeValue);
+    const original=uiOriginalText.get(node),next=translateUiValue(original);
+    if(next!==node.nodeValue)node.nodeValue=next;
+  }
+  document.querySelectorAll('[aria-label],[placeholder],[title]').forEach(el=>['aria-label','placeholder','title'].forEach(attr=>{
+    if(!el.hasAttribute(attr))return;
+    if(!uiOriginalAttrs.has(el))uiOriginalAttrs.set(el,{});
+    const originals=uiOriginalAttrs.get(el);
+    if(originals[attr]===undefined)originals[attr]=el.getAttribute(attr);
+    const next=translateUiValue(originals[attr]);
+    if(next!==el.getAttribute(attr))el.setAttribute(attr,next);
+  }));
   document.querySelectorAll('[data-lang-option]').forEach(el=>el.classList.toggle('active',el.dataset.langOption===uiLanguage));
+  renderHomeHead();
+  const lessonMeta=document.getElementById('lessonMeta');
+  if(lessonMeta&&currentLesson)lessonMeta.textContent=currentLesson.level+' · '+currentLesson.scene+' · '+ui('预计 15 分钟','about 15 min');
   const profileStats=document.querySelectorAll('.stat small');if(profileStats[1])profileStats[1].textContent=ui('完成课程','Lessons completed');
   applyingUiLanguage=false;
 }
