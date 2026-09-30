@@ -131,6 +131,22 @@
     try{authUserInfo=await authingClient.getUserInfo()}catch(error){authUserInfo=null}
   }
 
+  // 网络慢时 getLoginState 可能超时（SDK 内部警告"登录态获取超时"），
+  // 重试一次再下结论，避免已登录用户被误显示为未登录
+  async function getLoginStateWithRetry(){
+    try{
+      const first=await authingClient.getLoginState();
+      if(first)return first;
+    }catch(error){console.warn('[qinghe-auth] getLoginState first attempt failed:',error&&error.message)}
+    try{
+      const second=await authingClient.getLoginState();
+      return second||null;
+    }catch(error){
+      console.warn('[qinghe-auth] getLoginState retry failed:',error&&error.message);
+      return null;
+    }
+  }
+
   async function initAuthing(){
     authStatus='loading';
     authErrorType='connection';
@@ -146,7 +162,7 @@
         history.replaceState({},document.title,location.pathname||'/');
         byId('authCallbackBanner')?.classList.add('hidden');
       }else{
-        authLoginState=await authingClient.getLoginState();
+        authLoginState=await getLoginStateWithRetry();
         if(authLoginState)await loadUserInfo();
         authStatus=authLoginState?'signed-in':'signed-out';
       }
