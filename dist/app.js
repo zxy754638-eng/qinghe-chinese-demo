@@ -71,6 +71,7 @@ const UI_TEXT=Object.freeze({
   '课程路线':'Learning path','60 节场景课，从 HSK 1 的基础交流逐步过渡到 HSK 6 的观点论证。':'60 scenario-based lessons, from HSK 1 basics to HSK 6 argumentation.','课程等级筛选':'Filter by HSK level','全部':'All','场景课程':'Scenario lessons','每课核心词':'Core words per lesson','初始复习日':'Initial review days',
   '拼音发音室':'Pinyin pronunciation lab','从声母、韵母和声调开始，点击卡片听标准普通话示范。':'Start with initials, finals and tones. Select a card to hear a Standard Mandarin model.','声母':'Initials','韵母':'Finals','声调':'Tones','基础单韵母':'Simple finals','复合韵母':'Compound finals','鼻韵母':'Nasal finals','点击任意卡片听发音。先听，再观察口形并模仿。':'Select any card to listen. Listen first, then watch your mouth shape and imitate.','播放全部声调':'Play all tones','慢速播放':'Play slowly','听发音示范':'Play pronunciation model','第一声':'Tone 1','第二声':'Tone 2','第三声':'Tone 3','第四声':'Tone 4','轻声':'Neutral tone','发音要点':'Pronunciation tip','双唇音':'Lip sounds','舌尖音':'Tongue-tip sounds','舌根音':'Back-of-tongue sounds','舌面音':'Front-of-tongue sounds','卷舌音':'Retroflex sounds','平舌音':'Dental sibilants',
   '生词本':'Saved words','还没有保存词语':'No saved words yet','在课文或词典里点击词语，再选择“加入生词本”。':'Select a word in a lesson or the dictionary, then choose “Save word.”','移除':'Remove','已完成':'Completed','继续上次学习':'Resume lesson','已保存':'Saved','已从生词本移除':'Removed from saved words','学习数据已保存在当前设备':'Learning data is saved on this device','连续学习 0 天':'0-day streak',
+  '学习统计':'Learning statistics','你的课程、复习和正确率都保存在当前设备。':'Your lessons, reviews and accuracy are saved on this device.','连续天数':'Day streak','掌握词数':'Words learned','复习次数':'Reviews','复习正确率':'Review accuracy','暂无记录':'No records yet','到期复习':'Due now','下一次复习':'Next review','暂无复习安排':'No reviews scheduled','课程完成后，新词和语法会自动进入复习队列。':'Finish a lesson to add its words and grammar to the review queue.','今天到期':'Due today','天后':'days','已根据你的选择更新复习时间':'Review time updated from your rating',
   '完整课程':'Full lesson','进入课程':'Open lesson','返回课程路线':'Back to learning path','听标题':'Play title','预计 15 分钟':'about 15 min',
   '情境':'Context','词汇':'Vocabulary','口语':'Speaking','完成':'Complete','先听一听':'Listen first','先读一遍对话。点击不认识的词语，或者听每一句。':'Read the dialogue once. Click unfamiliar words, or listen sentence by sentence.','播放整段':'Play dialogue','学习词语':'Study vocabulary','今天的词语':'Today’s vocabulary','上一页':'Back','听力练习':'Listening practice',
   '听音辨意':'Listen and choose','播放听力':'Play listening audio','标准速度 · 可重复播放':'Normal speed · Replay anytime','口语练习':'Speaking practice','跟读纠错':'Pronunciation practice','先听，再说':'Listen, then speak','慢速听示范':'Play slow model','开始跟读':'Start speaking','结束跟读':'Stop speaking','查看纠错示例':'View sample feedback','点击圆形按钮，听到提示后开始跟读':'Tap the round button and start speaking after the cue.','正在听，请完整读完这句话…':'Listening — please read the full sentence…','本 Demo 不保存录音；语音识别是否联网由浏览器决定。':'This demo does not save recordings. Your browser controls whether speech recognition uses the internet.',
@@ -224,6 +225,19 @@ function ensureWordbookCard(){
   card.innerHTML='<div class="wordbook-head"><div><h3>生词本</h3><p class="sub">学习数据已保存在当前设备</p></div><div class="wordbook-count" id="wordbookCount">0</div></div><div id="wordbookList"></div>';
   const theme=grid.querySelector('.theme-card');grid.insertBefore(card,theme||null);
 }
+function ensureLearningStatsCard(){
+  if(document.getElementById('learningStatsCard'))return;
+  const grid=document.querySelector('#profile .profile-grid');if(!grid)return;
+  const card=document.createElement('article');card.id='learningStatsCard';card.className='card learning-stats-card';
+  card.innerHTML='<h3 id="learningStatsTitle"></h3><p class="sub" id="learningStatsNote"></p><div class="learning-metrics"><div class="learning-metric"><b id="metricStreak">0</b><small id="metricStreakLabel"></small></div><div class="learning-metric"><b id="metricWords">0</b><small id="metricWordsLabel"></small></div><div class="learning-metric"><b id="metricReviews">0</b><small id="metricReviewsLabel"></small></div><div class="learning-metric"><b id="metricAccuracy">—</b><small id="metricAccuracyLabel"></small><div class="accuracy-track"><span id="metricAccuracyBar"></span></div></div></div>';
+  const wordbook=grid.querySelector('#wordbookCard');grid.insertBefore(card,wordbook||grid.querySelector('.theme-card')||null);
+}
+function renderLearningStats(){
+  ensureLearningStatsCard();const reviewed=learningState.stats.reviewed,accuracy=reviewed?Math.round(learningState.stats.correct/reviewed*100):0;
+  document.getElementById('learningStatsTitle').textContent=ui('学习统计','Learning statistics');document.getElementById('learningStatsNote').textContent=ui('你的课程、复习和正确率都保存在当前设备。','Your lessons, reviews and accuracy are saved on this device.');
+  document.getElementById('metricStreak').textContent=learningStreak();document.getElementById('metricWords').textContent=learnedWordSet().size;document.getElementById('metricReviews').textContent=reviewed;document.getElementById('metricAccuracy').textContent=reviewed?accuracy+'%':'—';document.getElementById('metricAccuracyBar').style.width=accuracy+'%';
+  document.getElementById('metricStreakLabel').textContent=ui('连续天数','Day streak');document.getElementById('metricWordsLabel').textContent=ui('掌握词数','Words learned');document.getElementById('metricReviewsLabel').textContent=ui('复习次数','Reviews');document.getElementById('metricAccuracyLabel').textContent=ui('复习正确率','Review accuracy');
+}
 function renderWordbook(){
   ensureWordbookCard();const root=document.getElementById('wordbookList'),count=document.getElementById('wordbookCount');if(!root||!count)return;
   count.textContent=learningState.savedWords.length;
@@ -232,7 +246,7 @@ function renderWordbook(){
 }
 function removeSavedWord(word){learningState.savedWords=learningState.savedWords.filter(x=>x!==word);saveLearningState();renderWordbook();toastMsg(ui('已从生词本移除','Removed from saved words'))}
 function renderLearningState(){
-  ensureWordbookCard();renderWordbook();
+  ensureWordbookCard();renderWordbook();renderLearningStats();
   const learned=learnedWordSet().size,completed=Object.keys(learningState.completedLessons).length,streak=learningStreak(),reviewed=learningState.stats.reviewed,due=dueReviewCount();
   const stats=document.querySelectorAll('#profile .stats .stat b');if(stats[0])stats[0].textContent=learned;if(stats[1])stats[1].textContent=completed;if(stats[2])stats[2].textContent=((completed*12+reviewed*2)/60).toFixed(1)+'h';
   const streakPill=document.querySelector('#profile .profile-top .pill');if(streakPill)streakPill.textContent=ui('连续学习 '+streak+' 天',streak+'-day streak');
@@ -242,6 +256,9 @@ function renderLearningState(){
   const reviewPill=document.querySelector('#review .section-head .pill');if(reviewPill)reviewPill.textContent=ui(due+' 项 · 预计 '+Math.max(1,Math.ceil(due*.55))+' 分钟',due+' items · about '+Math.max(1,Math.ceil(due*.55))+' min');
   const ring=document.querySelector('#review .ring');if(ring)ring.style.setProperty('--review-count','"'+due+'"');
   const homeReview=document.querySelector('#home .review-card h3 span');if(homeReview)homeReview.textContent=ui(due+' 项',due+' items');
+  const homeCounts=document.querySelectorAll('#home .review-counts .count b');if(homeCounts[0])homeCounts[0].textContent=learningState.reviewQueue.filter(x=>x.type==='word'&&(Number(x.dueAt)||0)<=Date.now()).length;if(homeCounts[1])homeCounts[1].textContent=learningState.reviewQueue.filter(x=>x.type==='grammar'&&(Number(x.dueAt)||0)<=Date.now()).length;if(homeCounts[2])homeCounts[2].textContent=due;
+  const monday=new Date();monday.setHours(12,0,0,0);monday.setDate(monday.getDate()-((monday.getDay()+6)%7));let activeWeekDays=0;document.querySelectorAll('#home .week .bar').forEach((bar,index)=>{const day=new Date(monday);day.setDate(monday.getDate()+index);const active=learningState.activityDates.includes(localDateKey(day));if(active)activeWeekDays++;bar.classList.toggle('done',active);bar.style.setProperty('--h',active?(52+(index%3)*12)+'%':'12%')});const weekText=document.querySelector('#home .week-card h3 .sub');if(weekText)weekText.textContent=ui(activeWeekDays+' / 7 天',activeWeekDays+' / 7 days');
+  renderReviewSchedule();
   renderCourses(document.querySelector('.filter-btn.active')?.dataset.level||'全部');
   scheduleUiLanguage();
 }
@@ -355,19 +372,48 @@ function nextPhase(){setPhase(phase+1)}function prevPhase(){setPhase(phase-1)}fu
 function answerChoice(el,ok){el.parentElement.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected','correct'));el.classList.add(ok?'correct':'selected');const f=el.parentElement.querySelector('.feedback');if(f)f.classList.add('show');toastMsg(ok?ui('回答正确','Correct'):ui('再想一想，可以回到课文看看','Try again — you can return to the dialogue'))}
 
 // ---------- 复习 ----------
-const reviewItems=[
+const demoReviewItems=[
   {type:'词义辨认',prompt:'“本来”最接近哪个意思？',mode:'choice',options:['originally; at first','especially','just now'],answer:0,feedback:'“本来”说明原来的情况或计划。'},
   {type:'听音辨词',prompt:'先听发音，再选择你听到的词。',mode:'choice',audio:'迟到',options:['知道','迟到','提到'],answer:1,feedback:'“迟到”读作 chí dào。'},
   {type:'句中填空',prompt:'我 ___ 想坐地铁，但是今天人太多。',mode:'input',answers:['本来'],feedback:'“本来……但是……”表示计划和实际情况发生了变化。'},
   {type:'主动表达',prompt:'用“本来……但是……”写一句自己的话。',mode:'open',feedback:'答案不必完全一样；重点是先说原计划，再说变化。'}
 ];
-function startReview(){reviewIndex=0;document.getElementById('startReviewBtn').classList.add('hidden');document.getElementById('reviewDemo').classList.add('show');renderReviewItem();document.getElementById('reviewDemo').scrollIntoView({behavior:'smooth',block:'center'})}
+let reviewItems=demoReviewItems,currentReviewCorrect=false;
+function rotateOptions(correct,distractors,seed){const list=[correct,...distractors.filter(x=>x&&x!==correct).slice(0,2)],offset=Math.abs(seed)%list.length,rotated=list.slice(offset).concat(list.slice(0,offset));return{options:rotated,answer:rotated.indexOf(correct)}}
+function reviewItemFromQueue(queueItem,index){
+  if(queueItem.type==='grammar'){
+    const lesson=lessons.find(x=>x.id===queueItem.lessonId),grammar=lesson?.grammar;
+    return{queueId:queueItem.id,type:'主动表达',prompt:'用“'+queueItem.value+'”写一句自己的话。',mode:'open',required:queueItem.value.split('……').filter(x=>x.length>1),feedback:grammar?.explain||'先说完整意思，再检查目标结构是否自然。'};
+  }
+  const word=queueItem.value,data=words[word]||{},keys=Object.keys(words).filter(x=>x!==word),seed=[...word].reduce((n,x)=>n+x.charCodeAt(0),index);
+  if(index%3===1){const choices=rotateOptions(word,[keys[(seed+7)%keys.length],keys[(seed+19)%keys.length]],seed);return{queueId:queueItem.id,type:'听音辨词',prompt:'先听发音，再选择你听到的词。',mode:'choice',audio:word,options:choices.options,answer:choices.answer,feedback:'“'+word+'”读作 '+(data.p||'')+'。'}}
+  if(index%3===2){const example=data.e||data.examples?.[0]||('请用“'+word+'”完成句子。'),prompt=example.includes(word)?example.replace(word,'___'):'请填入今天复习的词语：___';return{queueId:queueItem.id,type:'句中填空',prompt,mode:'input',answers:[word],feedback:'答案是“'+word+'”：'+example}}
+  const meanings=keys.map(x=>words[x]?.m).filter(Boolean),choices=rotateOptions(data.m||word,[meanings[(seed+5)%meanings.length],meanings[(seed+17)%meanings.length]],seed);return{queueId:queueItem.id,type:'词义辨认',prompt:'“'+word+'”最接近哪个意思？',mode:'choice',options:choices.options,answer:choices.answer,feedback:'“'+word+'”表示：'+(data.cn||data.m||word)};
+}
+function buildReviewItems(){
+  const sorted=[...learningState.reviewQueue].sort((a,b)=>(Number(a.dueAt)||0)-(Number(b.dueAt)||0)),due=sorted.filter(x=>(Number(x.dueAt)||0)<=Date.now()),pool=due.length?due:sorted;
+  if(!pool.length)return demoReviewItems.map(x=>({...x}));
+  const selected=pool.filter(x=>x.type==='word').slice(0,3),grammar=pool.find(x=>x.type==='grammar');if(grammar)selected.push(grammar);pool.forEach(x=>{if(selected.length<4&&!selected.some(y=>y.id===x.id))selected.push(x)});
+  return selected.map(reviewItemFromQueue);
+}
+function dueLabel(dueAt){const days=Math.ceil(((Number(dueAt)||Date.now())-Date.now())/DAY_MS);if(days<=0)return ui('今天到期','Due today');if(days===1)return ui('明天','Tomorrow');return ui(days+' 天后','In '+days+' days')}
+function renderReviewSchedule(){
+  const root=document.querySelector('#review .schedule-list');if(!root)return;const items=[...learningState.reviewQueue].sort((a,b)=>(Number(a.dueAt)||0)-(Number(b.dueAt)||0)).slice(0,4);
+  if(!items.length){root.innerHTML='<div class="wordbook-empty"><strong>'+ui('暂无复习安排','No reviews scheduled')+'</strong><br><span>'+ui('课程完成后，新词和语法会自动进入复习队列。','Finish a lesson to add its words and grammar to the review queue.')+'</span></div>';return}
+  root.innerHTML=items.map(item=>{const data=item.type==='word'?words[item.value]:null;return '<div class="schedule-row"><span>'+escapeHtml(item.value)+(data?'<small>'+escapeHtml(data.p)+'</small>':'')+'</span><strong>'+dueLabel(item.dueAt)+'</strong></div>'}).join('');
+}
+function startReview(){reviewItems=buildReviewItems();reviewIndex=0;document.getElementById('startReviewBtn').classList.add('hidden');document.getElementById('reviewDemo').classList.add('show');renderReviewItem();document.getElementById('reviewDemo').scrollIntoView({behavior:'smooth',block:'center'})}
 function renderReviewItem(){const item=reviewItems[reviewIndex],options=document.getElementById('reviewOptions'),input=document.getElementById('reviewInput'),check=document.getElementById('reviewCheckBtn');document.getElementById('reviewTypeLabel').textContent=(uiLanguage==='en'?(UI_TEXT[item.type]||item.type):item.type)+' · '+(reviewIndex+1)+' / '+reviewItems.length;document.getElementById('reviewProgressBar').style.width=((reviewIndex+1)/reviewItems.length*100)+'%';document.getElementById('reviewQuestion').textContent=item.prompt;document.getElementById('reviewMedia').innerHTML=item.audio?`<button class="bigplay" onclick="speakText('${item.audio}')" aria-label="${ui('播放复习发音','Play review audio')}">▶</button>`:'';document.getElementById('reviewFeedback').classList.remove('show');document.getElementById('reviewGrades').classList.remove('show');options.innerHTML='';input.classList.add('hidden');check.classList.add('hidden');input.value='';if(item.mode==='choice'){options.className='choice-grid';item.options.forEach((o,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=o;b.onclick=()=>reviewChoice(i,b);options.appendChild(b)})}else{options.className='';input.classList.remove('hidden');check.classList.remove('hidden');input.placeholder=item.mode==='open'?'例如：我本来想去公园，但是下雨了。':ui('输入词语','Type the word')}}
 function reviewChoice(index,button){const item=reviewItems[reviewIndex];document.querySelectorAll('#reviewOptions .choice').forEach(b=>b.disabled=true);button.classList.add(index===item.answer?'correct':'selected');showReviewFeedback(index===item.answer,item.feedback)}
-function checkReviewInput(){const item=reviewItems[reviewIndex],value=document.getElementById('reviewInput').value.trim();let ok=false;if(item.mode==='input')ok=item.answers.includes(value);else ok=value.length>=8&&value.includes('本来')&&value.includes('但是');showReviewFeedback(ok,ok?item.feedback:(item.mode==='open'?'试着同时使用“本来”和“但是”。':'正确答案是“本来”。'))}
-function showReviewFeedback(ok,message){const feedback=document.getElementById('reviewFeedback');feedback.textContent=(ok?'✓ ':ui('再想一想：','Try again: '))+message;feedback.classList.add('show');document.getElementById('reviewGrades').classList.add('show')}
-function gradeReview(level){const dueZh={hard:'明天',good:'3 天后',easy:'7 天后'}[level],dueEn={hard:'tomorrow',good:'in 3 days',easy:'in 7 days'}[level];toastMsg(ui('已安排在'+dueZh+'再次复习','Scheduled for review '+dueEn));reviewIndex++;if(reviewIndex>=reviewItems.length){document.getElementById('reviewTypeLabel').textContent=ui('本轮完成','Round complete');document.getElementById('reviewProgressBar').style.width='100%';document.getElementById('reviewQuestion').textContent=ui('4 种练习都做过了','You completed all four practice types.');document.getElementById('reviewMedia').innerHTML='<p class="sub">'+ui('系统会根据刚才的难度选择安排下一次出现。','The next review will be scheduled from the difficulty you chose.')+'</p>';document.getElementById('reviewOptions').innerHTML='<button class="secondary" onclick="resetReview()">'+ui('再练一轮','Practice another round')+'</button>';document.getElementById('reviewInput').classList.add('hidden');document.getElementById('reviewCheckBtn').classList.add('hidden');document.getElementById('reviewFeedback').classList.remove('show');document.getElementById('reviewGrades').classList.remove('show');return}renderReviewItem()}
-function resetReview(){reviewIndex=0;renderReviewItem()}
+function checkReviewInput(){const item=reviewItems[reviewIndex],value=document.getElementById('reviewInput').value.trim();let ok=false;if(item.mode==='input')ok=item.answers.includes(value);else{const required=item.required?.length?item.required:['本来','但是'];ok=value.length>=6&&required.every(part=>value.includes(part))}showReviewFeedback(ok,ok?item.feedback:(item.mode==='open'?'请在句子里使用完整的目标结构。':'正确答案是“'+item.answers[0]+'”。'))}
+function showReviewFeedback(ok,message){currentReviewCorrect=ok;const feedback=document.getElementById('reviewFeedback');feedback.textContent=(ok?'✓ ':ui('再想一想：','Try again: '))+message;feedback.classList.add('show');document.getElementById('reviewGrades').classList.add('show')}
+function gradeReview(level){
+  const item=reviewItems[reviewIndex],queueItem=learningState.reviewQueue.find(x=>x.id===item.queueId),daysByGrade={hard:1,good:3,easy:7};let days=daysByGrade[level];
+  if(queueItem){const oldInterval=Math.max(1,Number(queueItem.interval)||1);days=level==='hard'?1:level==='good'?Math.max(3,Math.round(oldInterval*2.2)):Math.max(7,Math.round(oldInterval*3));queueItem.interval=days;queueItem.ease=Math.max(1.3,(Number(queueItem.ease)||2.5)+(level==='hard'?-.2:level==='easy'?.1:0));queueItem.repetitions=(Number(queueItem.repetitions)||0)+1;queueItem.lastGrade=level;queueItem.dueAt=Date.now()+days*DAY_MS}
+  learningState.stats.reviewed++;if(currentReviewCorrect)learningState.stats.correct++;markLearningActivity();saveLearningState();renderLearningState();toastMsg(ui('已根据你的选择更新复习时间','Review time updated from your rating')+' · '+dueLabel(Date.now()+days*DAY_MS));
+  reviewIndex++;if(reviewIndex>=reviewItems.length){document.getElementById('reviewTypeLabel').textContent=ui('本轮完成','Round complete');document.getElementById('reviewProgressBar').style.width='100%';document.getElementById('reviewQuestion').textContent=ui(reviewItems.length+' 项练习已完成','You completed '+reviewItems.length+' review activities.');document.getElementById('reviewMedia').innerHTML='<p class="sub">'+ui('系统会根据刚才的难度选择安排下一次出现。','The next review will be scheduled from the difficulty you chose.')+'</p>';document.getElementById('reviewOptions').innerHTML='<button class="secondary" onclick="resetReview()">'+ui('再练一轮','Practice another round')+'</button>';document.getElementById('reviewInput').classList.add('hidden');document.getElementById('reviewCheckBtn').classList.add('hidden');document.getElementById('reviewFeedback').classList.remove('show');document.getElementById('reviewGrades').classList.remove('show');return}renderReviewItem()
+}
+function resetReview(){reviewItems=buildReviewItems();reviewIndex=0;renderReviewItem()}
 
 // ---------- 词典 ----------
 const OPEN_CEDICT_URL='https://raw.githubusercontent.com/leonsilicon/cc-cedict/main/cedict_1_0_ts_utf-8_mdbg.json';
