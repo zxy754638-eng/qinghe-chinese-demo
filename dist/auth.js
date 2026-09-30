@@ -2,14 +2,22 @@
 (function(){
   'use strict';
 
-  const AUTHING_CONFIG=Object.freeze({
+  // 回调地址跟随当前访问域名，发布到任何网址都无需改代码；
+  // 只需在 Authing 控制台的登录/登出回调白名单中加入对应网址。
+  const FALLBACK_REDIRECT='https://qinghe-chinese-demo.zxy794393457.chatgpt.site/';
+  const CURRENT_REDIRECT=(location.protocol==='https:'||location.protocol==='http:')
+    ?location.origin+location.pathname
+    :FALLBACK_REDIRECT;
+
+  // 注意：SDK 构造函数会在配置对象上补写默认字段，不要冻结它
+  const AUTHING_CONFIG={
     domain:'https://bhsq30d4kstm-demo.authing.cn',
     appId:'6abc74da833f137d76ec5f25',
     userPoolId:'6abc74d9e8a3bce782835196',
-    redirectUri:'https://qinghe-chinese-demo.zxy794393457.chatgpt.site/',
+    redirectUri:CURRENT_REDIRECT,
     scope:'openid profile email phone',
     useImplicitMode:false
-  });
+  };
 
   let authingClient=null;
   let authLoginState=null;
@@ -136,6 +144,7 @@
         authStatus=authLoginState?'signed-in':'signed-out';
       }
     }catch(error){
+      console.error('[qinghe-auth] init failed:',error);
       byId('authCallbackBanner')?.classList.add('hidden');
       authStatus='error';
       authErrorType='connection';
