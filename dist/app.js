@@ -28,6 +28,7 @@ const UI_TEXT=Object.freeze({
   '今天的学习 · 15 分钟':'Today’s lesson · 15 min','8 个词语 · 1 个语法 · 情境听说':'8 words · 1 grammar point · listening & speaking','继续学习':'Continue',
   '今天需要复习':'Due for review','17 项':'17 items','词语':'Words','语法':'Grammar','听力':'Listening','开始复习':'Start review','本周学习':'This week','4 / 7 天':'4 / 7 days',
   '课程路线':'Learning path','60 节场景课，从 HSK 1 的基础交流逐步过渡到 HSK 6 的观点论证。':'60 scenario-based lessons, from HSK 1 basics to HSK 6 argumentation.','课程等级筛选':'Filter by HSK level','全部':'All','场景课程':'Scenario lessons','每课核心词':'Core words per lesson','初始复习日':'Initial review days',
+  '拼音发音室':'Pinyin pronunciation lab','从声母、韵母和声调开始，点击卡片听标准普通话示范。':'Start with initials, finals and tones. Select a card to hear a Standard Mandarin model.','声母':'Initials','韵母':'Finals','声调':'Tones','基础单韵母':'Simple finals','复合韵母':'Compound finals','鼻韵母':'Nasal finals','点击任意卡片听发音。先听，再观察口形并模仿。':'Select any card to listen. Listen first, then watch your mouth shape and imitate.','播放全部声调':'Play all tones','慢速播放':'Play slowly','听发音示范':'Play pronunciation model','第一声':'Tone 1','第二声':'Tone 2','第三声':'Tone 3','第四声':'Tone 4','轻声':'Neutral tone','发音要点':'Pronunciation tip','双唇音':'Lip sounds','舌尖音':'Tongue-tip sounds','舌根音':'Back-of-tongue sounds','舌面音':'Front-of-tongue sounds','卷舌音':'Retroflex sounds','平舌音':'Dental sibilants',
   '完整课程':'Full lesson','进入课程':'Open lesson','返回课程路线':'Back to learning path','听标题':'Play title','预计 15 分钟':'about 15 min',
   '情境':'Context','词汇':'Vocabulary','口语':'Speaking','完成':'Complete','先听一听':'Listen first','先读一遍对话。点击不认识的词语，或者听每一句。':'Read the dialogue once. Click unfamiliar words, or listen sentence by sentence.','播放整段':'Play dialogue','学习词语':'Study vocabulary','今天的词语':'Today’s vocabulary','上一页':'Back','听力练习':'Listening practice',
   '听音辨意':'Listen and choose','播放听力':'Play listening audio','标准速度 · 可重复播放':'Normal speed · Replay anytime','口语练习':'Speaking practice','跟读纠错':'Pronunciation practice','先听，再说':'Listen, then speak','慢速听示范':'Play slow model','开始跟读':'Start speaking','结束跟读':'Stop speaking','查看纠错示例':'View sample feedback','点击圆形按钮，听到提示后开始跟读':'Tap the round button and start speaking after the cue.','正在听，请完整读完这句话…':'Listening — please read the full sentence…','本 Demo 不保存录音；语音识别是否联网由浏览器决定。':'This demo does not save recordings. Your browser controls whether speech recognition uses the internet.',
@@ -45,7 +46,7 @@ const UI_TEXT=Object.freeze({
   '关闭':'Close','听发音':'Play audio','加入生词本':'Save word','核心语法 / 功能':'Core grammar / function','词汇主题':'Vocabulary theme','听力任务':'Listening task','口语输出':'Speaking output','复习重点：':'Review focus:','返回目录':'Back to catalog','（':'(','已加入生词本':'Saved to your word list','12 分':'12 min'
 });
 const UI_TEXT_EN_TO_ZH=Object.freeze(Object.fromEntries(Object.entries(UI_TEXT).map(([zh,en])=>[en,zh])));
-const UI_SKIP_SELECTOR='script,style,[data-no-ui-translate],.auth-user-data,.word,.hanzi,.entry-word,.entry-pinyin,.modal-word,.modal-pinyin,.modal-meaning,#dictMeaning,#dictExplain,#dictCollocations,#dictExamples,#recentWords,#dialogueLines,#grammarName,#grammarExplain,#grammarPattern,#grammarExamples,#grammarPractice,#listeningQ,#listeningOptions,#shadowingTarget,#speechTranscript,#reviewQuestion,#reviewOptions,#reviewFeedback,.course-card h3,.course-scene,.course-focus,#courseModalTitle,#courseModalScene,#courseModalGrammar,#courseModalVocab,#courseModalListening,#courseModalSpeaking,#courseModalReview';
+const UI_SKIP_SELECTOR='script,style,[data-no-ui-translate],.auth-user-data,.pinyin-symbol,.pinyin-reference,.pinyin-help,.word,.hanzi,.entry-word,.entry-pinyin,.modal-word,.modal-pinyin,.modal-meaning,#dictMeaning,#dictExplain,#dictCollocations,#dictExamples,#recentWords,#dialogueLines,#grammarName,#grammarExplain,#grammarPattern,#grammarExamples,#grammarPractice,#listeningQ,#listeningOptions,#shadowingTarget,#speechTranscript,#reviewQuestion,#reviewOptions,#reviewFeedback,.course-card h3,.course-scene,.course-focus,#courseModalTitle,#courseModalScene,#courseModalGrammar,#courseModalVocab,#courseModalListening,#courseModalSpeaking,#courseModalReview';
 let uiLanguage='zh',applyingUiLanguage=false,uiLanguageFrame=0;
 try{uiLanguage=localStorage.getItem('qinghe-ui-language')==='en'?'en':'zh'}catch(e){}
 function ui(zh,en){return uiLanguage==='en'?en:zh}
@@ -123,14 +124,65 @@ function escapeHtml(value){return String(value).replace(/[&<>'"]/g,c=>({'&':'&am
 function showView(id){hidePinyinTip();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));if(id==='learn')showLessonCatalog();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 
+// ---------- HSK 1 拼音发音室 ----------
+const PINYIN_INITIALS=[
+  {s:'b',p:'bō',a:'玻',tip:'双唇闭合，不送气'},{s:'p',p:'pō',a:'坡',tip:'双唇闭合，明显送气'},{s:'m',p:'mō',a:'摸',tip:'双唇闭合，气流从鼻腔出来'},{s:'f',p:'fó',a:'佛',tip:'上齿轻触下唇'},
+  {s:'d',p:'dā',a:'搭',tip:'舌尖抵住上齿龈，不送气'},{s:'t',p:'tā',a:'他',tip:'舌尖抵住上齿龈，送气'},{s:'n',p:'nǐ',a:'你',tip:'舌尖抵住上齿龈，气流走鼻腔'},{s:'l',p:'lā',a:'拉',tip:'舌尖抵住上齿龈，气流从舌侧通过'},
+  {s:'g',p:'gē',a:'哥',tip:'舌根抬起，不送气'},{s:'k',p:'kē',a:'科',tip:'舌根抬起，送气'},{s:'h',p:'hē',a:'喝',tip:'舌根靠近软腭，留出摩擦通道'},
+  {s:'j',p:'jī',a:'鸡',tip:'舌面前部贴近硬腭，不送气'},{s:'q',p:'qī',a:'七',tip:'舌面前部贴近硬腭，送气'},{s:'x',p:'xī',a:'西',tip:'舌面前部接近硬腭，持续摩擦'},
+  {s:'zh',p:'zhī',a:'知',tip:'舌尖卷起，不送气'},{s:'ch',p:'chī',a:'吃',tip:'舌尖卷起，送气'},{s:'sh',p:'shī',a:'师',tip:'舌尖卷起，持续摩擦'},{s:'r',p:'rì',a:'日',tip:'舌尖卷起，声带振动'},
+  {s:'z',p:'zī',a:'资',tip:'舌尖平伸，不送气'},{s:'c',p:'cā',a:'擦',tip:'舌尖平伸，送气'},{s:'s',p:'sī',a:'思',tip:'舌尖平伸，持续摩擦'}
+];
+const PINYIN_FINAL_GROUPS=[
+  {title:'基础单韵母',items:[{s:'a',p:'ā',a:'啊'},{s:'o',p:'ō',a:'哦'},{s:'e',p:'é',a:'鹅'},{s:'i',p:'yī',a:'衣'},{s:'u',p:'wū',a:'乌'},{s:'ü',p:'yū',a:'迂'}]},
+  {title:'复合韵母',items:[{s:'ai',p:'āi',a:'哎'},{s:'ei',p:'ēi',a:'欸'},{s:'ao',p:'áo',a:'熬'},{s:'ou',p:'ōu',a:'欧'},{s:'ia',p:'yā',a:'鸭'},{s:'ie',p:'yē',a:'椰'},{s:'ua',p:'wā',a:'蛙'},{s:'uo',p:'wō',a:'窝'},{s:'üe',p:'yuē',a:'约'},{s:'iao',p:'yāo',a:'腰'},{s:'iu',p:'yōu',a:'优'},{s:'uai',p:'wāi',a:'歪'},{s:'ui',p:'wēi',a:'威'}]},
+  {title:'鼻韵母',items:[{s:'an',p:'ān',a:'安'},{s:'en',p:'ēn',a:'恩'},{s:'in',p:'yīn',a:'音'},{s:'un',p:'wēn',a:'温'},{s:'ün',p:'yún',a:'云'},{s:'ang',p:'áng',a:'昂'},{s:'eng',p:'dēng',a:'灯'},{s:'ing',p:'yīng',a:'英'},{s:'ong',p:'wēng',a:'翁'},{s:'iang',p:'yāng',a:'央'},{s:'uang',p:'wāng',a:'汪'},{s:'iong',p:'yōng',a:'雍'}]}
+];
+const PINYIN_TONES=[
+  {s:'mā',p:'第一声',a:'妈',shape:'55  ˉ  高而平'},{s:'má',p:'第二声',a:'麻',shape:'35  ˊ  由中到高'},{s:'mǎ',p:'第三声',a:'马',shape:'214  ˇ  先降后升'},{s:'mà',p:'第四声',a:'骂',shape:'51  ˋ  由高到低'},{s:'ma',p:'轻声',a:'吗',shape:'·  短而轻'}
+];
+let pinyinMode='initials',lastPinyinSample={a:'妈',s:'mā'};
+
+function ensurePinyinLab(){
+  if(document.getElementById('pinyinLab'))return;
+  const summary=document.querySelector('#courseCatalog .course-summary');
+  if(!summary)return;
+  const lab=document.createElement('section');
+  lab.id='pinyinLab';lab.className='card pinyin-lab';
+  lab.innerHTML='<div class="pinyin-lab-head"><div><span class="pinyin-lab-badge">HSK 1 · 拼音</span><h2>拼音发音室</h2><p class="sub">从声母、韵母和声调开始，点击卡片听标准普通话示范。</p></div><div class="pinyin-mini-actions"><button class="secondary" type="button" onclick="playPinyinToneSeries()">播放全部声调</button><button class="secondary" type="button" onclick="repeatLastPinyin()">慢速播放</button></div></div><div class="pinyin-lab-body"><div class="pinyin-tabs" role="tablist" aria-label="拼音分类"><button class="pinyin-tab active" type="button" data-pinyin-mode="initials" onclick="renderPinyinLab(\'initials\')">声母</button><button class="pinyin-tab" type="button" data-pinyin-mode="finals" onclick="renderPinyinLab(\'finals\')">韵母</button><button class="pinyin-tab" type="button" data-pinyin-mode="tones" onclick="renderPinyinLab(\'tones\')">声调</button></div><div id="pinyinLabContent"></div><p class="pinyin-help">点击任意卡片听发音。先听，再观察口形并模仿。</p></div>';
+  summary.insertAdjacentElement('afterend',lab);
+  renderPinyinLab('initials');
+}
+function pinyinButton(item,tone=false){
+  const label=ui(`听发音示范：${item.s}，${item.a}`,`Play pronunciation model: ${item.s}, ${item.a}`);
+  return `<button class="pinyin-sound${tone?' tone-card':''}" type="button" aria-label="${escapeHtml(label)}" onclick="speakPinyinSample('${escapeHtml(item.a)}','${escapeHtml(item.s)}',this)"><span class="pinyin-symbol">${escapeHtml(item.s)}</span>${tone?`<span class="tone-shape">${escapeHtml(item.shape)}</span>`:''}<span class="pinyin-reference"><strong>${escapeHtml(item.a)}</strong><small>${escapeHtml(item.p)}</small><span class="pinyin-play">🔊</span></span></button>`;
+}
+function renderPinyinLab(mode='initials'){
+  pinyinMode=mode;
+  const root=document.getElementById('pinyinLabContent');if(!root)return;
+  document.querySelectorAll('[data-pinyin-mode]').forEach(b=>{const active=b.dataset.pinyinMode===mode;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});
+  if(mode==='initials')root.innerHTML='<div class="pinyin-group-title"><h3>声母</h3><span class="sub">21 个</span></div><div class="pinyin-grid">'+PINYIN_INITIALS.map(x=>pinyinButton(x)).join('')+'</div>';
+  else if(mode==='finals')root.innerHTML=PINYIN_FINAL_GROUPS.map(g=>'<section style="margin-bottom:22px"><div class="pinyin-group-title"><h3>'+g.title+'</h3><span class="sub">'+g.items.length+' 个</span></div><div class="pinyin-grid">'+g.items.map(x=>pinyinButton(x)).join('')+'</div></section>').join('');
+  else root.innerHTML='<div class="pinyin-group-title"><h3>声调</h3><span class="sub">mā · má · mǎ · mà · ma</span></div><div class="pinyin-grid tone-grid">'+PINYIN_TONES.map(x=>pinyinButton(x,true)).join('')+'</div>';
+  scheduleUiLanguage();
+}
+function speakPinyinSample(audio,symbol,button,rate=.76){
+  lastPinyinSample={a:audio,s:symbol};
+  document.querySelectorAll('.pinyin-sound.playing').forEach(x=>x.classList.remove('playing'));
+  if(button){button.classList.add('playing');setTimeout(()=>button.classList.remove('playing'),1200)}
+  speakText(audio,rate);
+}
+function repeatLastPinyin(){speakPinyinSample(lastPinyinSample.a,lastPinyinSample.s,null,.62)}
+function playPinyinToneSeries(){lastPinyinSample={a:'妈，麻，马，骂，吗',s:'mā má mǎ mà ma'};speakText(lastPinyinSample.a,.7)}
+
 // ---------- 课程目录 ----------
 function renderCourses(level='全部'){
   const list=level==='全部'?courses:courses.filter(c=>c.level===level);
   document.getElementById('courseGrid').innerHTML=list.map(c=>`<article class="card course-card"><div class="course-card-top"><span class="pill">${c.level}</span><span class="course-number">${c.id}</span></div><h3>${escapeHtml(c.title)}</h3><div class="course-scene">${escapeHtml(c.scene)}</div><div class="course-focus">${escapeHtml(c.grammar)}</div><div class="course-card-actions"><span class="status-ready">完整课程</span><button class="secondary" onclick="openLesson('${c.id}')">进入课程</button></div></article>`).join('');
   scheduleUiLanguage();
 }
-function filterCourses(level,button){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b===button));renderCourses(level)}
-function showLessonCatalog(){document.getElementById('courseCatalog').classList.remove('hidden');document.getElementById('lessonDetail').classList.add('hidden')}
+function filterCourses(level,button){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b===button));document.getElementById('pinyinLab')?.classList.toggle('hidden-by-filter',level!=='全部'&&level!=='HSK 1');renderCourses(level)}
+function showLessonCatalog(){document.getElementById('courseCatalog').classList.remove('hidden');document.getElementById('lessonDetail').classList.add('hidden');ensurePinyinLab()}
 function openLesson(id){const l=lessons.find(x=>x.id===id);if(!l)return;currentLesson=l;closeCourseModal();showView('learn');document.getElementById('courseCatalog').classList.add('hidden');document.getElementById('lessonDetail').classList.remove('hidden');renderLesson();window.scrollTo({top:0,behavior:'smooth'})}
 function openCurrentLesson(){openLesson(currentLesson.id)}
 function openCoursePreview(id){const c=courses.find(x=>x.id===id);if(!c)return;document.getElementById('courseModalLevel').textContent=c.level+' · '+c.id;document.getElementById('courseModalTitle').textContent=c.title;document.getElementById('courseModalScene').textContent=c.scene;document.getElementById('courseModalGrammar').textContent=c.grammar;document.getElementById('courseModalVocab').textContent=c.vocab;document.getElementById('courseModalListening').textContent=c.listening;document.getElementById('courseModalSpeaking').textContent=c.speaking;document.getElementById('courseModalReview').textContent=c.review;const action=document.getElementById('courseModalAction');action.textContent=ui('进入课程','Open lesson');action.onclick=()=>openLesson(id);courseModal.classList.add('show')}
@@ -172,7 +224,7 @@ function setTheme(name,silent=false){const allowed=['qinghe','mist','tea','wiste
 try{setTheme(localStorage.getItem('qinghe-theme')||'qinghe',true)}catch(e){setTheme('qinghe',true)}
 
 // ---------- 语音 ----------
-function speakText(text,rate=.88){if('speechSynthesis'in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=rate;speechSynthesis.speak(u);toastMsg(rate<.8?ui('正在慢速播放','Playing slowly'):ui('正在播放普通话','Playing Mandarin audio'))}else toastMsg(ui('当前浏览器不支持语音播放','Audio playback is not supported in this browser'))}
+function speakText(text,rate=.88){if('speechSynthesis'in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=rate;const voices=speechSynthesis.getVoices(),mandarin=voices.find(v=>/^zh[-_]CN$/i.test(v.lang))||voices.find(v=>/^zh/i.test(v.lang));if(mandarin)u.voice=mandarin;u.pitch=1;u.volume=1;speechSynthesis.speak(u);toastMsg(rate<.8?ui('正在慢速播放','Playing slowly'):ui('正在播放普通话','Playing Mandarin audio'))}else toastMsg(ui('当前浏览器不支持语音播放','Audio playback is not supported in this browser'))}
 
 // ---------- 课程渲染 ----------
 function renderLesson(){
@@ -276,6 +328,7 @@ function resetCorrection(){if(recording&&recognition)recognition.stop();setRecor
 function saveWord(){toastMsg(ui('已加入生词本','Saved to your word list'));closeModal()}
 function toastMsg(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>toast.classList.remove('show'),1800)}
 
+ensurePinyinLab();
 renderCourses();
 bindWords(document);
 renderLesson();
