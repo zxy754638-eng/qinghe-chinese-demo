@@ -19,6 +19,47 @@ const pinyinTip=document.getElementById('pinyinTip'),tipWord=document.getElement
 const speechResult=document.getElementById('speechResult'),speechResultTitle=document.getElementById('speechResultTitle'),speechResultStatus=document.getElementById('speechResultStatus'),speechScore=document.getElementById('speechScore'),speechTranscript=document.getElementById('speechTranscript'),speechFeedback=document.getElementById('speechFeedback');
 window.qingheDemoReady=true;
 
+// ---------- 本地学习数据（按设备持久化） ----------
+const QINGHE_LEARNING_KEY='qinghe-learning-state-v1';
+const DAY_MS=86400000;
+function emptyLearningState(){return{version:1,savedWords:[],completedLessons:{},lessonProgress:{},reviewQueue:[],activityDates:[],stats:{reviewed:0,correct:0},lastLessonId:null,updatedAt:null}}
+function loadLearningState(){
+  try{
+    const raw=JSON.parse(localStorage.getItem(QINGHE_LEARNING_KEY)||'null');
+    if(!raw||typeof raw!=='object')return emptyLearningState();
+    const clean=emptyLearningState();
+    clean.savedWords=Array.isArray(raw.savedWords)?raw.savedWords.filter(x=>typeof x==='string'):[];
+    clean.completedLessons=raw.completedLessons&&typeof raw.completedLessons==='object'?raw.completedLessons:{};
+    clean.lessonProgress=raw.lessonProgress&&typeof raw.lessonProgress==='object'?raw.lessonProgress:{};
+    clean.reviewQueue=Array.isArray(raw.reviewQueue)?raw.reviewQueue.filter(x=>x&&typeof x.id==='string'):[];
+    clean.activityDates=Array.isArray(raw.activityDates)?raw.activityDates.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)):[];
+    clean.stats={reviewed:Number(raw.stats?.reviewed)||0,correct:Number(raw.stats?.correct)||0};
+    clean.lastLessonId=typeof raw.lastLessonId==='string'?raw.lastLessonId:null;
+    clean.updatedAt=raw.updatedAt||null;
+    return clean;
+  }catch(error){return emptyLearningState()}
+}
+let learningState=loadLearningState();
+if(learningState.lastLessonId){const savedLesson=lessons.find(x=>x.id===learningState.lastLessonId);if(savedLesson){currentLesson=savedLesson;shadowingText=savedLesson.shadowing}}
+function localDateKey(date=new Date()){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
+function saveLearningState(){try{learningState.updatedAt=new Date().toISOString();localStorage.setItem(QINGHE_LEARNING_KEY,JSON.stringify(learningState))}catch(error){}}
+function markLearningActivity(){const key=localDateKey();if(!learningState.activityDates.includes(key)){learningState.activityDates.push(key);learningState.activityDates=learningState.activityDates.slice(-370)}saveLearningState()}
+function learningStreak(){const days=new Set(learningState.activityDates),cursor=new Date();let count=0;if(!days.has(localDateKey(cursor)))cursor.setDate(cursor.getDate()-1);while(days.has(localDateKey(cursor))){count++;cursor.setDate(cursor.getDate()-1)}return count}
+function learnedWordSet(){const result=new Set(learningState.savedWords);Object.keys(learningState.completedLessons).forEach(id=>{const lesson=lessons.find(x=>x.id===id);lesson?.vocab.forEach(word=>result.add(word))});return result}
+function dueReviewCount(){const now=Date.now();return learningState.reviewQueue.filter(item=>(Number(item.dueAt)||0)<=now).length}
+function addLessonReviewItems(lesson){
+  const dueAt=Date.now()+DAY_MS;
+  const incoming=[...lesson.vocab.map(word=>({id:'word:'+word,type:'word',value:word,lessonId:lesson.id,dueAt,interval:1,ease:2.5,repetitions:0,lastGrade:null})),{id:'grammar:'+lesson.id,type:'grammar',value:lesson.grammar.name,lessonId:lesson.id,dueAt,interval:1,ease:2.5,repetitions:0,lastGrade:null}];
+  const existing=new Set(learningState.reviewQueue.map(x=>x.id));incoming.forEach(item=>{if(!existing.has(item.id))learningState.reviewQueue.push(item)});
+}
+function completeCurrentLesson(){
+  const firstCompletion=!learningState.completedLessons[currentLesson.id];
+  learningState.completedLessons[currentLesson.id]=new Date().toISOString();
+  learningState.lessonProgress[currentLesson.id]={phase:5,updatedAt:new Date().toISOString()};
+  if(firstCompletion)addLessonReviewItems(currentLesson);
+  markLearningActivity();saveLearningState();renderLearningState();
+}
+
 // ---------- 界面语言（学习内容始终保留中文） ----------
 const UI_TEXT=Object.freeze({
   '主要导航':'Main navigation','首页':'Home','学习':'Learn','复习':'Review','词典':'Dictionary','我的':'Profile',
@@ -29,6 +70,7 @@ const UI_TEXT=Object.freeze({
   '今天需要复习':'Due for review','17 项':'17 items','词语':'Words','语法':'Grammar','听力':'Listening','开始复习':'Start review','本周学习':'This week','4 / 7 天':'4 / 7 days',
   '课程路线':'Learning path','60 节场景课，从 HSK 1 的基础交流逐步过渡到 HSK 6 的观点论证。':'60 scenario-based lessons, from HSK 1 basics to HSK 6 argumentation.','课程等级筛选':'Filter by HSK level','全部':'All','场景课程':'Scenario lessons','每课核心词':'Core words per lesson','初始复习日':'Initial review days',
   '拼音发音室':'Pinyin pronunciation lab','从声母、韵母和声调开始，点击卡片听标准普通话示范。':'Start with initials, finals and tones. Select a card to hear a Standard Mandarin model.','声母':'Initials','韵母':'Finals','声调':'Tones','基础单韵母':'Simple finals','复合韵母':'Compound finals','鼻韵母':'Nasal finals','点击任意卡片听发音。先听，再观察口形并模仿。':'Select any card to listen. Listen first, then watch your mouth shape and imitate.','播放全部声调':'Play all tones','慢速播放':'Play slowly','听发音示范':'Play pronunciation model','第一声':'Tone 1','第二声':'Tone 2','第三声':'Tone 3','第四声':'Tone 4','轻声':'Neutral tone','发音要点':'Pronunciation tip','双唇音':'Lip sounds','舌尖音':'Tongue-tip sounds','舌根音':'Back-of-tongue sounds','舌面音':'Front-of-tongue sounds','卷舌音':'Retroflex sounds','平舌音':'Dental sibilants',
+  '生词本':'Saved words','还没有保存词语':'No saved words yet','在课文或词典里点击词语，再选择“加入生词本”。':'Select a word in a lesson or the dictionary, then choose “Save word.”','移除':'Remove','已完成':'Completed','继续上次学习':'Resume lesson','已保存':'Saved','已从生词本移除':'Removed from saved words','学习数据已保存在当前设备':'Learning data is saved on this device','连续学习 0 天':'0-day streak',
   '完整课程':'Full lesson','进入课程':'Open lesson','返回课程路线':'Back to learning path','听标题':'Play title','预计 15 分钟':'about 15 min',
   '情境':'Context','词汇':'Vocabulary','口语':'Speaking','完成':'Complete','先听一听':'Listen first','先读一遍对话。点击不认识的词语，或者听每一句。':'Read the dialogue once. Click unfamiliar words, or listen sentence by sentence.','播放整段':'Play dialogue','学习词语':'Study vocabulary','今天的词语':'Today’s vocabulary','上一页':'Back','听力练习':'Listening practice',
   '听音辨意':'Listen and choose','播放听力':'Play listening audio','标准速度 · 可重复播放':'Normal speed · Replay anytime','口语练习':'Speaking practice','跟读纠错':'Pronunciation practice','先听，再说':'Listen, then speak','慢速听示范':'Play slow model','开始跟读':'Start speaking','结束跟读':'Stop speaking','查看纠错示例':'View sample feedback','点击圆形按钮，听到提示后开始跟读':'Tap the round button and start speaking after the cue.','正在听，请完整读完这句话…':'Listening — please read the full sentence…','本 Demo 不保存录音；语音识别是否联网由浏览器决定。':'This demo does not save recordings. Your browser controls whether speech recognition uses the internet.',
@@ -175,15 +217,44 @@ function speakPinyinSample(audio,symbol,button,rate=.76){
 function repeatLastPinyin(){speakPinyinSample(lastPinyinSample.a,lastPinyinSample.s,null,.62)}
 function playPinyinToneSeries(){lastPinyinSample={a:'妈，麻，马，骂，吗',s:'mā má mǎ mà ma'};speakText(lastPinyinSample.a,.7)}
 
+function ensureWordbookCard(){
+  if(document.getElementById('wordbookCard'))return;
+  const grid=document.querySelector('#profile .profile-grid');if(!grid)return;
+  const card=document.createElement('article');card.id='wordbookCard';card.className='card wordbook-card';
+  card.innerHTML='<div class="wordbook-head"><div><h3>生词本</h3><p class="sub">学习数据已保存在当前设备</p></div><div class="wordbook-count" id="wordbookCount">0</div></div><div id="wordbookList"></div>';
+  const theme=grid.querySelector('.theme-card');grid.insertBefore(card,theme||null);
+}
+function renderWordbook(){
+  ensureWordbookCard();const root=document.getElementById('wordbookList'),count=document.getElementById('wordbookCount');if(!root||!count)return;
+  count.textContent=learningState.savedWords.length;
+  if(!learningState.savedWords.length){root.innerHTML='<div class="wordbook-empty"><strong>'+ui('还没有保存词语','No saved words yet')+'</strong><br><span>'+ui('在课文或词典里点击词语，再选择“加入生词本”。','Select a word in a lesson or the dictionary, then choose “Save word.”')+'</span></div>';return}
+  root.innerHTML='<div class="wordbook-list">'+learningState.savedWords.map(word=>{const data=words[word];return '<div class="wordbook-item"><button class="wordbook-word" type="button" onclick="openWord(\''+escapeHtml(word)+'\')">'+escapeHtml(word)+(data?' · '+escapeHtml(data.p):'')+'</button><button class="wordbook-remove" type="button" aria-label="'+ui('移除','Remove')+' '+escapeHtml(word)+'" onclick="removeSavedWord(\''+escapeHtml(word)+'\')">×</button></div>'}).join('')+'</div>';
+}
+function removeSavedWord(word){learningState.savedWords=learningState.savedWords.filter(x=>x!==word);saveLearningState();renderWordbook();toastMsg(ui('已从生词本移除','Removed from saved words'))}
+function renderLearningState(){
+  ensureWordbookCard();renderWordbook();
+  const learned=learnedWordSet().size,completed=Object.keys(learningState.completedLessons).length,streak=learningStreak(),reviewed=learningState.stats.reviewed,due=dueReviewCount();
+  const stats=document.querySelectorAll('#profile .stats .stat b');if(stats[0])stats[0].textContent=learned;if(stats[1])stats[1].textContent=completed;if(stats[2])stats[2].textContent=((completed*12+reviewed*2)/60).toFixed(1)+'h';
+  const streakPill=document.querySelector('#profile .profile-top .pill');if(streakPill)streakPill.textContent=ui('连续学习 '+streak+' 天',streak+'-day streak');
+  const hsk3Done=Object.keys(learningState.completedLessons).filter(id=>lessons.find(x=>x.id===id)?.level==='HSK 3').length,percent=Math.round(hsk3Done/10*100);
+  const progress=document.querySelector('#profile .progressline span');if(progress)progress.style.width=percent+'%';
+  const progressText=document.querySelector('#profile .progressline + .sub');if(progressText)progressText.textContent=ui('HSK 3 课程完成 '+percent+'%',''+percent+'% of HSK 3 complete');
+  const reviewPill=document.querySelector('#review .section-head .pill');if(reviewPill)reviewPill.textContent=ui(due+' 项 · 预计 '+Math.max(1,Math.ceil(due*.55))+' 分钟',due+' items · about '+Math.max(1,Math.ceil(due*.55))+' min');
+  const ring=document.querySelector('#review .ring');if(ring)ring.style.setProperty('--review-count','"'+due+'"');
+  const homeReview=document.querySelector('#home .review-card h3 span');if(homeReview)homeReview.textContent=ui(due+' 项',due+' items');
+  renderCourses(document.querySelector('.filter-btn.active')?.dataset.level||'全部');
+  scheduleUiLanguage();
+}
+
 // ---------- 课程目录 ----------
 function renderCourses(level='全部'){
   const list=level==='全部'?courses:courses.filter(c=>c.level===level);
-  document.getElementById('courseGrid').innerHTML=list.map(c=>`<article class="card course-card"><div class="course-card-top"><span class="pill">${c.level}</span><span class="course-number">${c.id}</span></div><h3>${escapeHtml(c.title)}</h3><div class="course-scene">${escapeHtml(c.scene)}</div><div class="course-focus">${escapeHtml(c.grammar)}</div><div class="course-card-actions"><span class="status-ready">完整课程</span><button class="secondary" onclick="openLesson('${c.id}')">进入课程</button></div></article>`).join('');
+  document.getElementById('courseGrid').innerHTML=list.map(c=>{const completed=Boolean(learningState.completedLessons[c.id]),started=(learningState.lessonProgress[c.id]?.phase||0)>0;return `<article class="card course-card${completed?' completed':''}"><div class="course-card-top"><span class="pill">${c.level}</span><span class="course-number">${c.id}</span></div><h3>${escapeHtml(c.title)}</h3><div class="course-scene">${escapeHtml(c.scene)}</div><div class="course-focus">${escapeHtml(c.grammar)}</div><div class="course-card-actions"><span class="status-ready">${completed?'已完成':'完整课程'}</span><button class="secondary" onclick="openLesson('${c.id}')">${started&&!completed?'继续上次学习':'进入课程'}</button></div>${started&&!completed?'<div class="progress-saved">'+ui('进度已保存','Progress saved')+' · '+Math.round((learningState.lessonProgress[c.id].phase||0)/5*100)+'%</div>':''}</article>`}).join('');
   scheduleUiLanguage();
 }
 function filterCourses(level,button){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b===button));document.getElementById('pinyinLab')?.classList.toggle('hidden-by-filter',level!=='全部'&&level!=='HSK 1');renderCourses(level)}
 function showLessonCatalog(){document.getElementById('courseCatalog').classList.remove('hidden');document.getElementById('lessonDetail').classList.add('hidden');ensurePinyinLab()}
-function openLesson(id){const l=lessons.find(x=>x.id===id);if(!l)return;currentLesson=l;closeCourseModal();showView('learn');document.getElementById('courseCatalog').classList.add('hidden');document.getElementById('lessonDetail').classList.remove('hidden');renderLesson();window.scrollTo({top:0,behavior:'smooth'})}
+function openLesson(id){const l=lessons.find(x=>x.id===id);if(!l)return;currentLesson=l;learningState.lastLessonId=id;markLearningActivity();saveLearningState();closeCourseModal();showView('learn');document.getElementById('courseCatalog').classList.add('hidden');document.getElementById('lessonDetail').classList.remove('hidden');renderLesson();window.scrollTo({top:0,behavior:'smooth'})}
 function openCurrentLesson(){openLesson(currentLesson.id)}
 function openCoursePreview(id){const c=courses.find(x=>x.id===id);if(!c)return;document.getElementById('courseModalLevel').textContent=c.level+' · '+c.id;document.getElementById('courseModalTitle').textContent=c.title;document.getElementById('courseModalScene').textContent=c.scene;document.getElementById('courseModalGrammar').textContent=c.grammar;document.getElementById('courseModalVocab').textContent=c.vocab;document.getElementById('courseModalListening').textContent=c.listening;document.getElementById('courseModalSpeaking').textContent=c.speaking;document.getElementById('courseModalReview').textContent=c.review;const action=document.getElementById('courseModalAction');action.textContent=ui('进入课程','Open lesson');action.onclick=()=>openLesson(id);courseModal.classList.add('show')}
 function closeCourseModal(){courseModal.classList.remove('show')}
@@ -266,12 +337,21 @@ function renderLesson(){
   const outlineItems=[[ui('情境对话','Dialogue'),ui('现在','Now')],[ui(L.vocab.length+' 个词语',L.vocab.length+' words'),ui('约 4 分','about 4 min')],[L.grammar.name,ui('约 3 分','about 3 min')],[ui('听音辨意','Listening'),ui('约 2 分','about 2 min')],[ui('跟读口语','Speaking'),ui('约 2 分','about 2 min')],[ui('完成','Complete'),ui('总结','Summary')]];
   document.getElementById('outline').innerHTML=outlineItems.map((x,i)=>`<div class="outline-item${i===0?' now':''}">${escapeHtml(x[0])} <span>${x[1]}</span></div>`).join('');
   bindWords(document.getElementById('lessonDetail'));
-  setPhase(0);
+  const savedPhase=Math.max(0,Math.min(5,Number(learningState.lessonProgress[L.id]?.phase)||0));
+  phase=-1;
+  setPhase(savedPhase,false);
 }
 
 // ---------- 课程阶段 ----------
-function setPhase(n){phase=Math.max(0,Math.min(5,n));document.querySelectorAll('.phase').forEach((p,i)=>p.classList.toggle('active',i===phase));document.querySelectorAll('.step').forEach((s,i)=>{s.className='step'+(i<phase?' done':i===phase?' current':'')});document.querySelectorAll('.outline-item').forEach((x,i)=>{x.classList.toggle('now',i===phase);const labels=ui(['约 4 分','约 3 分','约 2 分','约 2 分','总结'],['about 4 min','about 3 min','about 2 min','about 2 min','Summary']);x.lastElementChild.textContent=i===phase?ui('现在','Now'):i<phase?ui('完成','Complete'):(labels[i-1]||'')});window.scrollTo({top:0,behavior:'smooth'})}
-function nextPhase(){setPhase(phase+1)}function prevPhase(){setPhase(phase-1)}function restartLesson(){setPhase(0)}
+function setPhase(n,persist=true){
+  const next=Math.max(0,Math.min(5,n)),reachingComplete=persist&&next===5&&phase!==5;phase=next;
+  document.querySelectorAll('.phase').forEach((p,i)=>p.classList.toggle('active',i===phase));
+  document.querySelectorAll('.step').forEach((s,i)=>{s.className='step'+(i<phase?' done':i===phase?' current':'')});
+  document.querySelectorAll('.outline-item').forEach((x,i)=>{x.classList.toggle('now',i===phase);const labels=ui(['约 4 分','约 3 分','约 2 分','约 2 分','总结'],['about 4 min','about 3 min','about 2 min','about 2 min','Summary']);x.lastElementChild.textContent=i===phase?ui('现在','Now'):i<phase?ui('完成','Complete'):(labels[i-1]||'')});
+  if(persist){learningState.lessonProgress[currentLesson.id]={phase,updatedAt:new Date().toISOString()};learningState.lastLessonId=currentLesson.id;markLearningActivity();saveLearningState();if(reachingComplete)completeCurrentLesson();else renderLearningState()}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextPhase(){setPhase(phase+1)}function prevPhase(){setPhase(phase-1)}function restartLesson(){learningState.lessonProgress[currentLesson.id]={phase:0,updatedAt:new Date().toISOString()};saveLearningState();setPhase(0,false);renderLearningState()}
 function answerChoice(el,ok){el.parentElement.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected','correct'));el.classList.add(ok?'correct':'selected');const f=el.parentElement.querySelector('.feedback');if(f)f.classList.add('show');toastMsg(ok?ui('回答正确','Correct'):ui('再想一想，可以回到课文看看','Try again — you can return to the dialogue'))}
 
 // ---------- 复习 ----------
@@ -325,11 +405,14 @@ function toggleRecord(){if(recording){if(recognition)recognition.stop();return}c
 function showCorrectionDemo(){setRecording(false);const w=currentLesson.vocab.find(x=>shadowingText.includes(x));showCorrection(w?shadowingText.replace(w,''):shadowingText.slice(0,-2),true)}
 function resetCorrection(){if(recording&&recognition)recognition.stop();setRecording(false);speechResult.classList.remove('show');speechScore.textContent='--';speechTranscript.textContent=ui('正在听……','Listening…');speechFeedback.replaceChildren()}
 
-function saveWord(){toastMsg(ui('已加入生词本','Saved to your word list'));closeModal()}
+function saveWord(){const word=modalWord.textContent.trim();if(!word){closeModal();return}const exists=learningState.savedWords.includes(word);if(!exists){learningState.savedWords.push(word);markLearningActivity();saveLearningState();renderLearningState()}toastMsg(exists?ui('已保存在生词本','Already in saved words'):ui('已加入生词本','Saved to your word list'));closeModal()}
 function toastMsg(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>toast.classList.remove('show'),1800)}
 
 ensurePinyinLab();
 renderCourses();
 bindWords(document);
 renderLesson();
+ensureWordbookCard();
 setUiLanguage(uiLanguage,true);
+renderLearningState();
+document.addEventListener('qinghe:languagechange',renderLearningState);
