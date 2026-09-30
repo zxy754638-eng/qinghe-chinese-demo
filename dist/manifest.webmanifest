@@ -1,0 +1,14 @@
+{
+  "name": "青禾中文 · Qinghe Chinese",
+  "short_name": "青禾中文",
+  "description": "面向中文学习者的 HSK 场景课程、词典与间隔复习。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f3e7",
+  "theme_color": "#60735a",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
