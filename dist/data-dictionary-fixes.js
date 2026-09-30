@@ -5,7 +5,7 @@
     '吗':{p:'ma',m:'question particle'},'那':{p:'nà',m:'that; those'},'家':{tr:'家',m:'home; family'},
     '几':{p:'jǐ',m:'how many; several'},'国':{m:'country; nation'},'水':{m:'water'},'号':{p:'hào',m:'date; number'},
     '年':{m:'year'},'三':{m:'three'},'上':{p:'shàng',m:'on; above; to go up'},'东西':{m:'thing; object'},
-    '大学':{m:'university'},'太':{m:'too; extremely'},'结果':{p:'jié guǒ',m:'result; outcome'},
+    '大学':{m:'university'},'太':{m:'too; extremely'},'旅行':{p:'lǚ xíng'},'结果':{p:'jié guǒ',m:'result; outcome'},
     '也':{m:'also; too'},'成功':{m:'to succeed; successful'},'告诉':{p:'gào su',m:'to tell; to inform'}
   };
   Object.entries(fixes).forEach(([word,patch])=>{if(words[word])Object.assign(words[word],patch)});
