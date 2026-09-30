@@ -1,5 +1,5 @@
 // 青禾中文主逻辑（数据驱动版）
-// 数据来源：data-words.js（词典，CC-CEDICT 拼音/英义 + 原创释义）、data-lessons.js（30 节原创课程）
+// 数据来源：开放词典数据 + HSK 1–6 共 60 节原创场景课程
 
 const courses=lessons.map(l=>({
   id:l.id,level:l.level,title:l.title,scene:l.scene,
