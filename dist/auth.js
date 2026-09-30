@@ -5,9 +5,16 @@
   // 回调地址跟随当前访问域名，发布到任何网址都无需改代码；
   // 只需在 Authing 控制台的登录/登出回调白名单中加入对应网址。
   const FALLBACK_REDIRECT='https://qinghe-chinese-demo.zxy794393457.chatgpt.site/';
-  const CURRENT_REDIRECT=(location.protocol==='https:'||location.protocol==='http:')
-    ?location.origin+location.pathname
-    :FALLBACK_REDIRECT;
+  // 统一到目录地址：/index.html、/xxx/ 都归一成 /xxx/，避免与控制台登记的地址不一致
+  function currentRedirectUri(){
+    if(location.protocol!=='https:'&&location.protocol!=='http:')return FALLBACK_REDIRECT;
+    let path=location.pathname||'/';
+    if(path.toLowerCase().endsWith('/index.html'))path=path.slice(0,-'index.html'.length);
+    if(!path.endsWith('/'))path='/'===path?path:path.replace(/[^/]*$/,'');
+    return location.origin+path;
+  }
+
+  const CURRENT_REDIRECT=currentRedirectUri();
 
   // 注意：SDK 构造函数会在配置对象上补写默认字段，不要冻结它
   const AUTHING_CONFIG={
