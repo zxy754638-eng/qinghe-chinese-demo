@@ -69,7 +69,7 @@ const UI_TEXT=Object.freeze({
   '今天的学习 · 15 分钟':'Today’s lesson · 15 min','8 个词语 · 1 个语法 · 情境听说':'8 words · 1 grammar point · listening & speaking','继续学习':'Continue',
   '今天需要复习':'Due for review','17 项':'17 items','词语':'Words','语法':'Grammar','听力':'Listening','开始复习':'Start review','本周学习':'This week','4 / 7 天':'4 / 7 days',
   '课程路线':'Learning path','60 节场景课，从 HSK 1 的基础交流逐步过渡到 HSK 6 的观点论证。':'60 scenario-based lessons, from HSK 1 basics to HSK 6 argumentation.','课程等级筛选':'Filter by HSK level','全部':'All','场景课程':'Scenario lessons','每课核心词':'Core words per lesson','初始复习日':'Initial review days',
-  '拼音发音室':'Pinyin pronunciation lab','从声母、韵母和声调开始，点击卡片听标准普通话示范。':'Start with initials, finals and tones. Select a card to hear a Standard Mandarin model.','声母':'Initials','韵母':'Finals','声调':'Tones','基础单韵母':'Simple finals','复合韵母':'Compound finals','鼻韵母':'Nasal finals','点击任意卡片听发音。先听，再观察口形并模仿。':'Select any card to listen. Listen first, then watch your mouth shape and imitate.','播放全部声调':'Play all tones','慢速播放':'Play slowly','听发音示范':'Play pronunciation model','第一声':'Tone 1','第二声':'Tone 2','第三声':'Tone 3','第四声':'Tone 4','轻声':'Neutral tone','发音要点':'Pronunciation tip','双唇音':'Lip sounds','舌尖音':'Tongue-tip sounds','舌根音':'Back-of-tongue sounds','舌面音':'Front-of-tongue sounds','卷舌音':'Retroflex sounds','平舌音':'Dental sibilants',
+  '拼音发音室':'Pinyin pronunciation lab','从声母、韵母和声调开始，点击卡片听标准普通话示范。':'Start with initials, finals and tones. Select a card to hear a Standard Mandarin model.','声母':'Initials','韵母':'Finals','声调':'Tones','基础单韵母':'Simple finals','复合韵母':'Compound finals','鼻韵母':'Nasal finals','点击任意卡片听发音。先听，再观察口形并模仿。':'Select any card to listen. Listen first, then watch your mouth shape and imitate.','声母不能单独发音；卡片播放“得、特、讷、勒”等教学呼读音。':'Initials cannot be pronounced alone. The cards play conventional teaching syllables such as dé, tè, nè and lè.','播放全部声调':'Play all tones','慢速播放':'Play slowly','听发音示范':'Play pronunciation model','第一声':'Tone 1','第二声':'Tone 2','第三声':'Tone 3','第四声':'Tone 4','轻声':'Neutral tone','发音要点':'Pronunciation tip','双唇音':'Lip sounds','舌尖音':'Tongue-tip sounds','舌根音':'Back-of-tongue sounds','舌面音':'Front-of-tongue sounds','卷舌音':'Retroflex sounds','平舌音':'Dental sibilants',
   '生词本':'Saved words','还没有保存词语':'No saved words yet','在课文或词典里点击词语，再选择“加入生词本”。':'Select a word in a lesson or the dictionary, then choose “Save word.”','移除':'Remove','已完成':'Completed','继续上次学习':'Resume lesson','已保存':'Saved','已从生词本移除':'Removed from saved words','学习数据已保存在当前设备':'Learning data is saved on this device','连续学习 0 天':'0-day streak',
   '学习统计':'Learning statistics','你的课程、复习和正确率都保存在当前设备。':'Your lessons, reviews and accuracy are saved on this device.','连续天数':'Day streak','掌握词数':'Words learned','复习次数':'Reviews','复习正确率':'Review accuracy','暂无记录':'No records yet','到期复习':'Due now','下一次复习':'Next review','暂无复习安排':'No reviews scheduled','课程完成后，新词和语法会自动进入复习队列。':'Finish a lesson to add its words and grammar to the review queue.','今天到期':'Due today','天后':'days','已根据你的选择更新复习时间':'Review time updated from your rating',
   '安装应用':'Install app','当前离线 · 已缓存课程仍可学习':'Offline · cached lessons remain available',
@@ -171,11 +171,11 @@ document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',(
 // ---------- HSK 1 拼音发音室 ----------
 const PINYIN_INITIALS=[
   {s:'b',p:'bō',a:'玻',tip:'双唇闭合，不送气'},{s:'p',p:'pō',a:'坡',tip:'双唇闭合，明显送气'},{s:'m',p:'mō',a:'摸',tip:'双唇闭合，气流从鼻腔出来'},{s:'f',p:'fó',a:'佛',tip:'上齿轻触下唇'},
-  {s:'d',p:'de',a:'的',tip:'舌尖抵住上齿龈，不送气'},{s:'t',p:'tè',a:'特',tip:'舌尖抵住上齿龈，送气'},{s:'n',p:'ne',a:'呢',tip:'舌尖抵住上齿龈，气流走鼻腔'},{s:'l',p:'le',a:'了',tip:'舌尖抵住上齿龈，气流从舌侧通过'},
+  {s:'d',p:'dé',a:'得',tip:'舌尖抵住上齿龈，不送气'},{s:'t',p:'tè',a:'特',tip:'舌尖抵住上齿龈，送气'},{s:'n',p:'nè',a:'讷',tip:'舌尖抵住上齿龈，气流走鼻腔'},{s:'l',p:'lè',a:'勒',tip:'舌尖抵住上齿龈，气流从舌侧通过'},
   {s:'g',p:'gē',a:'哥',tip:'舌根抬起，不送气'},{s:'k',p:'kē',a:'科',tip:'舌根抬起，送气'},{s:'h',p:'hē',a:'喝',tip:'舌根靠近软腭，留出摩擦通道'},
   {s:'j',p:'jī',a:'鸡',tip:'舌面前部贴近硬腭，不送气'},{s:'q',p:'qī',a:'七',tip:'舌面前部贴近硬腭，送气'},{s:'x',p:'xī',a:'西',tip:'舌面前部接近硬腭，持续摩擦'},
   {s:'zh',p:'zhī',a:'知',tip:'舌尖卷起，不送气'},{s:'ch',p:'chī',a:'吃',tip:'舌尖卷起，送气'},{s:'sh',p:'shī',a:'师',tip:'舌尖卷起，持续摩擦'},{s:'r',p:'rì',a:'日',tip:'舌尖卷起，声带振动'},
-  {s:'z',p:'zī',a:'资',tip:'舌尖平伸，不送气'},{s:'c',p:'cì',a:'次',tip:'舌尖平伸，送气'},{s:'s',p:'sī',a:'思',tip:'舌尖平伸，持续摩擦'}
+  {s:'z',p:'zī',a:'资',tip:'舌尖平伸，不送气'},{s:'c',p:'cí',a:'雌',tip:'舌尖平伸，送气'},{s:'s',p:'sī',a:'思',tip:'舌尖平伸，持续摩擦'}
 ];
 const PINYIN_FINAL_GROUPS=[
   {title:'基础单韵母',items:[{s:'a',p:'ā',a:'啊'},{s:'o',p:'ō',a:'哦'},{s:'e',p:'é',a:'鹅'},{s:'i',p:'yī',a:'衣'},{s:'u',p:'wū',a:'乌'},{s:'ü',p:'yū',a:'迂'}]},
@@ -205,7 +205,7 @@ function renderPinyinLab(mode='initials'){
   pinyinMode=mode;
   const root=document.getElementById('pinyinLabContent');if(!root)return;
   document.querySelectorAll('[data-pinyin-mode]').forEach(b=>{const active=b.dataset.pinyinMode===mode;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});
-  if(mode==='initials')root.innerHTML='<div class="pinyin-group-title"><h3>声母</h3><span class="sub">21 个</span></div><div class="pinyin-grid">'+PINYIN_INITIALS.map(x=>pinyinButton(x)).join('')+'</div>';
+  if(mode==='initials')root.innerHTML='<div class="pinyin-group-title"><h3>声母</h3><span class="sub">21 个</span></div><div class="pinyin-grid">'+PINYIN_INITIALS.map(x=>pinyinButton(x)).join('')+'</div><p class="pinyin-help">'+escapeHtml(ui('声母不能单独发音；卡片播放“得、特、讷、勒”等教学呼读音。','Initials cannot be pronounced alone. The cards play conventional teaching syllables such as dé, tè, nè and lè.'))+'</p>';
   else if(mode==='finals')root.innerHTML=PINYIN_FINAL_GROUPS.map(g=>'<section style="margin-bottom:22px"><div class="pinyin-group-title"><h3>'+g.title+'</h3><span class="sub">'+g.items.length+' 个</span></div><div class="pinyin-grid">'+g.items.map(x=>pinyinButton(x)).join('')+'</div></section>').join('');
   else root.innerHTML='<div class="pinyin-group-title"><h3>声调</h3><span class="sub">mā · má · mǎ · mà · ma</span></div><div class="pinyin-grid tone-grid">'+PINYIN_TONES.map(x=>pinyinButton(x,true)).join('')+'</div>';
   scheduleUiLanguage();
