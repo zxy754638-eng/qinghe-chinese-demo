@@ -12,7 +12,7 @@ let currentLesson=lessons.find(l=>l.id==='QH-021')||lessons[0];
 let shadowingText=currentLesson.shadowing;
 let helper=true,phase=0,recording=false,recognition=null,liveTranscript='',recognitionFailed=false,reviewIndex=0;
 let learnerIdentity={signedIn:false,name:'Alex',initial:'A'},homeRecommendedLessonId=currentLesson.id;
-const wordModal=document.getElementById('wordModal'),courseModal=document.getElementById('courseModal');
+const wordModal=document.getElementById('wordModal'),courseModal=document.getElementById('courseModal'),dailyGoalModal=document.getElementById('dailyGoalModal');
 const modalWord=document.getElementById('modalWord'),modalPinyin=document.getElementById('modalPinyin'),modalMeaning=document.getElementById('modalMeaning'),modalLevel=document.getElementById('modalLevel'),modalExample=document.getElementById('modalExample'),modalSpeak=document.getElementById('modalSpeak');
 const helperSwitch=document.getElementById('helperSwitch'),toast=document.getElementById('toast'),recordBtn=document.getElementById('recordBtn'),recordHint=document.getElementById('recordHint');
 const dictInput=document.getElementById('dictInput'),dictWord=document.getElementById('dictWord'),dictPinyin=document.getElementById('dictPinyin'),dictMeaning=document.getElementById('dictMeaning'),dictLevel=document.getElementById('dictLevel'),dictExplain=document.getElementById('dictExplain'),dictTraditional=document.getElementById('dictTraditional'),dictPos=document.getElementById('dictPos'),dictCollocations=document.getElementById('dictCollocations'),dictExamples=document.getElementById('dictExamples'),recentWords=document.getElementById('recentWords'),dictResults=document.getElementById('dictResults'),dictStatus=document.getElementById('dictStatus'),dictLoadBtn=document.getElementById('dictLoadBtn'),dictSource=document.getElementById('dictSource');
@@ -23,7 +23,7 @@ window.qingheDemoReady=true;
 // ---------- 本地学习数据（按设备持久化） ----------
 const QINGHE_LEARNING_KEY='qinghe-learning-state-v1';
 const DAY_MS=86400000;
-function emptyLearningState(){return{version:1,savedWords:[],completedLessons:{},lessonProgress:{},reviewQueue:[],activityDates:[],stats:{reviewed:0,correct:0},lastLessonId:null,updatedAt:null}}
+function emptyLearningState(){return{version:1,savedWords:[],completedLessons:{},lessonProgress:{},reviewQueue:[],activityDates:[],stats:{reviewed:0,correct:0},preferences:{dailyGoalMinutes:15},lastLessonId:null,updatedAt:null}}
 function loadLearningState(){
   try{
     const raw=JSON.parse(localStorage.getItem(QINGHE_LEARNING_KEY)||'null');
@@ -35,6 +35,8 @@ function loadLearningState(){
     clean.reviewQueue=Array.isArray(raw.reviewQueue)?raw.reviewQueue.filter(x=>x&&typeof x.id==='string'):[];
     clean.activityDates=Array.isArray(raw.activityDates)?raw.activityDates.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)):[];
     clean.stats={reviewed:Number(raw.stats?.reviewed)||0,correct:Number(raw.stats?.correct)||0};
+    const dailyGoal=Number(raw.preferences?.dailyGoalMinutes);
+    clean.preferences={dailyGoalMinutes:Number.isInteger(dailyGoal)&&dailyGoal>=5&&dailyGoal<=180?dailyGoal:15};
     clean.lastLessonId=typeof raw.lastLessonId==='string'?raw.lastLessonId:null;
     clean.updatedAt=raw.updatedAt||null;
     return clean;
@@ -44,6 +46,7 @@ let learningState=loadLearningState();
 if(learningState.lastLessonId){const savedLesson=lessons.find(x=>x.id===learningState.lastLessonId);if(savedLesson){currentLesson=savedLesson;shadowingText=savedLesson.shadowing}}
 function localDateKey(date=new Date()){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
 function saveLearningState(){try{learningState.updatedAt=new Date().toISOString();localStorage.setItem(QINGHE_LEARNING_KEY,JSON.stringify(learningState))}catch(error){}}
+function dailyGoalMinutes(){const value=Number(learningState.preferences?.dailyGoalMinutes);return Number.isInteger(value)&&value>=5&&value<=180?value:15}
 function markLearningActivity(){const key=localDateKey();if(!learningState.activityDates.includes(key)){learningState.activityDates.push(key);learningState.activityDates=learningState.activityDates.slice(-370)}saveLearningState()}
 function learningStreak(){const days=new Set(learningState.activityDates),cursor=new Date();let count=0;if(!days.has(localDateKey(cursor)))cursor.setDate(cursor.getDate()-1);while(days.has(localDateKey(cursor))){count++;cursor.setDate(cursor.getDate()-1)}return count}
 function learnedWordSet(){const result=new Set(learningState.savedWords);Object.keys(learningState.completedLessons).forEach(id=>{const lesson=lessons.find(x=>x.id===id);lesson?.vocab.forEach(word=>result.add(word))});return result}
@@ -84,7 +87,7 @@ const UI_TEXT=Object.freeze({
   '词义辨认':'Meaning','中文与英文':'Chinese & English','听音辨词':'Sound to word','标准普通话':'Standard Mandarin','句中填空':'Fill in context','恢复语境':'Recall in context','主动表达':'Active production','使用目标结构':'Use the target pattern','开始混合复习':'Start mixed review','输入你的答案':'Type your answer','复习答案':'Review answer','检查答案':'Check answer','困难 · 明天':'Hard · tomorrow','还好 · 3 天':'Good · 3 days','熟悉 · 7 天':'Easy · 7 days',
   '记忆节奏':'Review rhythm','初始安排来自课程规划，随后根据每次回答调整。':'The initial schedule follows the course plan, then adapts to each answer.','学习':'Study','1 天':'1 day','3 天':'3 days','7 天':'7 days','21 天':'21 days','今天':'Today','明天':'Tomorrow','3 天后':'In 3 days','7 天后':'In 7 days','无需一次全记住。':'You do not need to memorize everything at once.','复习时间由记忆表现决定，不只按固定日期重复。':'Review timing adapts to your memory, rather than repeating on fixed dates only.','本轮完成':'Round complete','4 种练习都做过了':'You completed all four practice types.','系统会根据刚才的难度选择安排下一次出现。':'The next review will be scheduled from the difficulty you chose.','再练一轮':'Practice another round',
   '学习词典':'Learner dictionary','输入汉字、繁体字或拼音，直接查发音、义项、搭配和例句。':'Search with simplified Chinese, traditional Chinese or pinyin to find pronunciation, meanings, collocations and examples.','词典搜索':'Dictionary search','查找':'Search','课程词库 428 条已可用；首次查生词时连接完整开放词库':'428 course entries are ready. The full open dictionary connects when you first search a new word.','连接开放词库':'Connect open dictionary','播放词语发音':'Play word pronunciation','繁体':'Traditional','词性':'Part of speech','常见搭配':'Common collocations','例句':'Examples','播放例句':'Play example','容易混淆':'Often confused','最近查过':'Recent searches','开放数据与许可':'Open data & licenses','青禾中文原创层':'Original Qinghe content','课程词条 · 拼音与英文释义参考':'Course entry · Pinyin and English meanings reference','）· 中文释义、搭配与例句为青禾中文原创':') · Chinese explanations, collocations and examples are original Qinghe content','CC-CEDICT / MDBG 社区词典':'CC-CEDICT / MDBG Community Dictionary','简繁体、数字声调拼音与英文义项；可商用，须署名，并按 CC BY-SA 4.0 分享词典数据的改编。':'Simplified/traditional forms, numbered-tone pinyin and English meanings. Commercial use is allowed with attribution, and dictionary adaptations must be shared under CC BY-SA 4.0.','作为后续单字读音与字形字段补充；Unicode 数据文件采用开放的 Unicode License。':'A future source for character readings and forms. Unicode data files use the open Unicode License.','中文学习释义、HSK 标签、搭配与例句单独审校，不复制商业词典内容。':'Chinese learner definitions, HSK labels, collocations and examples are edited independently without copying commercial dictionaries.',
-  '我的学习':'My learning','Alex · 现在学习 HSK 3':'Alex · Currently studying HSK 3','连续学习 12 天':'12-day streak','本月进度':'This month','已学词语':'Words learned','完成课程':'Finish lesson','HSK 3 课程完成 62%':'62% of HSK 3 complete','学习设置':'Learning settings','界面语言':'Interface language','拼音显示':'Pinyin display','悬停 / 点击':'Hover / click','发音速度':'Speech speed','标准 1.0×':'Normal 1.0×','每日目标':'Daily goal','15 分钟':'15 min',
+  '我的学习':'My learning','Alex · 现在学习 HSK 3':'Alex · Currently studying HSK 3','连续学习 12 天':'12-day streak','本月进度':'This month','已学词语':'Words learned','完成课程':'Finish lesson','HSK 3 课程完成 62%':'62% of HSK 3 complete','学习设置':'Learning settings','界面语言':'Interface language','拼音显示':'Pinyin display','悬停 / 点击':'Hover / click','发音速度':'Speech speed','标准 1.0×':'Normal 1.0×','每日目标':'Daily goal','15 分钟':'15 min','设置每日目标':'Set daily goal','学习计划':'Learning plan','选择每天想学习的时间，也可以输入自己的分钟数。':'Choose how long you want to study each day, or enter your own time.','每日目标快捷选项':'Daily goal presets','10 分钟':'10 min','20 分钟':'20 min','30 分钟':'30 min','45 分钟':'45 min','60 分钟':'60 min','自定义时间':'Custom time','分钟 / 天':'min / day','请输入 5–180 分钟。设置会保存在当前设备。':'Enter 5–180 minutes. This setting is saved on this device.','取消':'Cancel','保存目标':'Save goal',
   '界面配色':'Color theme','四套低饱和主题，选择会保存在当前设备。':'Four calm color themes. Your choice is saved on this device.','青禾米绿':'Qinghe Sage','温暖、自然，当前默认':'Warm and natural · default','雾蓝杏仁':'Mist Blue','清爽、安静，适合长时间阅读':'Calm and clear for longer reading','茶棕月白':'Tea Brown','柔和、稳重，纸张感更强':'Soft, grounded and paper-like','紫藤岩灰':'Wisteria Gray','克制、现代，对比柔和':'Modern with gentle contrast',
   '内容体系':'Content system','课程、词典、语音和复习按同一套字段与审校流程组织。':'Lessons, dictionary, audio and review follow one shared content and editorial system.','HSK 1–6 场景课':'HSK 1–6 lessons','单课内容步骤':'Steps per lesson','混合复习类型':'Mixed review types','标准与慢速语音':'Normal & slow audio','正式发布前需要完成 HSK 最新大纲校准、母语教师审校、普通话审核，以及词典和音频的版本与许可记录。':'Before launch, content will be aligned to the latest HSK syllabus and reviewed by native teachers and Mandarin specialists, with dictionary and audio licensing records maintained.',
   '打开账户':'Open account','登录':'Sign in','正在检查登录状态':'Checking sign-in status','请稍候……':'Please wait…','青禾中文账户':'Qinghe account','登录后继续学习':'Sign in to continue learning','前往 Authing 安全登录页，使用邮箱或手机号码登录和注册。':'Continue to Authing’s secure page to sign in or register with email or phone.','密码和验证码不会交给青禾中文页面。':'Passwords and verification codes are never shared with the Qinghe page.','微信登录在 Authing 控制台启用后会自动出现在登录页。':'WeChat sign-in will appear after it is enabled in Authing.','当前 Demo 已接入账户身份，云端学习进度同步将在后端数据库接入后启用。':'Accounts are connected. Cloud progress sync will be enabled after a backend database is added.','登录 / 注册':'Sign in / Register','继续即表示你将前往 Authing 完成身份认证。':'Continue to Authing to verify your identity.','我的账户':'My account','学习者':'Learner','已登录':'Signed in','邮箱':'Email','未提供':'Not provided','手机号码':'Phone','账户服务':'Account service','账户已连接。当前 Demo 尚未开启云端学习进度同步。':'Account connected. Cloud progress sync is not enabled in this demo yet.','查看我的学习':'View my learning','退出登录':'Sign out','登录服务暂时不可用':'Sign-in is temporarily unavailable','请稍后重试。':'Please try again later.','重新连接':'Retry','正在完成登录':'Completing sign-in','身份验证成功后会自动返回学习页面。':'You’ll return to the learning page automatically after verification.','账户与登录':'Account & sign-in','未登录':'Not signed in','已连接 Authing':'Authing connected','账号登录已接入；当前 Demo 的学习进度仍保存在本机。':'Account sign-in is connected. Learning progress is still stored on this device in this demo.','管理账户':'Manage account',
@@ -165,10 +168,11 @@ function renderHomeRecommendation(){
   const setText=(id,value)=>{const node=document.getElementById(id);if(node)node.textContent=value};
   const noHistory=!state.last;
   const allComplete=Object.keys(learningState.completedLessons).filter(id=>lessons.some(lesson=>lesson.id===id)).length>=lessons.length;
-  const status=allComplete?ui('全部完成 · 随时复习','All complete · Review anytime')
-    :noHistory?ui('为你推荐 · 15 分钟','Recommended · 15 min')
-    :state.lastCompleted?ui('下一门课程 · 15 分钟','Next lesson · 15 min')
-    :ui('继续上次学习 · 15 分钟','Resume last lesson · 15 min');
+  const goal=dailyGoalMinutes(),goalText=ui('今日目标 '+goal+' 分钟','Daily goal · '+goal+' min');
+  const status=(allComplete?ui('全部完成','All complete')
+    :noHistory?ui('为你推荐','Recommended')
+    :state.lastCompleted?ui('下一门课程','Next lesson')
+    :ui('继续上次学习','Resume last lesson'))+' · '+goalText;
   const action=allComplete?ui('再次学习','Study again')
     :noHistory?ui('开始学习','Start learning')
     :state.lastCompleted?ui('开始下一课','Start next lesson')
@@ -314,7 +318,7 @@ function renderWordbook(){
 }
 function removeSavedWord(word){learningState.savedWords=learningState.savedWords.filter(x=>x!==word);saveLearningState();renderWordbook();toastMsg(ui('已从生词本移除','Removed from saved words'))}
 function renderLearningState(){
-  ensureWordbookCard();renderWordbook();renderLearningStats();
+  ensureWordbookCard();renderWordbook();renderLearningStats();renderDailyGoalSetting();
   const learned=learnedWordSet().size,completed=Object.keys(learningState.completedLessons).length,streak=learningStreak(),reviewed=learningState.stats.reviewed,due=dueReviewCount();
   const stats=document.querySelectorAll('#profile .stats .stat b');if(stats[0])stats[0].textContent=learned;if(stats[1])stats[1].textContent=completed;if(stats[2])stats[2].textContent=((completed*12+reviewed*2)/60).toFixed(1)+'h';
   const streakPill=document.querySelector('#profile .profile-top .pill');if(streakPill)streakPill.textContent=ui('连续学习 '+streak+' 天',streak+'-day streak');
@@ -345,6 +349,28 @@ function openCoursePreview(id){const c=courses.find(x=>x.id===id);if(!c)return;d
 function closeCourseModal(){courseModal.classList.remove('show')}
 courseModal.addEventListener('click',e=>{if(e.target===courseModal)closeCourseModal()});
 
+// ---------- 每日学习目标 ----------
+function renderDailyGoalSetting(){
+  const goal=dailyGoalMinutes(),value=document.getElementById('dailyGoalValue');
+  if(value)value.textContent=ui(goal+' 分钟',goal+' min');
+}
+function syncDailyGoalChoices(value){document.querySelectorAll('.goal-option').forEach(button=>button.classList.toggle('selected',Number(button.dataset.goal)===Number(value)))}
+function openDailyGoalModal(){
+  const input=document.getElementById('dailyGoalInput'),goal=dailyGoalMinutes();
+  if(input){input.value=String(goal);input.setCustomValidity('')}
+  syncDailyGoalChoices(goal);dailyGoalModal?.classList.add('show');setTimeout(()=>input?.focus(),0);
+}
+function closeDailyGoalModal(){dailyGoalModal?.classList.remove('show')}
+function chooseDailyGoal(minutes){const input=document.getElementById('dailyGoalInput');if(input){input.value=String(minutes);input.setCustomValidity('')}syncDailyGoalChoices(minutes)}
+function saveDailyGoal(){
+  const input=document.getElementById('dailyGoalInput'),minutes=Number(input?.value);
+  if(!Number.isInteger(minutes)||minutes<5||minutes>180){if(input){input.setCustomValidity(ui('请输入 5 到 180 之间的整数分钟。','Enter a whole number from 5 to 180 minutes.'));input.reportValidity()}return}
+  learningState.preferences={...(learningState.preferences||{}),dailyGoalMinutes:minutes};saveLearningState();renderLearningState();closeDailyGoalModal();toastMsg(ui('每日目标已更新为 '+minutes+' 分钟','Daily goal updated to '+minutes+' minutes'));
+}
+dailyGoalModal?.addEventListener('click',event=>{if(event.target===dailyGoalModal)closeDailyGoalModal()});
+document.getElementById('dailyGoalInput')?.addEventListener('input',event=>{event.target.setCustomValidity('');syncDailyGoalChoices(event.target.value)});
+document.getElementById('dailyGoalInput')?.addEventListener('keydown',event=>{if(event.key==='Enter')saveDailyGoal()});
+
 // ---------- 词语标注与词卡 ----------
 function markWords(text,vocab){
   const keys=(vocab||Object.keys(words)).filter(w=>words[w]).sort((a,b)=>b.length-a.length);
@@ -371,7 +397,7 @@ window.addEventListener('scroll',hidePinyinTip,{passive:true});window.addEventLi
 function openWord(w){const d=words[w];if(!d)return;modalWord.textContent=w;modalPinyin.textContent=d.p;modalMeaning.textContent=d.m;modalLevel.textContent=d.l;modalExample.textContent=d.e;modalSpeak.onclick=()=>speakText(w);wordModal.classList.add('show')}
 function closeModal(){wordModal.classList.remove('show')}
 wordModal.addEventListener('click',e=>{if(e.target===wordModal)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeCourseModal()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeCourseModal();closeDailyGoalModal()}});
 function toggleHelper(){helper=!helper;document.body.classList.toggle('helper-off',!helper);document.querySelectorAll('.switch').forEach(s=>s.classList.toggle('on',helper));toastMsg(ui('中文辅助模式已'+(helper?'开启':'关闭'),'Chinese helper mode '+(helper?'on':'off')))}
 helperSwitch.onclick=toggleHelper;
 
