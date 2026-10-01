@@ -31,6 +31,7 @@
   let authUserInfo=null;
   let authStatus='loading';
   let authErrorType='connection';
+  let lastIdentitySignature='';
 
   const byId=id=>document.getElementById(id);
   const authModal=byId('accountModal');
@@ -116,6 +117,10 @@
       :text('账号登录已接入；当前 Demo 的学习进度仍保存在本机。','Account sign-in is connected. Learning progress is still stored on this device in this demo.');
     if(profileAction)profileAction.textContent=signedIn?text('管理账户','Manage account'):text('登录 / 注册','Sign in / Register');
     if(authStatus==='error'&&byId('authErrorMessage'))byId('authErrorMessage').textContent=getAuthErrorText();
+    const publicIdentity={signedIn,name:signedIn?identity.name:'Alex',initial:signedIn?identity.initial:'A'};
+    window.qingheUserIdentity=publicIdentity;
+    const signature=JSON.stringify(publicIdentity);
+    if(signature!==lastIdentitySignature){lastIdentitySignature=signature;document.dispatchEvent(new CustomEvent('qinghe:identitychange',{detail:publicIdentity}))}
   }
 
   function openAccountModal(){

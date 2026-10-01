@@ -11,6 +11,7 @@ const courses=lessons.map(l=>({
 let currentLesson=lessons.find(l=>l.id==='QH-021')||lessons[0];
 let shadowingText=currentLesson.shadowing;
 let helper=true,phase=0,recording=false,recognition=null,liveTranscript='',recognitionFailed=false,reviewIndex=0;
+let learnerIdentity={signedIn:false,name:'Alex',initial:'A'},homeRecommendedLessonId=currentLesson.id;
 const wordModal=document.getElementById('wordModal'),courseModal=document.getElementById('courseModal');
 const modalWord=document.getElementById('modalWord'),modalPinyin=document.getElementById('modalPinyin'),modalMeaning=document.getElementById('modalMeaning'),modalLevel=document.getElementById('modalLevel'),modalExample=document.getElementById('modalExample'),modalSpeak=document.getElementById('modalSpeak');
 const helperSwitch=document.getElementById('helperSwitch'),toast=document.getElementById('toast'),recordBtn=document.getElementById('recordBtn'),recordHint=document.getElementById('recordHint');
@@ -117,12 +118,78 @@ const UI_ZH_DAYS=['日','一','二','三','四','五','六'],UI_EN_DAYS=['Sunday
 function renderHomeHead(){
   const now=new Date(),h=now.getHours();
   const g=document.getElementById('homeGreeting'),d=document.getElementById('homeDate');
+  const name=String(learnerIdentity.name||'Alex').trim()||'Alex';
   if(g)g.textContent=uiLanguage==='en'
-    ?(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+', Alex.'
-    :(h<12?'早上好':h<18?'下午好':'晚上好')+'，Alex。';
+    ?(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+', '+name+'.'
+    :(h<12?'早上好':h<18?'下午好':'晚上好')+'，'+name+'。';
   if(d)d.textContent=uiLanguage==='en'
     ?(UI_EN_MONTHS[now.getMonth()]+' '+now.getDate()+' · '+UI_EN_DAYS[now.getDay()])
     :((now.getMonth()+1)+'月'+now.getDate()+'日 · 星期'+UI_ZH_DAYS[now.getDay()]);
+}
+function lastStudiedLesson(){
+  const saved=lessons.find(lesson=>lesson.id===learningState.lastLessonId);
+  if(saved)return saved;
+  const latest=Object.entries(learningState.lessonProgress)
+    .filter(([id])=>lessons.some(lesson=>lesson.id===id))
+    .sort((a,b)=>new Date(b[1]?.updatedAt||0)-new Date(a[1]?.updatedAt||0))[0];
+  return latest?lessons.find(lesson=>lesson.id===latest[0])||null:null;
+}
+function nextIncompleteLesson(afterLesson){
+  if(!lessons.length)return null;
+  const start=Math.max(-1,lessons.findIndex(lesson=>lesson.id===afterLesson?.id));
+  for(let offset=1;offset<=lessons.length;offset++){
+    const lesson=lessons[(start+offset)%lessons.length];
+    if(!learningState.completedLessons[lesson.id])return lesson;
+  }
+  return null;
+}
+function homeRecommendationState(){
+  const fallback=lessons.find(lesson=>lesson.id==='QH-021')||lessons[0];
+  const last=lastStudiedLesson(),lastCompleted=Boolean(last&&learningState.completedLessons[last.id]);
+  const next=last?nextIncompleteLesson(last):fallback;
+  const recommended=(last&&!lastCompleted?last:next)||last||fallback;
+  const following=last&&!lastCompleted?nextIncompleteLesson(last):(lastCompleted?next:recommended);
+  const completed=Boolean(recommended&&learningState.completedLessons[recommended.id]);
+  const phaseValue=Math.max(0,Math.min(5,Number(learningState.lessonProgress[recommended?.id]?.phase)||0));
+  const percent=completed?100:Math.round(phaseValue/5*100);
+  const level=recommended?.level||last?.level||'HSK 3';
+  const levelLessons=lessons.filter(lesson=>lesson.level===level);
+  const levelCompleted=levelLessons.filter(lesson=>learningState.completedLessons[lesson.id]).length;
+  return {last,lastCompleted,recommended,following,completed,percent,level,levelCompleted,levelTotal:levelLessons.length};
+}
+function renderHomeRecommendation(){
+  const state=homeRecommendationState(),lesson=state.recommended;
+  if(!lesson)return state;
+  homeRecommendedLessonId=lesson.id;
+  renderHomeHead();
+  const setText=(id,value)=>{const node=document.getElementById(id);if(node)node.textContent=value};
+  const noHistory=!state.last;
+  const allComplete=Object.keys(learningState.completedLessons).filter(id=>lessons.some(lesson=>lesson.id===id)).length>=lessons.length;
+  const status=allComplete?ui('全部完成 · 随时复习','All complete · Review anytime')
+    :noHistory?ui('为你推荐 · 15 分钟','Recommended · 15 min')
+    :state.lastCompleted?ui('下一门课程 · 15 分钟','Next lesson · 15 min')
+    :ui('继续上次学习 · 15 分钟','Resume last lesson · 15 min');
+  const action=allComplete?ui('再次学习','Study again')
+    :noHistory?ui('开始学习','Start learning')
+    :state.lastCompleted?ui('开始下一课','Start next lesson')
+    :ui('继续学习','Continue');
+  setText('homeRecommendationStatus',status);
+  setText('homeCurrentLevel',state.level);
+  setText('homeLessonTitle',lesson.title);
+  setText('homeLessonMeta',ui(lesson.vocab.length+' 个词语 · 1 个语法 · 情境听说',lesson.vocab.length+' words · 1 grammar point · listening & speaking'));
+  setText('homeLastLessonLabel',ui('上次课程','Last lesson'));
+  setText('homeLastLesson',state.last?state.last.id+' · '+state.last.title:ui('暂无学习记录','No learning history yet'));
+  setText('homeNextLessonLabel',ui('下一门课程','Next lesson'));
+  setText('homeNextLesson',state.following?state.following.id+' · '+state.following.title:ui('全部课程已完成','All lessons completed'));
+  setText('homeLessonAction',action);
+  setText('homeProgressLabel',ui('本课真实进度','Actual lesson progress'));
+  setText('homeProgressText',state.percent+'% · '+ui(state.level+' 已完成 '+state.levelCompleted+' / '+state.levelTotal+' 课',state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' lessons'));
+  setText('currentLevelLabel',ui(state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' 课',state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' lessons'));
+  const card=document.getElementById('homeRecommendation');if(card)card.dataset.mark=(lesson.title.match(/[\u3400-\u9fff]/)||['学'])[0];
+  const bar=document.getElementById('homeProgressBar');if(bar){bar.setAttribute('aria-valuenow',String(state.percent));bar.setAttribute('aria-label',ui('本课完成 '+state.percent+'%','Lesson '+state.percent+'% complete'));const fill=bar.querySelector('span');if(fill)fill.style.width=state.percent+'%'}
+  const name=String(learnerIdentity.name||'Alex').trim()||'Alex',initial=String(learnerIdentity.initial||name.charAt(0)||'A').toUpperCase();
+  setText('profileMainName',name);setText('profileMainAvatar',initial);setText('profileIdentity',ui(name+' · 现在学习 '+state.level,name+' · Currently learning '+state.level));
+  return state;
 }
 function applyUiLanguage(){
   if(applyingUiLanguage)return;applyingUiLanguage=true;
@@ -251,9 +318,9 @@ function renderLearningState(){
   const learned=learnedWordSet().size,completed=Object.keys(learningState.completedLessons).length,streak=learningStreak(),reviewed=learningState.stats.reviewed,due=dueReviewCount();
   const stats=document.querySelectorAll('#profile .stats .stat b');if(stats[0])stats[0].textContent=learned;if(stats[1])stats[1].textContent=completed;if(stats[2])stats[2].textContent=((completed*12+reviewed*2)/60).toFixed(1)+'h';
   const streakPill=document.querySelector('#profile .profile-top .pill');if(streakPill)streakPill.textContent=ui('连续学习 '+streak+' 天',streak+'-day streak');
-  const hsk3Done=Object.keys(learningState.completedLessons).filter(id=>lessons.find(x=>x.id===id)?.level==='HSK 3').length,percent=Math.round(hsk3Done/10*100);
-  const progress=document.querySelector('#profile .progressline span');if(progress)progress.style.width=percent+'%';
-  const progressText=document.querySelector('#profile .progressline + .sub');if(progressText)progressText.textContent=ui('HSK 3 课程完成 '+percent+'%',''+percent+'% of HSK 3 complete');
+  const homeState=renderHomeRecommendation(),levelPercent=Math.round(homeState.levelCompleted/Math.max(1,homeState.levelTotal)*100);
+  const progress=document.querySelector('#profile .progressline span');if(progress)progress.style.width=levelPercent+'%';
+  const progressText=document.getElementById('profileLevelProgress');if(progressText)progressText.textContent=ui(homeState.level+' 课程完成 '+levelPercent+'%',levelPercent+'% of '+homeState.level+' complete');
   const reviewPill=document.querySelector('#review .section-head .pill');if(reviewPill)reviewPill.textContent=ui(due+' 项 · 预计 '+Math.max(1,Math.ceil(due*.55))+' 分钟',due+' items · about '+Math.max(1,Math.ceil(due*.55))+' min');
   const ring=document.querySelector('#review .ring');if(ring)ring.style.setProperty('--review-count','"'+due+'"');
   const homeReview=document.querySelector('#home .review-card h3 span');if(homeReview)homeReview.textContent=ui(due+' 项',due+' items');
@@ -273,7 +340,7 @@ function renderCourses(level='全部'){
 function filterCourses(level,button){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b===button));document.getElementById('pinyinLab')?.classList.toggle('hidden-by-filter',level!=='全部'&&level!=='HSK 1');renderCourses(level)}
 function showLessonCatalog(){document.getElementById('courseCatalog').classList.remove('hidden');document.getElementById('lessonDetail').classList.add('hidden');ensurePinyinLab()}
 function openLesson(id){const l=lessons.find(x=>x.id===id);if(!l)return;currentLesson=l;learningState.lastLessonId=id;markLearningActivity();saveLearningState();closeCourseModal();showView('learn');document.getElementById('courseCatalog').classList.add('hidden');document.getElementById('lessonDetail').classList.remove('hidden');renderLesson();window.scrollTo({top:0,behavior:'smooth'})}
-function openCurrentLesson(){openLesson(currentLesson.id)}
+function openCurrentLesson(){openLesson(homeRecommendedLessonId||currentLesson.id)}
 function openCoursePreview(id){const c=courses.find(x=>x.id===id);if(!c)return;document.getElementById('courseModalLevel').textContent=c.level+' · '+c.id;document.getElementById('courseModalTitle').textContent=c.title;document.getElementById('courseModalScene').textContent=c.scene;document.getElementById('courseModalGrammar').textContent=c.grammar;document.getElementById('courseModalVocab').textContent=c.vocab;document.getElementById('courseModalListening').textContent=c.listening;document.getElementById('courseModalSpeaking').textContent=c.speaking;document.getElementById('courseModalReview').textContent=c.review;const action=document.getElementById('courseModalAction');action.textContent=ui('进入课程','Open lesson');action.onclick=()=>openLesson(id);courseModal.classList.add('show')}
 function closeCourseModal(){courseModal.classList.remove('show')}
 courseModal.addEventListener('click',e=>{if(e.target===courseModal)closeCourseModal()});
@@ -463,3 +530,9 @@ ensureWordbookCard();
 setUiLanguage(uiLanguage,true);
 renderLearningState();
 document.addEventListener('qinghe:languagechange',renderLearningState);
+document.addEventListener('qinghe:identitychange',event=>{
+  const detail=event.detail||{},rawName=String(detail.name||'').trim();
+  const displayName=(rawName.includes('@')?rawName.split('@')[0]:rawName)||'Alex';
+  learnerIdentity={signedIn:Boolean(detail.signedIn),name:detail.signedIn?displayName:'Alex',initial:detail.signedIn?(String(detail.initial||displayName.charAt(0)||'A').toUpperCase()):'A'};
+  renderHomeRecommendation();
+});

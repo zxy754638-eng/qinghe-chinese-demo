@@ -1,4 +1,4 @@
-const CACHE_NAME='qinghe-shell-v13';
+const CACHE_NAME='qinghe-shell-v14';
 const APP_SHELL=['./','./index.html','./app.js','./auth.js','./pwa.js','./data-words.js','./data-lessons.js','./data-upper-lessons.js','./data-upper-words.js','./data-dictionary-fixes.js','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()))});
