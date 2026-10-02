@@ -96,7 +96,7 @@ const UI_TEXT=Object.freeze({
   '关闭':'Close','听发音':'Play audio','加入生词本':'Save word','核心语法 / 功能':'Core grammar / function','词汇主题':'Vocabulary theme','听力任务':'Listening task','口语输出':'Speaking output','复习重点：':'Review focus:','返回目录':'Back to catalog','（':'(','已加入生词本':'Saved to your word list','12 分':'12 min'
 });
 const UI_TEXT_EN_TO_ZH=Object.freeze(Object.fromEntries(Object.entries(UI_TEXT).map(([zh,en])=>[en,zh])));
-const UI_SKIP_SELECTOR='script,style,[data-no-ui-translate],.auth-user-data,.pinyin-symbol,.pinyin-reference,.pinyin-help,.word,.hanzi,.entry-word,.entry-pinyin,.modal-word,.modal-pinyin,.modal-meaning,.theme-study-card,.theme-word-strip,.theme-filter-btn,.theme-deck-title,.theme-deck-en,#dictMeaning,#dictExplain,#dictCollocations,#dictExamples,#recentWords,#dialogueLines,#grammarName,#grammarExplain,#grammarPattern,#grammarExamples,#grammarPractice,#listeningQ,#listeningOptions,#shadowingTarget,#speechTranscript,#reviewQuestion,#reviewOptions,#reviewFeedback,.course-card h3,.course-scene,.course-focus,#courseModalTitle,#courseModalScene,#courseModalGrammar,#courseModalVocab,#courseModalListening,#courseModalSpeaking,#courseModalReview';
+const UI_SKIP_SELECTOR='script,style,[data-no-ui-translate],.auth-user-data,.learning-quick-nav,.pinyin-symbol,.pinyin-reference,.pinyin-help,.word,.hanzi,.entry-word,.entry-pinyin,.modal-word,.modal-pinyin,.modal-meaning,.theme-study-card,.theme-word-strip,.theme-filter-btn,.theme-deck-title,.theme-deck-en,#dictMeaning,#dictExplain,#dictCollocations,#dictExamples,#recentWords,#dialogueLines,#grammarName,#grammarExplain,#grammarPattern,#grammarExamples,#grammarPractice,#listeningQ,#listeningOptions,#shadowingTarget,#speechTranscript,#reviewQuestion,#reviewOptions,#reviewFeedback,.course-card h3,.course-scene,.course-focus,#courseModalTitle,#courseModalScene,#courseModalGrammar,#courseModalVocab,#courseModalListening,#courseModalSpeaking,#courseModalReview';
 let uiLanguage='zh',applyingUiLanguage=false,uiLanguageFrame=0;
 try{uiLanguage=localStorage.getItem('qinghe-ui-language')==='en'?'en':'zh'}catch(e){}
 function ui(zh,en){return uiLanguage==='en'?en:zh}
@@ -242,6 +242,36 @@ function escapeHtml(value){return String(value).replace(/[&<>'"]/g,c=>({'&':'&am
 function showView(id){hidePinyinTip();document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));if(id==='learn')showLessonCatalog();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 
+// ---------- 学习页快捷导航 ----------
+function ensureLearningQuickNav(){
+  let nav=document.getElementById('learningQuickNav');if(nav)return nav;
+  const catalog=document.getElementById('courseCatalog');if(!catalog)return null;
+  nav=document.createElement('nav');nav.id='learningQuickNav';nav.className='card learning-quick-nav';nav.setAttribute('data-no-ui-translate','');
+  nav.innerHTML='<button class="learning-quick-btn" type="button" data-learning-section="themed" onclick="openLearningSection(\'themed\')"><span class="learning-quick-icon">词</span><strong></strong><small></small></button><button class="learning-quick-btn" type="button" data-learning-section="pinyin" onclick="openLearningSection(\'pinyin\')"><span class="learning-quick-icon">音</span><strong></strong><small></small></button><button class="learning-quick-btn" type="button" data-learning-section="courses" onclick="openLearningSection(\'courses\')"><span class="learning-quick-icon">课</span><strong></strong><small></small></button>';
+  catalog.insertBefore(nav,catalog.firstChild);renderLearningQuickNav();return nav;
+}
+function renderLearningQuickNav(){
+  const nav=ensureLearningQuickNav();if(!nav)return;
+  nav.setAttribute('aria-label',ui('学习内容快捷入口','Study shortcuts'));
+  const copy={themed:[ui('分类背词','Vocabulary decks'),ui('按主题和词性学习','Learn by theme and type')],pinyin:[ui('拼音库','Pinyin lab'),ui('声母、韵母和声调','Initials, finals and tones')],courses:[ui('课程路线','Course path'),ui('浏览 HSK 1–6 课程','Browse HSK 1–6 lessons')]};
+  nav.querySelectorAll('.learning-quick-btn').forEach(button=>{const text=copy[button.dataset.learningSection];button.querySelector('strong').textContent=text[0];button.querySelector('small').textContent=text[1];button.setAttribute('aria-label',text.join('：'))});
+}
+function scrollToLearningTarget(target){setTimeout(()=>target?.scrollIntoView({behavior:'smooth',block:'start'}),80)}
+function openLearningSection(section){
+  showView('learn');showLessonCatalog();ensureLearningQuickNav();ensureThemedVocabularySection();ensurePinyinLab();
+  document.querySelectorAll('.learning-quick-btn').forEach(button=>button.classList.toggle('active',button.dataset.learningSection===section));
+  let target=document.querySelector('#courseCatalog .catalog-head');
+  if(section==='themed')target=document.getElementById('themedVocabulary');
+  if(section==='pinyin'){target=document.getElementById('pinyinLab');target?.classList.remove('hidden-by-filter')}
+  scrollToLearningTarget(target);
+}
+function openLevelPath(level){
+  showView('learn');showLessonCatalog();ensureLearningQuickNav();
+  const button=[...document.querySelectorAll('.level-filters .filter-btn')].find(item=>item.dataset.level===level);
+  filterCourses(level,button);document.querySelectorAll('.learning-quick-btn').forEach(item=>item.classList.toggle('active',item.dataset.learningSection==='courses'));
+  scrollToLearningTarget(document.querySelector('#courseCatalog .catalog-head'));
+}
+
 // ---------- HSK 1 拼音发音室 ----------
 const PINYIN_INITIALS=[
   {s:'b',p:'bō',a:'玻',tip:'双唇闭合，不送气'},{s:'p',p:'pō',a:'坡',tip:'双唇闭合，明显送气'},{s:'m',p:'mō',a:'摸',tip:'双唇闭合，气流从鼻腔出来'},{s:'f',p:'fó',a:'佛',tip:'上齿轻触下唇'},
@@ -321,7 +351,7 @@ function renderWordbook(){
 }
 function removeSavedWord(word){learningState.savedWords=learningState.savedWords.filter(x=>x!==word);saveLearningState();renderWordbook();toastMsg(ui('已从生词本移除','Removed from saved words'))}
 function renderLearningState(){
-  ensureWordbookCard();renderWordbook();renderLearningStats();renderDailyGoalSetting();renderThemedDecks();
+  ensureLearningQuickNav();renderLearningQuickNav();ensureWordbookCard();renderWordbook();renderLearningStats();renderDailyGoalSetting();renderThemedDecks();
   const learned=learnedWordSet().size,completed=Object.keys(learningState.completedLessons).length,streak=learningStreak(),reviewed=learningState.stats.reviewed,due=dueReviewCount();
   const stats=document.querySelectorAll('#profile .stats .stat b');if(stats[0])stats[0].textContent=learned;if(stats[1])stats[1].textContent=completed;if(stats[2])stats[2].textContent=((completed*12+reviewed*2)/60).toFixed(1)+'h';
   const streakPill=document.querySelector('#profile .profile-top .pill');if(streakPill)streakPill.textContent=ui('连续学习 '+streak+' 天',streak+'-day streak');
@@ -348,7 +378,7 @@ function ensureThemedVocabularySection(){
   const catalog=document.getElementById('courseCatalog');if(!catalog)return;
   const section=document.createElement('section');section.id='themedVocabulary';section.className='card themed-vocab';
   section.innerHTML='<div class="themed-vocab-head"><div><p class="eyebrow" id="themedVocabEyebrow"></p><h2 id="themedVocabTitle"></h2><p class="sub" id="themedVocabIntro"></p></div><div class="themed-filter" id="themedFilter" role="group"></div></div><div class="theme-deck-grid" id="themeDeckGrid"></div>';
-  catalog.insertBefore(section,catalog.firstChild);ensureThemedVocabularyModal();renderThemedDecks();
+  const quick=ensureLearningQuickNav();quick?quick.insertAdjacentElement('afterend',section):catalog.insertBefore(section,catalog.firstChild);ensureThemedVocabularyModal();renderThemedDecks();
 }
 function ensureThemedVocabularyModal(){
   if(document.getElementById('themedVocabModal'))return;
@@ -615,6 +645,7 @@ function toastMsg(t){toast.textContent=t;toast.classList.add('show');clearTimeou
 const dictionaryIntro=document.querySelector('#dictionary > div:first-child .sub');
 if(dictionaryIntro)dictionaryIntro.textContent='输入汉字、繁体字、拼音或英文，直接查发音、义项、搭配和例句。';
 dictInput.placeholder='本来 / 本來 / běn lái / ben3 lai2 / late';
+ensureLearningQuickNav();
 ensureThemedVocabularySection();
 ensurePinyinLab();
 renderCourses();
