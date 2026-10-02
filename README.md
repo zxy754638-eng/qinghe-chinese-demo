@@ -9,7 +9,8 @@
 - HSK 1–6 场景课程与 HSK 1 拼音学习区
 - 中文/英文操作界面一键切换，学习内容保持中文
 - 词语悬停或点击查看拼音与英文释义
-- 词典支持汉字、繁体字、带调拼音和数字声调检索
+- 词典支持汉字、繁体字、带调拼音、数字声调和英文释义反向检索
+- 完整 CC-CEDICT 已打包为同源静态资源，首次加载后可离线查询
 - 本地生词本、学习进度、间隔复习和学习统计
 - 标准普通话发音入口及跟读交互原型
 - PWA 离线缓存与移动端适配
@@ -33,4 +34,10 @@ python -m http.server 8765 --directory dist
 
 ## 开放数据说明
 
-词典基础数据参考 CC-CEDICT（CC BY-SA 4.0）与 Unicode Unihan。中文学习释义、HSK 标签、搭配与例句为青禾中文原创或单独审校内容。详细署名与许可证链接见应用词典页。
+词典基础数据参考 CC-CEDICT（CC BY-SA 4.0）与 Unicode Unihan。中文学习释义、HSK 标签、搭配与例句为青禾中文原创或单独审校内容。完整 CC-CEDICT 位于 `dist/data/cedict.min.json`，详细署名与许可证链接见应用词典页及 `dist/licenses/CC-CEDICT-NOTICE.txt`。
+
+使用新的官方 CC-CEDICT GZip 数据更新本地词典：
+
+```powershell
+node scripts/update-cedict.mjs --input path/to/cedict.txt.gz
+```

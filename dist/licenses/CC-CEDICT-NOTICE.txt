@@ -1,0 +1,15 @@
+CC-CEDICT attribution and license notice
+
+Dictionary data: CC-CEDICT
+Project and download information: https://cc-cedict.org/editor/editor.php?handler=Download
+License: Creative Commons Attribution-ShareAlike 4.0 International
+License URL: https://creativecommons.org/licenses/by-sa/4.0/
+
+Qinghe Chinese redistributes CC-CEDICT fields for traditional Chinese,
+simplified Chinese, numbered-tone pinyin, and English definitions. The source
+records are converted to a compact JSON array representation for browser use.
+This redistributed dictionary dataset remains available under CC BY-SA 4.0.
+
+Qinghe Chinese's separately identified learner explanations, HSK labels,
+collocations, lesson content, and original example sentences are not copied
+from CC-CEDICT.

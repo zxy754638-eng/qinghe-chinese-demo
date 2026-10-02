@@ -7,4 +7,4 @@ window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();def
 window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;document.getElementById('installAppButton')?.remove()});
 window.addEventListener('online',updateConnectionNotice);window.addEventListener('offline',updateConnectionNotice);document.addEventListener('qinghe:languagechange',()=>{updateConnectionNotice();updateInstallButton()});
 updateConnectionNotice();
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=18').catch(()=>{}));
