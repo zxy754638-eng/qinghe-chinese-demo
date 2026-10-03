@@ -1,5 +1,5 @@
-const CACHE_NAME='qinghe-shell-v24';
-const APP_SHELL=['./','./index.html','./app.js?v=24','./auth.js?v=24','./pwa.js?v=24','./data-words.js?v=24','./data-lessons.js?v=24','./data-upper-lessons.js?v=24','./data-upper-words.js?v=24','./data-dictionary-fixes.js?v=24','./data-themed-vocab.js?v=24','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg'];
+const CACHE_NAME='qinghe-shell-v26';
+const APP_SHELL=['./','./index.html','./app.js?v=26','./auth.js?v=26','./pwa.js?v=26','./data-words.js?v=26','./data-lessons.js?v=26','./data-upper-lessons.js?v=26','./data-upper-words.js?v=26','./data-dictionary-fixes.js?v=26','./data-themed-vocab.js?v=26','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('qinghe-')&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
