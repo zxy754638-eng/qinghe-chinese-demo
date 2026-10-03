@@ -1,5 +1,5 @@
-const CACHE_NAME='qinghe-shell-v28';
-const APP_SHELL=['./','./index.html','./app.js?v=28','./auth.js?v=28','./pwa.js?v=28','./data-words.js?v=28','./data-lessons.js?v=28','./data-upper-lessons.js?v=28','./data-upper-words.js?v=28','./data-dictionary-fixes.js?v=28','./data-themed-vocab.js?v=28','./data-themed-example-en.js?v=28','./data-hsk30-syllabus.js?v=28','./data/hsk30-review-report.json','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg'];
+const CACHE_NAME='qinghe-shell-v29';
+const APP_SHELL=['./','./index.html','./app.js?v=29','./auth.js?v=29','./pwa.js?v=29','./data-words.js?v=29','./data-lessons.js?v=29','./data-upper-lessons.js?v=29','./data-upper-words.js?v=29','./data-dictionary-fixes.js?v=29','./data-themed-vocab.js?v=29','./data-themed-example-en.js?v=29','./data-hsk30-syllabus.js?v=29','./data/hsk30-review-report.json','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg'];
 
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('qinghe-')&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
