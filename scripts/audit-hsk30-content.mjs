@@ -18,6 +18,7 @@ for(const lesson of lessons){
   if(ids.has(lesson.id))add('error','lesson',lesson.id,'课程编号重复');ids.add(lesson.id);
   for(const field of requiredLessonFields)if(lesson[field]===undefined||lesson[field]===null)add('error','lesson',lesson.id,'缺少字段：'+field);
   if(!HSK30_LESSON_MAP[lesson.id])add('error','alignment',lesson.id,'缺少 HSK 3.0 教学映射');
+  if(!lesson.standard||lesson.standard!==HSK30_LESSON_MAP[lesson.id])add('error','alignment',lesson.id,'前端课程对象未接入对应的 HSK 3.0 教学映射');
   if(lesson.standard?.reviewStatus!=='待审校')add('warning','review',lesson.id,'当前审校状态不是“待审校”');
   if(!Array.isArray(lesson.vocab)||lesson.vocab.length<7)add('warning','lesson',lesson.id,'核心词少于 7 个');
   for(const word of lesson.vocab||[]){
@@ -29,6 +30,24 @@ for(const lesson of lessons){
     if(!entry.e||/暂时没有/.test(entry.e))add('warning','word',word,'原创例句待补充');
   }
 }
+
+const wordEntries=Object.entries(words);
+const exampleUsage=new Map();
+let examplesWithoutTarget=0,singleExampleEntries=0,exampleMirrorMismatches=0,englishInChineseDefinitions=0,suspiciousEnglishMeanings=0;
+const suspiciousMeaningPattern=/\b(?:surname|old variant|variant of|press charges)\b|\bChenggong\b|^band; belt$|^to bear fruit$/i;
+for(const [word,entry] of wordEntries){
+  const examples=Array.isArray(entry.examples)?entry.examples.filter(Boolean):[];
+  if(!examples.some(example=>example.includes(word))){examplesWithoutTarget++;add('warning','example-target',word,'例句中没有一条包含目标词')}
+  if(examples.length<2){singleExampleEntries++;add('warning','example-count',word,'当前只有 '+examples.length+' 条例句，建议至少补到 2 条')}
+  if((entry.e||'')!==(examples[0]||'')){exampleMirrorMismatches++;add('warning','example-mirror',word,'e 字段与 examples[0] 不一致')}
+  if(/[A-Za-z]{3,}/.test(entry.cn||'')){englishInChineseDefinitions++;add('warning','learner-definition',word,'中文学习释义中仍混有英文')}
+  if(suspiciousMeaningPattern.test(entry.m||'')){suspiciousEnglishMeanings++;add('warning','english-meaning',word,'英文义项可能选中了姓氏、异体字或不相关义项：'+entry.m)}
+  for(const example of examples){
+    const usedBy=exampleUsage.get(example)||[];usedBy.push(word);exampleUsage.set(example,usedBy);
+  }
+}
+const reusedExampleGroups=[...exampleUsage.entries()].filter(([,usedBy])=>usedBy.length>2).sort((a,b)=>b[1].length-a[1].length);
+for(const [example,usedBy] of reusedExampleGroups)add('warning','example-reuse',usedBy.join('、'),'同一例句被 '+usedBy.length+' 个词条复用：'+example);
 
 for(const deck of themedVocabularyDecks){for(const item of deck.words){
   if(!item.word||!item.pinyin||!item.en||!item.example)add('warning','themed-vocabulary',deck.id,'主题词条字段不完整：'+(item.word||'未命名'));
@@ -45,7 +64,13 @@ if(HSK30_LEVELS.length!==7)add('error','syllabus','levels','HSK 3.0 等级元数
 
 const report={
   generatedAt:new Date().toISOString(),syllabus:HSK30_META,
-  summary:{lessons:lessons.length,courseWords:[...new Set(lessons.flatMap(item=>item.vocab))].length,themedDecks:themedVocabularyDecks.length,themedWords:themedVocabularyDecks.reduce((sum,deck)=>sum+deck.words.length,0),errors:problems.filter(item=>item.severity==='error').length,warnings:problems.filter(item=>item.severity==='warning').length,reviewStatus:'待人工审校'},
+  summary:{
+    lessons:lessons.length,courseWords:[...new Set(lessons.flatMap(item=>item.vocab))].length,
+    learningDictionaryWords:wordEntries.length,themedDecks:themedVocabularyDecks.length,themedWords:themedVocabularyDecks.reduce((sum,deck)=>sum+deck.words.length,0),
+    examplesWithoutTarget,singleExampleEntries,reusedExampleGroups:reusedExampleGroups.length,exampleMirrorMismatches,
+    englishInChineseDefinitions,suspiciousEnglishMeanings,
+    errors:problems.filter(item=>item.severity==='error').length,warnings:problems.filter(item=>item.severity==='warning').length,reviewStatus:'待人工审校'
+  },
   reviewChecks:HSK30_REVIEW_SCHEMA.checks,levels:HSK30_LEVELS,problems
 };
 const output=path.join(dist,'data','hsk30-review-report.json');fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n','utf8');

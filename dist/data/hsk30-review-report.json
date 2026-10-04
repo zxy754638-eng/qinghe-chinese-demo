@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T12:13:11.729Z",
+  "generatedAt": "2026-10-04T10:35:11.145Z",
   "syllabus": {
     "id": "HSK-3.0-2025",
     "name": "HSK 3.0（2025 大纲）",
@@ -11,10 +11,17 @@
   "summary": {
     "lessons": 60,
     "courseWords": 428,
+    "learningDictionaryWords": 691,
     "themedDecks": 32,
     "themedWords": 320,
+    "examplesWithoutTarget": 0,
+    "singleExampleEntries": 368,
+    "reusedExampleGroups": 40,
+    "exampleMirrorMismatches": 0,
+    "englishInChineseDefinitions": 0,
+    "suspiciousEnglishMeanings": 0,
     "errors": 0,
-    "warnings": 0,
+    "warnings": 408,
     "reviewStatus": "待人工审校"
   },
   "reviewChecks": [
@@ -92,5 +99,2454 @@
       "canDo": "能在学术与专业场景中准确理解和表达复杂内容，处理隐含意义、跨文化差异与高难度综合任务。"
     }
   ],
-  "problems": []
+  "problems": [
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "哪",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "吗",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "她",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "现在",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "时间",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "水",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "今天",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "年",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "上午",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "口",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "个",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "学校",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "哪儿",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "大学",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "下",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "水果",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "东西",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "怎么样",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "很",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "怎么",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "颜色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "穿",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "高兴",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "睡觉",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "地方",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "饱",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "公里",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "因为",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "计划",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "还是",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "慢慢",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "旅行",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "事",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "收到",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "下来",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "忘记",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "带",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "机场",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "变化",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "虽然",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "出发",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "坚持",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "除了",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "结果",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "偷",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "钥匙",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "丢",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "生气",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "如果",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "假期",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "条件",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "推荐",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "价格",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "既然",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "联系",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "地址",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "消息",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "场地",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "锻炼",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "散步",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "精神",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "尤其",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "风险",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "表达",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "误会",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "交流",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "行程",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "省心",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "临时",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "设备",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "现象",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "忽略",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "实施",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "反映",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "勇气",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "掌握",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "比例",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "规律",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "状态",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "付出",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "成果",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "个性化",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "依赖",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "社区",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "功能",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "妥协",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "倾听",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "证据",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "传承",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "形式",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "脱离",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "承受",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "激发",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "消耗",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "边界",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "承担",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "后果",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "权利",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "统计",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "指标",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "假设",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "灵活",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "偏差",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "产出",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "衡量",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "红色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "蓝色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "绿色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "黄色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "白色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "黑色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "粉色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "紫色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "灰色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "橙色",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "猫",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "狗",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "熊猫",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "鸟",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "鱼",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "马",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "兔子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "大象",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "狮子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "海豚",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "花",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "树",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "草",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "竹子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "玫瑰",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "莲花",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "松树",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "叶子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "种子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "森林",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "米饭",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "面条",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "饺子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "鸡蛋",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "牛奶",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "蔬菜",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "豆腐",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "汤",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "公共汽车",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "火车",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "飞机",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "出租车",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "自行车",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "高铁",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "船",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "车站",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "换乘",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "晴天",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "阴天",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "下雪",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "刮风",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "多云",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "湿度",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "父母",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "哥哥",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "姐姐",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "弟弟",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "妹妹",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "孩子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "丈夫",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "妻子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "头",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "眼睛",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "耳朵",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "鼻子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "嘴",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "手",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "脚",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "心脏",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "肩膀",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "胃",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "衬衫",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "裤子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "裙子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "外套",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "鞋",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "帽子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "袜子",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "围巾",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "手套",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "尺码",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "医生",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "司机",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "厨师",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "记者",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "工程师",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "律师",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "服务员",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "护士",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "设计师",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "难过",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "紧张",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "害怕",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "放心",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "失望",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "兴奋",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "放松",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "满意",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "看",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "听",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "说",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "写",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "帮助",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "客厅",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "卧室",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "厨房",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "阳台",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "门口",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "家具",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "打扫",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "整理",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "洗衣服",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "晾衣服",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "洗碗",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "倒垃圾",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "修理",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "收拾",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "认真",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "热情",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "友好",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "耐心",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "诚实",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "勇敢",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "开朗",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "安静",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "幽默",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "独立",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "同学",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "同事",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "客人",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "室友",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "伙伴",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "相处",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "信任",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "结婚",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "签证",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "酒店",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "地图",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "预订",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "到达",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "迷路",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "打折",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "付款",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "现金",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "零钱",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "发票",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "退货",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "试穿",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "银行",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "派出所",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "图书馆",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "博物馆",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "办事处",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "窗口",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "申请",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "证件",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "手续",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "校园",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "教室",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "宿舍",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "食堂",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "操场",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "课本",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "作业",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "考试",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "成绩",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "学期",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "复习",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "预习",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "记笔记",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "查资料",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "练习",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "理解",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "记住",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "总结",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "提问",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "办公室",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "会议",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "项目",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "任务",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "合同",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "客户",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "加班",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "请假",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "工资",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "感冒",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "发烧",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "咳嗽",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "头疼",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "挂号",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "药",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "处方",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "急救",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "骑车",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "健身",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "比赛",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "运动员",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "训练",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "球场",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "瑜伽",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "空气",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "污染",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "垃圾分类",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "节约",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "回收",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "能源",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "气候",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "保护",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "电脑",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "手机",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "软件",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "程序",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "网络",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "密码",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "下载",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "上传",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "实验",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "研究",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "证明",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "理论",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "宇宙",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "卫星",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "法律",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "规则",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "安全",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "危险",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "报警",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "警察",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "犯罪",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "文化",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "艺术",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "音乐",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "新闻",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "语言",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "文字",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "节目",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "爱好",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "摄影",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "画画",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "唱歌",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "跳舞",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "阅读",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "游戏",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "野餐",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "露营",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "休息",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "木材",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "钢",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "水泥",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "建筑",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "结构",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "工程",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "测量",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "施工",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "收入",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "支出",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "账户",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "存款",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "贷款",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "利息",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "保险",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "投资",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
+      "id": "市场",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "创新、形式、核心、脱离",
+      "message": "同一例句被 4 个词条复用：形式可以创新，但不能脱离文化的核心。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "哪、国、人",
+      "message": "同一例句被 3 个词条复用：你是哪国人？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "这、我、朋友",
+      "message": "同一例句被 3 个词条复用：王老师，这是我朋友林悦。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "现在、点、几",
+      "message": "同一例句被 3 个词条复用：现在几点了？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "要、茶、杯",
+      "message": "同一例句被 3 个词条复用：我想喝茶，要一杯绿茶。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "爸爸、妈妈、三",
+      "message": "同一例句被 3 个词条复用：我家有三口人：爸爸、妈妈和我。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "在、学习、哪儿",
+      "message": "同一例句被 3 个词条复用：你在哪儿学习？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "商店、里、上",
+      "message": "同一例句被 3 个词条复用：苹果在商店里面，桌子上。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "公交、远、每",
+      "message": "同一例句被 3 个词条复用：我家离公司远，我每天坐公交。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "比、早、分钟",
+      "message": "同一例句被 3 个词条复用：我八点五十就到了，比你早十分钟。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "正在、呢、做饭",
+      "message": "同一例句被 3 个词条复用：我正在做饭呢。你呢？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "吃、饭、饭店",
+      "message": "同一例句被 3 个词条复用：我们去饭店吃饭吧？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "跑步、游泳、不错",
+      "message": "同一例句被 3 个词条复用：我跑步跑得很快，游泳也不错。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "把、护照、忘",
+      "message": "同一例句被 3 个词条复用：糟糕！我把护照忘在家了。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "先、然后、开会",
+      "message": "同一例句被 3 个词条复用：我们先吃饭，然后两点开会。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "被、发现、秘密",
+      "message": "同一例句被 3 个词条复用：我的秘密被弟弟发现了。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "终于、找到、告诉",
+      "message": "同一例句被 3 个词条复用：告诉你一个好消息：我终于找到新工作了！"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "发送、确认、重新",
+      "message": "同一例句被 3 个词条复用：抱歉，我马上重新发送，请你收到后确认一下。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "发送、附件、重新",
+      "message": "同一例句被 3 个词条复用：请把附件重新发送一次。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "及时、能力、执行",
+      "message": "同一例句被 3 个词条复用：还要看团队的执行能力，以及遇到变化时能不能及时调整。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "推荐、值得、附近",
+      "message": "同一例句被 3 个词条复用：附近有没有值得推荐的餐厅？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "方法、适合、进步",
+      "message": "同一例句被 3 个词条复用：只要坚持使用适合自己的方法，就会慢慢看到进步。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "宣传、预算、合作",
+      "message": "同一例句被 3 个词条复用：宣传会和市场部合作，预算需要经理确认。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "锻炼、散步、尤其",
+      "message": "同一例句被 3 个词条复用：有人跑步，有人散步，老人尤其喜欢早上锻炼。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "不仅、解释、观点",
+      "message": "同一例句被 3 个词条复用：学语言不仅要会说，还要会解释自己的观点。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "交通、规定、实施",
+      "message": "同一例句被 3 个词条复用：新的交通规定下个月就要实施了。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "影响、之所以、天赋",
+      "message": "同一例句被 3 个词条复用：天赋可能有影响，但他之所以进步快，是因为一直坚持练习。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "原因、现象、忽略",
+      "message": "同一例句被 3 个词条复用：看来我们忽略了现象背后的原因。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "立场、限制、用户",
+      "message": "同一例句被 3 个词条复用：对。站在用户的立场上，原来的限制可能正是机会。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "即使、失败、尝试",
+      "message": "同一例句被 3 个词条复用：想。即使最后失败，也值得尝试。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "即使、失败、尝试",
+      "message": "同一例句被 3 个词条复用：即使失败，也值得尝试。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "逐渐、适应、节奏",
+      "message": "同一例句被 3 个词条复用：刚开始很不习惯，不过我逐渐适应了新的生活节奏。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "逐渐、适应、节奏",
+      "message": "同一例句被 3 个词条复用：我逐渐适应了新的生活节奏。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "留下、深刻、印象",
+      "message": "同一例句被 3 个词条复用：这本书给我留下了深刻印象。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "短期、可行、评估",
+      "message": "同一例句被 3 个词条复用：短期可行不等于长期合适，最好再做一次全面评估。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "人工智能、取代、传统",
+      "message": "同一例句被 3 个词条复用：有人认为人工智能会取代传统课堂，你怎么看？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "利益、公共、自由",
+      "message": "同一例句被 3 个词条复用：自由很重要，但选择也可能影响公共利益。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "筛选、来源、可靠",
+      "message": "同一例句被 3 个词条复用：未必。信息越多，筛选可靠来源反而越重要。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "动力、适度、激发",
+      "message": "同一例句被 3 个词条复用：压力看似让人不舒服，适度时却可能激发动力。"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
+      "id": "优先、投入、归根结底",
+      "message": "同一例句被 3 个词条复用：归根结底，效率是把有限投入用在优先事项上。"
+    }
+  ]
 }

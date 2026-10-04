@@ -298,7 +298,7 @@ themedVocabularyDecks.push(
   ]),
   themeDeck('shopping','mobility','购','购物与付款','Shopping & payment',['noun','verb','adjective'],'HSK 1–4',[
     ['价格','jià gé','price','名词','HSK 3','这两家商店的价格差不多。'],
-    ['打折','dǎ zhé','to offer a discount','动词','HSK 3','这件外套今天打八折。'],
+    ['打折','dǎ zhé','to offer a discount','动词','HSK 3','这家商店周末会打折。'],
     ['付款','fù kuǎn','to pay; payment','动词 / 名词','HSK 4','您可以用手机付款。'],
     ['现金','xiàn jīn','cash','名词','HSK 3','这家小店只收现金。'],
     ['零钱','líng qián','small change','名词','HSK 3','我没有零钱，可以扫码吗？'],
