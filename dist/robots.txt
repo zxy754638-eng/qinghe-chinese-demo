@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zxy754638-eng.github.io/qinghe-chinese-demo/sitemap.xml

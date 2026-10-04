@@ -2,11 +2,13 @@
 
 面向已经掌握拼音、具有一定中文基础的外国学习者，依据 HSK 3.0（2025 大纲）整理的中文学习 Web App Demo。
 
-在线预览：[qinghe-chinese-demo.zxy794393457.chatgpt.site](https://qinghe-chinese-demo.zxy794393457.chatgpt.site/)
+公开预览（推荐分享给国内访客）：[zxy754638-eng.github.io/qinghe-chinese-demo](https://zxy754638-eng.github.io/qinghe-chinese-demo/)
+
+Sites 预览：[qinghe-chinese-demo.zxy794393457.chatgpt.site](https://qinghe-chinese-demo.zxy794393457.chatgpt.site/)
 
 ## 功能
 
-- HSK 1–6 共 60 门原创场景课，每课标注 HSK 3.0 话题路径、能力任务、技能范围和审校状态
+- HSK 1–6 共 60 门原创场景课，每课标注 HSK 3.0 话题路径、能力任务和技能范围
 - 页面尾部的折叠备注列出 HSK 1–6 官方累计词汇目标（300 / 500 / 1,000 / 2,000 / 3,600 / 5,400）；当前课程是结构化 Demo，不代表已经覆盖全部大纲词汇
 - HSK 1 拼音学习区，以及 32 组主题词库；中文、带调拼音、英文对照，并接入间隔复习
 - 320 条主题词例句均含独立英文翻译、整句朗读入口，并支持悬停例句词语查看拼音、点击打开词卡
@@ -31,7 +33,11 @@ python -m http.server 8765 --directory dist
 
 ## 可移动演示包
 
-`portable-package` 提供无需 Python 的 Windows 本地启动器。发布压缩包时，将 `dist` 完整复制为压缩包中的 `site` 文件夹，再把 `portable-package` 下的三个文件放在压缩包根目录。使用者完整解压后，双击“启动青禾中文.bat”即可在浏览器打开。
+`portable-package` 提供无需 Python 的 Windows 本地启动器。运行 `scripts/build-portable.ps1` 会把 `dist` 放进压缩包的 `site` 文件夹，并把启动器放在根目录。使用者完整解压后，双击“启动青禾中文.bat”即可在浏览器打开。
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/build-portable.ps1
+```
 
 ## GitHub Pages
 
