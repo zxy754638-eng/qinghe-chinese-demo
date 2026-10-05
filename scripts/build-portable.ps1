@@ -1,5 +1,5 @@
 param(
-  [string]$OutputPath = (Join-Path $PSScriptRoot '..\..\qinghe-chinese-portable-2026-10-05-v32.zip')
+  [string]$OutputPath = (Join-Path $PSScriptRoot '..\..\qinghe-chinese-portable-2026-10-05-v33.zip')
 )
 
 Add-Type -AssemblyName System.IO.Compression
