@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T03:20:07.622Z",
+  "generatedAt": "2026-10-05T19:03:29.005Z",
   "syllabus": {
     "id": "HSK-3.0-2025",
     "name": "HSK 3.0（2025 大纲）",
@@ -9,9 +9,9 @@
     "note": "等级目标来自官方大纲；课程顺序、对话、释义、例句和练习为青禾中文原创。"
   },
   "summary": {
-    "lessons": 60,
-    "courseWords": 428,
-    "learningDictionaryWords": 1137,
+    "lessons": 70,
+    "courseWords": 492,
+    "learningDictionaryWords": 1194,
     "themedDecks": 46,
     "themedWords": 800,
     "themedUniqueWords": 800,
@@ -25,13 +25,13 @@
     },
     "themedCatalogCentralized": true,
     "examplesWithoutTarget": 0,
-    "singleExampleEntries": 814,
+    "singleExampleEntries": 807,
     "reusedExampleGroups": 40,
     "exampleMirrorMismatches": 0,
     "englishInChineseDefinitions": 0,
     "suspiciousEnglishMeanings": 0,
     "errors": 0,
-    "warnings": 854,
+    "warnings": 847,
     "reviewStatus": "待人工审校"
   },
   "reviewChecks": [
@@ -1973,12 +1973,6 @@
     {
       "severity": "warning",
       "scope": "example-count",
-      "id": "能源",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
       "id": "气候",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
@@ -2358,12 +2352,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "鲜艳",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "透明",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -3425,12 +3413,6 @@
     {
       "severity": "warning",
       "scope": "example-count",
-      "id": "碳排放",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
       "id": "气候变化",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
@@ -3444,12 +3426,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "可持续发展",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "算法",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -3492,18 +3468,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "隐私保护",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "样本",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "变量",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -4980,12 +4944,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "主观",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "论证",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {

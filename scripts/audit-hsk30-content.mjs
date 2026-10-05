@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dist=path.join(root,'dist');
-const sources=['data-words.js','data-lessons.js','data-upper-lessons.js','data-upper-words.js','data-dictionary-fixes.js','data-themed-vocab.js','data-themed-example-en.js','data-themed-vocab-balanced.js','data-hsk30-syllabus.js'];
+const sources=['data-words.js','data-lessons.js','data-upper-lessons.js','data-upper-words.js','data-advanced-lessons.js','data-advanced-words.js','data-dictionary-fixes.js','data-themed-vocab.js','data-themed-example-en.js','data-themed-vocab-balanced.js','data-hsk30-syllabus.js'];
 const code=sources.map(file=>fs.readFileSync(path.join(dist,file),'utf8')).join('\n')+'\n;globalThis.__auditData={lessons,words,themedVocabularyDecks,themedVocabularyCatalog,themedVocabularyStats,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA};';
 const context={console};vm.createContext(context);new vm.Script(code,{filename:'qinghe-content-bundle.js'}).runInContext(context);
 const {lessons,words,themedVocabularyDecks,themedVocabularyCatalog,themedVocabularyStats,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA}=context.__auditData;
@@ -71,7 +71,9 @@ for(let level=1;level<=6;level++){
   const count=lessons.filter(item=>item.level===`HSK ${level}`).length;
   if(count!==10)add('error','level',`HSK ${level}`,`应有 10 门演示课，当前为 ${count} 门`);
 }
-if(lessons.length!==60)add('error','catalog','all',`应有 60 门演示课，当前为 ${lessons.length} 门`);
+const advancedLessonCount=lessons.filter(item=>item.level==='HSK 7–9').length;
+if(advancedLessonCount!==10)add('error','level','HSK 7–9',`应有 10 门高等演示课，当前为 ${advancedLessonCount} 门`);
+if(lessons.length!==70)add('error','catalog','all',`应有 70 门演示课，当前为 ${lessons.length} 门`);
 if(HSK30_LEVELS.length!==7)add('error','syllabus','levels','HSK 3.0 等级元数据不完整');
 
 const report={
