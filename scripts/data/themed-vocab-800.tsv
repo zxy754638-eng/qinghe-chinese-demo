@@ -1,0 +1,481 @@
+deck	word	en	pos	hsk	example	exampleEn
+colors	米色	beige	名词 / 形容词	HSK 2	客厅里的沙发是米色的。	The sofa in the living room is beige.
+colors	棕色	brown	名词 / 形容词	HSK 2	他穿着一双棕色的皮鞋。	He is wearing a pair of brown leather shoes.
+colors	金色	golden	名词 / 形容词	HSK 3	夕阳给湖面染上了金色。	The sunset turned the lake golden.
+colors	银色	silver	名词 / 形容词	HSK 3	我买了一台银色的电脑。	I bought a silver computer.
+colors	深色	dark color	名词 / 形容词	HSK 3	正式场合可以选择深色外套。	You can choose a dark coat for a formal occasion.
+colors	浅色	light color	名词 / 形容词	HSK 3	浅色衣服在夏天看起来很清爽。	Light-colored clothes look refreshing in summer.
+colors	鲜艳	bright-colored; vivid	形容词	HSK 4	这幅画的颜色十分鲜艳。	The colors in this painting are very vivid.
+colors	透明	transparent	形容词	HSK 4	请把文件放进透明的袋子里。	Please put the document in a transparent bag.
+animals	老虎	tiger	名词	HSK 2	那只老虎正在树下休息。	That tiger is resting under the tree.
+animals	猴子	monkey	名词	HSK 2	猴子灵活地爬上了树。	The monkey climbed the tree nimbly.
+animals	长颈鹿	giraffe	名词	HSK 3	长颈鹿可以吃到高处的叶子。	A giraffe can reach leaves high in the trees.
+animals	企鹅	penguin	名词	HSK 4	企鹅在冰面上慢慢地走。	The penguin walks slowly on the ice.
+animals	鲸鱼	whale	名词	HSK 4	鲸鱼是生活在海洋里的大型动物。	A whale is a large animal that lives in the ocean.
+animals	鲨鱼	shark	名词	HSK 4	这片海域偶尔能看到鲨鱼。	Sharks can occasionally be seen in these waters.
+animals	蝴蝶	butterfly	名词	HSK 3	一只蝴蝶停在花瓣上。	A butterfly landed on a petal.
+animals	蜜蜂	bee	名词	HSK 3	蜜蜂正在花丛中采蜜。	The bees are gathering nectar among the flowers.
+plants	树枝	branch	名词	HSK 3	小鸟站在树枝上唱歌。	A bird is singing on a branch.
+plants	树根	tree root	名词	HSK 4	雨水让树根周围的土变湿了。	The rain made the soil around the tree roots wet.
+plants	花瓣	petal	名词	HSK 4	粉色的花瓣落在草地上。	Pink petals fell onto the grass.
+plants	果实	fruit; result	名词	HSK 4	秋天，树上的果实成熟了。	In autumn, the fruit on the trees ripens.
+plants	小麦	wheat	名词	HSK 4	这片田里种的是小麦。	Wheat is planted in this field.
+plants	水稻	rice crop	名词	HSK 4	南方的很多地区适合种水稻。	Many areas in the south are suitable for growing rice.
+plants	棉花	cotton	名词	HSK 4	棉花可以用来制作衣物。	Cotton can be used to make clothing.
+plants	蘑菇	mushroom	名词	HSK 3	雨后树林里长出了蘑菇。	Mushrooms grew in the woods after the rain.
+food	面包	bread	名词	HSK 1	早餐我吃了两片面包。	I ate two slices of bread for breakfast.
+food	蛋糕	cake	名词	HSK 1	她为朋友做了一个生日蛋糕。	She made a birthday cake for her friend.
+food	饼干	biscuit; cookie	名词	HSK 2	孩子带了一盒饼干去学校。	The child took a box of cookies to school.
+food	牛肉	beef	名词	HSK 2	这碗面里有牛肉和青菜。	This bowl of noodles contains beef and vegetables.
+food	鸡肉	chicken	名词	HSK 2	鸡肉已经烤好了。	The chicken has finished roasting.
+food	鱼肉	fish meat	名词	HSK 2	这种鱼肉很嫩。	This fish is very tender.
+food	盐	salt	名词	HSK 2	这道汤里不要放太多盐。	Do not put too much salt in this soup.
+food	糖	sugar	名词	HSK 2	我喝咖啡时不加糖。	I do not add sugar when I drink coffee.
+transport	公交车	city bus	名词	HSK 1	我每天坐公交车去学校。	I take the city bus to school every day.
+transport	轻轨	light rail	名词	HSK 4	从机场可以乘轻轨到市中心。	You can take the light rail from the airport to the city center.
+transport	摩托车	motorcycle	名词	HSK 3	骑摩托车时一定要戴头盔。	Always wear a helmet when riding a motorcycle.
+transport	机场	airport	名词	HSK 2	我们提前两个小时到了机场。	We arrived at the airport two hours early.
+transport	航班	flight	名词	HSK 3	今天下午的航班没有晚点。	This afternoon's flight was not delayed.
+transport	车票	ticket	名词	HSK 2	请保管好你的车票。	Please keep your ticket safe.
+transport	站台	platform	名词	HSK 3	列车将从二号站台出发。	The train will depart from platform two.
+transport	堵车	traffic jam	动词 / 名词	HSK 3	早高峰的时候这条路经常堵车。	This road is often congested during the morning rush hour.
+weather	雷	thunder	名词	HSK 3	远处传来了一阵雷。	A roll of thunder came from the distance.
+weather	闪电	lightning	名词	HSK 4	一道闪电照亮了夜空。	A flash of lightning lit up the night sky.
+weather	暴雨	rainstorm	名词	HSK 4	暴雨造成了部分道路积水。	The rainstorm caused water to collect on some roads.
+weather	雾	fog	名词	HSK 3	早上的雾很大，开车要小心。	The fog is thick this morning, so drive carefully.
+weather	台风	typhoon	名词	HSK 4	台风来临前要关好门窗。	Close the doors and windows before the typhoon arrives.
+weather	预报	forecast	名词 / 动词	HSK 4	天气预报说明天会降温。	The weather forecast says it will get colder tomorrow.
+weather	干燥	dry	形容词	HSK 3	北方的冬天空气比较干燥。	The air in northern winters is relatively dry.
+weather	凉快	pleasantly cool	形容词	HSK 2	雨后的晚上很凉快。	The evening is pleasantly cool after the rain.
+family	祖父	grandfather	名词	HSK 3	我的祖父每天早上去公园散步。	My grandfather takes a walk in the park every morning.
+family	祖母	grandmother	名词	HSK 3	祖母教我做了一道家常菜。	My grandmother taught me to cook a home-style dish.
+family	孙子	grandson	名词	HSK 4	老人正在给孙子讲故事。	The elderly man is telling his grandson a story.
+family	孙女	granddaughter	名词	HSK 4	她的孙女今年上小学。	Her granddaughter is in primary school this year.
+family	亲戚	relative	名词	HSK 3	春节时很多亲戚会来家里做客。	Many relatives visit our home during the Spring Festival.
+family	夫妻	married couple	名词	HSK 4	这对夫妻一起经营一家小店。	This married couple runs a small shop together.
+family	一代	generation	名词	HSK 4	年轻一代有自己的生活方式。	The younger generation has its own way of life.
+family	家庭成员	family member	名词	HSK 3	每位家庭成员都参加了这次聚会。	Every family member attended the gathering.
+body	脖子	neck	名词	HSK 3	我坐得太久，脖子有点酸。	I sat for too long, and my neck feels sore.
+body	背	back	名词	HSK 2	他的背因为搬东西而疼。	His back hurts from carrying things.
+body	胳膊	arm	名词	HSK 3	她的胳膊上有一小块伤。	There is a small injury on her arm.
+body	手指	finger	名词	HSK 2	天气冷得我的手指都红了。	The weather is so cold that my fingers have turned red.
+body	膝盖	knee	名词	HSK 4	爬山以后我的膝盖有点不舒服。	My knee feels a little uncomfortable after hiking.
+body	皮肤	skin	名词	HSK 4	夏天要注意保护皮肤。	Take care to protect your skin in summer.
+body	骨头	bone	名词	HSK 3	医生检查了他的骨头。	The doctor examined his bones.
+body	肌肉	muscle	名词	HSK 5	运动后要让肌肉充分休息。	Let your muscles rest fully after exercising.
+clothing	毛衣	sweater	名词	HSK 2	这件毛衣很暖和。	This sweater is very warm.
+clothing	夹克	jacket	名词	HSK 3	他出门时穿上了一件夹克。	He put on a jacket when he went out.
+clothing	西装	suit	名词	HSK 3	面试时他穿了一套深色西装。	He wore a dark suit to the interview.
+clothing	运动鞋	sports shoes	名词	HSK 2	走远路最好穿运动鞋。	It is best to wear sports shoes for a long walk.
+clothing	雨衣	raincoat	名词	HSK 3	孩子穿着黄色的雨衣去上学。	The child wore a yellow raincoat to school.
+clothing	腰带	belt	名词	HSK 4	这条腰带和裤子的颜色很配。	This belt matches the color of the trousers well.
+clothing	口袋	pocket	名词	HSK 3	钥匙就在外套的口袋里。	The keys are in the coat pocket.
+clothing	纽扣	button	名词	HSK 5	衬衫上的一颗纽扣掉了。	A button fell off the shirt.
+jobs	程序员	programmer	名词	HSK 4	程序员正在修复软件问题。	The programmer is fixing a software problem.
+jobs	会计	accountant	名词	HSK 4	会计正在核对这个月的账目。	The accountant is checking this month's accounts.
+jobs	经理	manager	名词	HSK 3	经理下午要和客户开会。	The manager will meet with a client this afternoon.
+jobs	导游	tour guide	名词	HSK 3	导游向游客介绍了古城的历史。	The tour guide introduced the history of the old city to the tourists.
+jobs	演员	actor	名词	HSK 3	这位演员在电影里扮演一名医生。	This actor plays a doctor in the film.
+jobs	翻译	translator; to translate	名词 / 动词	HSK 3	会议需要一名中文翻译。	The meeting needs a Chinese translator.
+jobs	研究员	researcher	名词	HSK 5	研究员正在整理实验数据。	The researcher is organizing the experimental data.
+jobs	建筑师	architect	名词	HSK 5	建筑师展示了新图书馆的设计。	The architect presented the design for the new library.
+emotions	开心	happy	形容词	HSK 1	收到朋友的消息让我很开心。	Receiving my friend's message made me very happy.
+emotions	伤心	sad; heartbroken	形容词	HSK 2	小狗走丢以后，孩子很伤心。	The child was very sad after the dog went missing.
+emotions	惊讶	surprised	形容词	HSK 3	听到这个结果，大家都很惊讶。	Everyone was surprised to hear the result.
+emotions	感动	moved; touched	形容词 / 动词	HSK 3	朋友们的帮助让我非常感动。	The help from my friends moved me deeply.
+emotions	焦虑	anxious	形容词	HSK 5	考试前感到焦虑很正常。	It is normal to feel anxious before an exam.
+emotions	孤独	lonely	形容词	HSK 4	刚到新城市时，他偶尔感到孤独。	He occasionally felt lonely when he first arrived in the new city.
+emotions	遗憾	regretful; regrettable	形容词 / 名词	HSK 4	很遗憾，我不能参加明天的活动。	I am sorry that I cannot attend tomorrow's event.
+emotions	自信	confident; confidence	形容词 / 名词	HSK 4	多练习让她说中文时更自信。	More practice made her more confident when speaking Chinese.
+common-verbs	准备	to prepare	动词	HSK 1	我正在准备明天的考试。	I am preparing for tomorrow's exam.
+common-verbs	开始	to begin	动词	HSK 1	电影将在七点开始。	The film will begin at seven.
+common-verbs	结束	to end	动词	HSK 2	会议已经结束了。	The meeting has already ended.
+common-verbs	参加	to participate	动词	HSK 2	周末我想参加汉语角活动。	I want to attend the Chinese corner this weekend.
+common-verbs	介绍	to introduce	动词	HSK 2	请先介绍一下你自己。	Please introduce yourself first.
+common-verbs	回答	to answer	动词	HSK 1	他认真地回答了老师的问题。	He answered the teacher's question carefully.
+common-verbs	改变	to change	动词	HSK 3	这次旅行改变了我的想法。	This trip changed my mind.
+common-verbs	继续	to continue	动词	HSK 2	休息十分钟以后我们继续学习。	We will continue studying after a ten-minute break.
+home	餐厅	dining room; restaurant	名词	HSK 2	一家人正在餐厅吃晚饭。	The family is having dinner in the dining room.
+home	卫生间	bathroom	名词	HSK 3	卫生间在走廊的右边。	The bathroom is on the right side of the corridor.
+home	书房	study room	名词	HSK 4	爸爸在书房里看书。	Dad is reading in the study.
+home	走廊	corridor	名词	HSK 4	请不要在走廊里大声说话。	Please do not speak loudly in the corridor.
+home	电梯	elevator	名词	HSK 2	电梯正在维修，请走楼梯。	The elevator is being repaired, so please take the stairs.
+home	楼梯	stairs	名词	HSK 3	下楼梯时要注意安全。	Be careful when going down the stairs.
+home	房间	room	名词	HSK 1	这个房间有两扇大窗户。	This room has two large windows.
+home	窗户	window	名词	HSK 2	请打开窗户，让空气进来。	Please open the window and let some air in.
+chores	擦桌子	to wipe the table	动词	HSK 2	吃完饭后我来擦桌子。	I will wipe the table after the meal.
+chores	拖地	to mop the floor	动词	HSK 3	客厅有点脏，需要拖地。	The living room is a little dirty and needs mopping.
+chores	扫地	to sweep the floor	动词	HSK 2	他每天早上先扫地。	He sweeps the floor first every morning.
+chores	叠衣服	to fold clothes	动词	HSK 3	衣服干了以后要叠衣服。	Fold the clothes after they are dry.
+chores	买菜	to buy groceries	动词	HSK 1	下班路上我顺便去买菜。	I will buy groceries on my way home from work.
+chores	浇花	to water flowers	动词	HSK 3	天气热的时候每天都要浇花。	Water the flowers every day when the weather is hot.
+chores	换灯泡	to change a light bulb	动词	HSK 4	厨房太暗了，我们得换灯泡。	The kitchen is too dark, so we need to change the light bulb.
+chores	收快递	to receive a delivery	动词	HSK 3	我下楼去收快递。	I am going downstairs to pick up a delivery.
+personality	乐观	optimistic	形容词	HSK 4	她很乐观，总能看到事情好的一面。	She is optimistic and always sees the positive side of things.
+personality	悲观	pessimistic	形容词	HSK 5	遇到困难时不要太悲观。	Do not be too pessimistic when you face difficulties.
+personality	仔细	careful	形容词	HSK 2	请仔细检查申请表上的信息。	Please check the information on the application form carefully.
+personality	粗心	careless	形容词	HSK 3	他太粗心，把钥匙忘在家里了。	He was so careless that he left his keys at home.
+personality	大方	generous; natural	形容词	HSK 3	她待人热情又大方。	She is warm and generous toward others.
+personality	害羞	shy	形容词	HSK 3	他有点害羞，不敢先开口。	He is a little shy and does not dare speak first.
+personality	自私	selfish	形容词	HSK 4	只考虑自己会显得很自私。	Only thinking about yourself can seem selfish.
+personality	可靠	reliable	形容词	HSK 4	她是一位认真而可靠的伙伴。	She is a conscientious and reliable partner.
+relationships	邀请	to invite	动词	HSK 2	朋友邀请我参加她的生日聚会。	A friend invited me to her birthday party.
+relationships	拜访	to visit	动词	HSK 4	明天我们要去拜访一位老朋友。	Tomorrow we are going to visit an old friend.
+relationships	认识	to know; to meet	动词	HSK 1	很高兴认识你。	Nice to meet you.
+relationships	介绍人	introducer	名词	HSK 5	介绍人帮助双方建立了联系。	The introducer helped the two sides establish contact.
+relationships	合作	to cooperate	动词 / 名词	HSK 3	两个团队将合作完成这个项目。	The two teams will cooperate to complete the project.
+relationships	支持	to support	动词 / 名词	HSK 3	家人的支持给了我很大力量。	My family's support gave me great strength.
+relationships	尊重	to respect	动词 / 名词	HSK 4	我们应该尊重不同的生活方式。	We should respect different ways of life.
+relationships	误会	misunderstanding	名词 / 动词	HSK 4	解释清楚以后，误会就消除了。	The misunderstanding was cleared up after an explanation.
+travel	旅馆	hotel; inn	名词	HSK 2	这家旅馆离火车站很近。	This hotel is close to the railway station.
+travel	民宿	homestay; guesthouse	名词	HSK 4	我们在山里订了一家民宿。	We booked a guesthouse in the mountains.
+travel	游客	tourist	名词	HSK 3	春天有很多游客来这里看花。	Many tourists come here to see the flowers in spring.
+travel	旅行团	tour group	名词	HSK 3	旅行团明早八点在大厅集合。	The tour group will meet in the lobby at eight tomorrow morning.
+travel	登机牌	boarding pass	名词	HSK 4	过安检前请准备好登机牌。	Have your boarding pass ready before security.
+travel	海关	customs	名词	HSK 4	入境后需要先经过海关。	You need to pass through customs after entering the country.
+travel	纪念品	souvenir	名词	HSK 4	我给朋友买了一件小纪念品。	I bought a small souvenir for my friend.
+travel	当地人	local person	名词	HSK 3	当地人推荐了几家好吃的餐馆。	A local recommended several good restaurants.
+shopping	商品	product; goods	名词	HSK 3	购买前请查看商品的详细信息。	Check the product details before buying.
+shopping	顾客	customer	名词	HSK 3	店员正在帮助一位顾客。	The shop assistant is helping a customer.
+shopping	购物车	shopping cart	名词	HSK 3	我把需要的东西放进了购物车。	I put the things I needed into the shopping cart.
+shopping	订单	order	名词	HSK 4	你可以在这里查看订单状态。	You can check the order status here.
+shopping	收据	receipt	名词	HSK 4	退货时请带上收据。	Bring the receipt when returning the goods.
+shopping	退款	refund	名词 / 动词	HSK 4	退款会在三个工作日内到账。	The refund will arrive within three working days.
+shopping	质量	quality	名词	HSK 3	这件商品的质量很好。	The quality of this product is very good.
+shopping	售后	after-sales service	名词	HSK 5	如果设备有问题，可以联系售后。	If there is a problem with the equipment, contact after-sales service.
+public-services	邮局	post office	名词	HSK 2	我去邮局寄一个包裹。	I am going to the post office to send a package.
+public-services	社区	community	名词	HSK 3	社区周末组织了环保活动。	The community organized an environmental event this weekend.
+public-services	市政府	city government	名词	HSK 5	市政府公布了新的交通计划。	The city government announced a new transport plan.
+public-services	服务中心	service center	名词	HSK 4	你可以到服务中心咨询。	You can ask at the service center.
+public-services	表格	form; table	名词	HSK 3	请把这张表格填写完整。	Please complete this form.
+public-services	提交	to submit	动词	HSK 4	申请人需要在线提交材料。	Applicants need to submit the materials online.
+public-services	预约	to make an appointment	动词 / 名词	HSK 3	办理业务前最好先预约。	It is best to make an appointment before using the service.
+public-services	咨询	to consult; consultation	动词 / 名词	HSK 4	有问题可以向工作人员咨询。	You can consult a staff member if you have questions.
+school	班级	class	名词	HSK 2	我们班级一共有二十名学生。	There are twenty students in our class.
+school	学生证	student ID card	名词	HSK 3	进图书馆时要出示学生证。	Show your student ID card when entering the library.
+school	课程表	class schedule	名词	HSK 3	新学期的课程表已经公布了。	The class schedule for the new semester has been published.
+school	选修课	elective course	名词	HSK 4	我选了一门中国历史选修课。	I chose an elective course on Chinese history.
+school	讲座	lecture	名词	HSK 4	今晚有一场关于语言学习的讲座。	There is a lecture on language learning tonight.
+school	毕业	to graduate	动词	HSK 3	她明年夏天大学毕业。	She will graduate from university next summer.
+school	校长	principal; president	名词	HSK 3	校长在开学典礼上讲话。	The principal spoke at the opening ceremony.
+school	奖学金	scholarship	名词	HSK 5	他申请到了一笔留学奖学金。	He received a scholarship to study abroad.
+study-skills	背诵	to recite	动词	HSK 3	理解课文以后再背诵会更容易。	It is easier to recite the text after understanding it.
+study-skills	朗读	to read aloud	动词	HSK 3	每天朗读十分钟可以练习发音。	Reading aloud for ten minutes each day can improve pronunciation.
+study-skills	默写	to write from memory	动词	HSK 4	老师让我们默写今天的新词。	The teacher asked us to write today's new words from memory.
+study-skills	分析	to analyze	动词	HSK 4	先分析错误，再重新做一遍。	Analyze the mistakes first, then do it again.
+study-skills	比较	to compare	动词	HSK 3	请比较这两个句子的不同。	Compare the differences between these two sentences.
+study-skills	归纳	to summarize; to induce	动词	HSK 5	学完以后可以归纳主要语法点。	After studying, you can summarize the main grammar points.
+study-skills	集中	to concentrate	动词 / 形容词	HSK 3	学习时要把注意力集中在任务上。	Concentrate your attention on the task while studying.
+study-skills	复述	to retell	动词	HSK 5	听完故事后，请用自己的话复述。	Retell the story in your own words after listening.
+workplace	部门	department	名词	HSK 4	她在公司的市场部门工作。	She works in the company's marketing department.
+workplace	职位	position; job post	名词	HSK 4	这个职位需要良好的沟通能力。	This position requires good communication skills.
+workplace	招聘	to recruit; recruitment	动词 / 名词	HSK 5	公司正在招聘两名新员工。	The company is recruiting two new employees.
+workplace	简历	résumé	名词	HSK 4	请把中文简历发到这个邮箱。	Send your Chinese résumé to this email address.
+workplace	面试	interview	名词 / 动词	HSK 3	我明天下午要参加面试。	I have an interview tomorrow afternoon.
+workplace	报告	report; to report	名词 / 动词	HSK 3	她正在准备季度工作报告。	She is preparing the quarterly work report.
+workplace	进度	progress	名词	HSK 4	我们每周检查一次项目进度。	We check the project progress once a week.
+workplace	团队	team	名词	HSK 4	这个团队的合作效率很高。	This team works together very efficiently.
+medical	病人	patient	名词	HSK 2	医生正在询问病人的情况。	The doctor is asking about the patient's condition.
+medical	诊所	clinic	名词	HSK 4	小区附近有一家社区诊所。	There is a community clinic near the residential area.
+medical	住院	to be hospitalized	动词	HSK 4	他需要住院观察两天。	He needs to stay in the hospital for observation for two days.
+medical	出院	to leave hospital	动词	HSK 4	恢复顺利的话，明天就能出院。	If recovery goes well, the patient can leave the hospital tomorrow.
+medical	治疗	to treat; treatment	动词 / 名词	HSK 4	医生为她制定了治疗计划。	The doctor made a treatment plan for her.
+medical	手术	operation; surgery	名词	HSK 4	手术以后要注意休息。	Rest well after the operation.
+medical	过敏	allergic; allergy	动词 / 名词	HSK 5	我对这种药有一点过敏。	I am a little allergic to this medicine.
+medical	疫苗	vaccine	名词	HSK 5	接种疫苗前要告诉医生健康情况。	Tell the doctor about your health before receiving a vaccine.
+exercise	足球	football; soccer	名词	HSK 1	孩子们放学后在操场上踢足球。	The children play football on the field after school.
+exercise	篮球	basketball	名词	HSK 1	哥哥每周打两次篮球。	My older brother plays basketball twice a week.
+exercise	羽毛球	badminton	名词	HSK 3	周末我们约好去打羽毛球。	We arranged to play badminton this weekend.
+exercise	网球	tennis	名词	HSK 3	学习网球需要练习基本动作。	Learning tennis requires practicing the basic movements.
+exercise	爬山	to hike; climb a mountain	动词	HSK 2	秋天天气凉快，很适合爬山。	The cool autumn weather is ideal for hiking.
+exercise	跳绳	to jump rope	动词	HSK 3	跳绳是一种简单的运动方式。	Jumping rope is a simple form of exercise.
+exercise	热身	to warm up	动词	HSK 4	跑步前要先热身。	Warm up before running.
+exercise	冠军	champion	名词	HSK 4	她获得了女子单打冠军。	She won the women's singles championship.
+environment	生物多样性	biodiversity	名词	HSK 6	保护生物多样性需要长期合作。	Protecting biodiversity requires long-term cooperation.
+environment	温室气体	greenhouse gas	名词	HSK 6	减少温室气体排放是重要目标。	Reducing greenhouse gas emissions is an important goal.
+environment	可再生能源	renewable energy	名词	HSK 6	越来越多城市使用可再生能源。	More and more cities are using renewable energy.
+environment	生态系统	ecosystem	名词	HSK 6	湿地是重要的生态系统。	Wetlands are important ecosystems.
+environment	碳排放	carbon emissions	名词	HSK 6	公共交通可以帮助降低碳排放。	Public transport can help reduce carbon emissions.
+environment	气候变化	climate change	名词	HSK 5	气候变化影响着农业生产。	Climate change affects agricultural production.
+environment	物种	species	名词	HSK 6	这个保护区里有许多稀有物种。	There are many rare species in this reserve.
+environment	可持续发展	sustainable development	名词	HSK 6	城市规划应该重视可持续发展。	Urban planning should value sustainable development.
+technology	算法	algorithm	名词	HSK 6	这个算法可以提高搜索速度。	This algorithm can improve search speed.
+technology	数据库	database	名词	HSK 5	用户信息保存在加密数据库中。	User information is stored in an encrypted database.
+technology	加密	to encrypt; encryption	动词 / 名词	HSK 6	重要文件需要先加密再发送。	Important files should be encrypted before being sent.
+technology	身份验证	identity verification	名词	HSK 6	登录账户时需要完成身份验证。	Identity verification is required when signing in to the account.
+technology	云计算	cloud computing	名词	HSK 6	云计算让团队可以共享计算资源。	Cloud computing allows teams to share computing resources.
+technology	网络安全	cybersecurity	名词	HSK 6	公司定期开展网络安全培训。	The company regularly provides cybersecurity training.
+technology	操作系统	operating system	名词	HSK 5	更新操作系统前请备份文件。	Back up your files before updating the operating system.
+technology	隐私保护	privacy protection	名词	HSK 6	这款应用加强了用户隐私保护。	This app has strengthened user privacy protection.
+science	假设	hypothesis; assumption	名词 / 动词	HSK 5	研究团队提出了一个新的假设。	The research team proposed a new hypothesis.
+science	样本	sample	名词	HSK 5	这个调查收集了两千个样本。	This survey collected two thousand samples.
+science	变量	variable	名词	HSK 6	实验中一次只能改变一个变量。	Only one variable should be changed at a time in an experiment.
+science	因果关系	causal relationship	名词	HSK 6	相关性不一定代表因果关系。	Correlation does not necessarily indicate a causal relationship.
+science	研究方法	research method	名词	HSK 5	报告需要说明所采用的研究方法。	The report needs to explain the research method used.
+science	实验组	experimental group	名词	HSK 6	实验组接受了新的训练方案。	The experimental group received the new training program.
+science	对照组	control group	名词	HSK 6	对照组保持原来的学习方式。	The control group kept the original learning method.
+science	学术论文	academic paper	名词	HSK 6	她正在修改一篇学术论文。	She is revising an academic paper.
+law-safety	司法	justice; judicial system	名词	HSK 6	司法程序应当公开而公正。	Judicial procedures should be open and fair.
+law-safety	法规	laws and regulations	名词	HSK 5	企业必须遵守相关法规。	Companies must comply with the relevant regulations.
+law-safety	条例	regulation; ordinance	名词	HSK 5	新条例将于下个月生效。	The new regulation will take effect next month.
+law-safety	侵权	infringement	动词 / 名词	HSK 6	未经允许使用作品可能构成侵权。	Using a work without permission may constitute infringement.
+law-safety	诉讼	lawsuit; litigation	名词	HSK 6	双方希望通过协商避免诉讼。	Both sides hope to avoid litigation through negotiation.
+law-safety	执法	law enforcement	动词 / 名词	HSK 6	执法人员正在调查这起事件。	Law enforcement officers are investigating the incident.
+law-safety	判决	judgment; verdict	名词 / 动词	HSK 6	法院将在下周宣布判决。	The court will announce the verdict next week.
+law-safety	合法权益	lawful rights and interests	名词	HSK 6	法律保护消费者的合法权益。	The law protects consumers' lawful rights and interests.
+culture-media	文学	literature	名词	HSK 4	她对中国现代文学很感兴趣。	She is very interested in modern Chinese literature.
+culture-media	小说	novel	名词	HSK 3	这部小说讲述了一个家庭的故事。	This novel tells the story of a family.
+culture-media	诗歌	poetry	名词	HSK 5	老师带我们朗读了一首诗歌。	The teacher led us in reading a poem aloud.
+culture-media	戏剧	drama; theater	名词	HSK 5	这部戏剧将在周末演出。	This play will be performed this weekend.
+culture-media	媒体	media	名词	HSK 4	多家媒体报道了这次活动。	Several media outlets reported on the event.
+culture-media	出版	to publish	动词	HSK 5	这本词典计划明年出版。	This dictionary is scheduled to be published next year.
+culture-media	传播	to spread; communication	动词 / 名词	HSK 5	短视频改变了信息传播的方式。	Short videos have changed the way information spreads.
+culture-media	叙事	narrative; narration	名词	HSK 6	这部电影采用了双线叙事。	This film uses a dual narrative.
+leisure	下棋	to play chess	动词	HSK 2	爷爷喜欢和邻居在公园里下棋。	Grandpa likes playing chess with neighbors in the park.
+leisure	书法	calligraphy	名词	HSK 4	她每周学习一次中国书法。	She studies Chinese calligraphy once a week.
+leisure	手工	handicraft; handmade	名词 / 形容词	HSK 3	孩子们用纸做了一件手工作品。	The children made a paper handicraft.
+leisure	收藏	to collect; collection	动词 / 名词	HSK 4	他喜欢收藏旧明信片。	He likes collecting old postcards.
+leisure	园艺	gardening	名词	HSK 5	园艺让她在周末放松下来。	Gardening helps her relax on weekends.
+leisure	演出	performance	名词 / 动词	HSK 3	今晚的音乐演出八点开始。	Tonight's musical performance starts at eight.
+leisure	展览	exhibition	名词	HSK 4	博物馆正在举办摄影展览。	The museum is holding a photography exhibition.
+leisure	志愿活动	volunteer activity	名词	HSK 4	周末我参加了社区志愿活动。	I took part in a community volunteer activity this weekend.
+engineering	图纸	blueprint; drawing	名词	HSK 5	工程师正在检查建筑图纸。	The engineer is checking the building blueprints.
+engineering	承重	to bear weight	动词	HSK 6	这面墙具有重要的承重作用。	This wall has an important load-bearing function.
+engineering	地基	foundation	名词	HSK 6	施工前必须保证地基稳定。	The foundation must be stable before construction begins.
+engineering	管道	pipeline; pipe	名词	HSK 5	维修人员正在检查地下管道。	Maintenance workers are inspecting the underground pipes.
+engineering	机械	machinery; mechanical	名词 / 形容词	HSK 5	工厂引进了新的自动机械。	The factory introduced new automated machinery.
+engineering	自动化	automation	名词	HSK 6	自动化提高了生产效率。	Automation has improved production efficiency.
+engineering	施工现场	construction site	名词	HSK 5	进入施工现场必须戴安全帽。	You must wear a safety helmet when entering the construction site.
+engineering	维护	to maintain; maintenance	动词 / 名词	HSK 5	设备需要定期维护。	The equipment requires regular maintenance.
+finance	货币	currency	名词	HSK 5	出国旅行前可以兑换当地货币。	You can exchange local currency before traveling abroad.
+finance	汇率	exchange rate	名词	HSK 5	今天的汇率比昨天高一点。	Today's exchange rate is a little higher than yesterday's.
+finance	通货膨胀	inflation	名词	HSK 6	通货膨胀会影响居民的生活成本。	Inflation affects residents' cost of living.
+finance	资产	asset	名词	HSK 6	家庭需要合理管理资产。	A family needs to manage its assets sensibly.
+finance	负债	liability; debt	名词 / 动词	HSK 6	借款前要考虑自己的负债情况。	Consider your debt situation before borrowing.
+finance	收益	return; earnings	名词	HSK 6	高收益通常也伴随着高风险。	High returns usually come with high risks.
+finance	税收	taxation; tax revenue	名词	HSK 6	税收可以用于支持公共服务。	Tax revenue can be used to support public services.
+finance	理财	financial management	动词 / 名词	HSK 5	学习理财可以帮助控制日常支出。	Learning financial management can help control daily expenses.
+quantity-measures	数量	quantity	名词	HSK 3	请确认参加活动的人数和数量。	Please confirm the number of participants and the quantity needed.
+quantity-measures	个	general measure word	量词	HSK 1	桌上有三个苹果。	There are three apples on the table.
+quantity-measures	本	measure word for books	量词	HSK 1	我借了两本中文书。	I borrowed two Chinese books.
+quantity-measures	张	measure word for flat objects	量词	HSK 1	请给我一张地图。	Please give me a map.
+quantity-measures	件	measure word for items and clothes	量词	HSK 1	她买了两件新衣服。	She bought two new pieces of clothing.
+quantity-measures	条	measure word for long objects	量词	HSK 2	这条路一直通向火车站。	This road leads straight to the railway station.
+quantity-measures	双	pair; measure word for pairs	量词 / 名词	HSK 2	我需要一双舒服的鞋。	I need a comfortable pair of shoes.
+quantity-measures	杯	cup; measure word for drinks	量词 / 名词	HSK 1	早上我喝了一杯咖啡。	I drank a cup of coffee this morning.
+quantity-measures	瓶	bottle; measure word for bottles	量词 / 名词	HSK 2	请给我两瓶矿泉水。	Please give me two bottles of mineral water.
+quantity-measures	公斤	kilogram	量词	HSK 2	这个行李重十二公斤。	This piece of luggage weighs twelve kilograms.
+quantity-measures	公里	kilometer	量词	HSK 2	学校离我家大约三公里。	The school is about three kilometers from my home.
+quantity-measures	米	meter	量词	HSK 1	这张桌子有两米长。	This table is two meters long.
+quantity-measures	岁	years old	量词	HSK 1	我的妹妹今年八岁。	My younger sister is eight years old this year.
+quantity-measures	次	time; occurrence	量词	HSK 2	我每周游泳两次。	I swim twice a week.
+quantity-measures	遍	time from beginning to end	量词	HSK 3	请把这句话再读一遍。	Please read this sentence one more time.
+quantity-measures	大约	approximately	副词	HSK 2	完成这项任务大约需要半小时。	It takes approximately half an hour to complete this task.
+time-frequency	昨天	yesterday	名词	HSK 1	昨天下午我去图书馆了。	I went to the library yesterday afternoon.
+time-frequency	明天	tomorrow	名词	HSK 1	明天我们一起复习吧。	Let us review together tomorrow.
+time-frequency	早上	morning	名词	HSK 1	我每天早上七点起床。	I get up at seven every morning.
+time-frequency	上午	morning; before noon	名词	HSK 1	会议安排在上午十点。	The meeting is scheduled for ten in the morning.
+time-frequency	中午	noon	名词	HSK 1	中午我们在学校食堂吃饭。	We eat at the school canteen at noon.
+time-frequency	下午	afternoon	名词	HSK 1	她下午有一节汉语课。	She has a Chinese class in the afternoon.
+time-frequency	晚上	evening	名词	HSK 1	晚上我通常在家看书。	I usually read at home in the evening.
+time-frequency	周末	weekend	名词	HSK 2	周末我们想去郊外走走。	We want to go to the countryside this weekend.
+time-frequency	平时	usually; ordinarily	副词 / 名词	HSK 3	平时他都是骑车上班。	He usually rides a bicycle to work.
+time-frequency	刚才	just now	副词 / 名词	HSK 2	刚才有人给你打电话。	Someone called you just now.
+time-frequency	以前	before; formerly	名词 / 副词	HSK 2	我以前住在学校附近。	I used to live near the school.
+time-frequency	以后	after; later	名词 / 副词	HSK 2	下课以后我们去喝咖啡。	We will get coffee after class.
+time-frequency	经常	often	副词	HSK 2	她经常用中文写日记。	She often writes a diary in Chinese.
+time-frequency	偶尔	occasionally	副词	HSK 4	忙的时候我偶尔会忘记吃午饭。	I occasionally forget lunch when I am busy.
+time-frequency	立刻	immediately	副词	HSK 4	发现问题后请立刻告诉工作人员。	Tell a staff member immediately after finding a problem.
+time-frequency	终于	finally	副词	HSK 3	我们终于完成了这个项目。	We finally completed the project.
+directions-routes	东	east	名词 / 方位词	HSK 1	太阳从东边升起。	The sun rises in the east.
+directions-routes	西	west	名词 / 方位词	HSK 1	火车站在城市的西边。	The railway station is in the west of the city.
+directions-routes	南	south	名词 / 方位词	HSK 1	冬天很多人去南方旅行。	Many people travel south in winter.
+directions-routes	北	north	名词 / 方位词	HSK 1	学校北边有一个公园。	There is a park north of the school.
+directions-routes	左边	left side	方位词	HSK 1	银行就在邮局的左边。	The bank is on the left side of the post office.
+directions-routes	右边	right side	方位词	HSK 1	请走右边的楼梯。	Please take the stairs on the right.
+directions-routes	前面	in front; ahead	方位词	HSK 1	前面那个路口向左转。	Turn left at the intersection ahead.
+directions-routes	后面	behind; back	方位词	HSK 1	停车场在大楼后面。	The car park is behind the building.
+directions-routes	对面	opposite; across from	方位词	HSK 2	餐厅就在酒店对面。	The restaurant is across from the hotel.
+directions-routes	附近	nearby	方位词	HSK 2	地铁站附近有一家书店。	There is a bookstore near the subway station.
+directions-routes	路口	intersection	名词	HSK 3	过了下一个路口就到了。	You will arrive after passing the next intersection.
+directions-routes	方向	direction	名词	HSK 3	我们好像走错方向了。	It seems that we are going in the wrong direction.
+directions-routes	直走	go straight	动词	HSK 2	从这里直走五百米。	Go straight for five hundred meters from here.
+directions-routes	转弯	to turn	动词	HSK 3	前方转弯时请减速。	Slow down when turning ahead.
+directions-routes	经过	to pass by; through	动词	HSK 3	这趟公交车会经过市中心。	This bus passes through the city center.
+directions-routes	距离	distance	名词	HSK 4	两座城市之间的距离不远。	The distance between the two cities is not far.
+produce-drinks	香蕉	banana	名词	HSK 1	早餐我吃了一根香蕉。	I ate a banana for breakfast.
+produce-drinks	橙子	orange	名词	HSK 1	这些橙子又甜又多汁。	These oranges are sweet and juicy.
+produce-drinks	葡萄	grape	名词	HSK 2	冰箱里还有一串葡萄。	There is still a bunch of grapes in the refrigerator.
+produce-drinks	西瓜	watermelon	名词	HSK 1	夏天吃西瓜很舒服。	Eating watermelon is refreshing in summer.
+produce-drinks	草莓	strawberry	名词	HSK 2	她用草莓装饰蛋糕。	She decorated the cake with strawberries.
+produce-drinks	土豆	potato	名词	HSK 2	土豆可以炒着吃，也可以煮着吃。	Potatoes can be stir-fried or boiled.
+produce-drinks	西红柿	tomato	名词	HSK 2	我想做西红柿鸡蛋面。	I want to make tomato and egg noodles.
+produce-drinks	白菜	Chinese cabbage	名词	HSK 2	冬天市场里的白菜很新鲜。	The Chinese cabbage at the market is fresh in winter.
+produce-drinks	胡萝卜	carrot	名词	HSK 3	请把胡萝卜切成小块。	Please cut the carrot into small pieces.
+produce-drinks	茶	tea	名词	HSK 1	客人来了，请先喝杯茶。	Have a cup of tea first now that the guests have arrived.
+produce-drinks	咖啡	coffee	名词	HSK 1	我喜欢不加糖的咖啡。	I like coffee without sugar.
+produce-drinks	果汁	fruit juice	名词	HSK 2	孩子点了一杯橙子果汁。	The child ordered a glass of orange juice.
+produce-drinks	矿泉水	mineral water	名词	HSK 3	爬山时要带足够的矿泉水。	Bring enough mineral water when hiking.
+produce-drinks	啤酒	beer	名词	HSK 3	这家餐厅也提供无酒精啤酒。	This restaurant also offers non-alcoholic beer.
+produce-drinks	饮料	beverage	名词	HSK 2	冰箱里有几种不同的饮料。	There are several different drinks in the refrigerator.
+produce-drinks	酸奶	yogurt	名词	HSK 3	她每天早上喝一杯酸奶。	She has a cup of yogurt every morning.
+cooking-dining	切	to cut	动词	HSK 2	请把水果切成小块。	Please cut the fruit into small pieces.
+cooking-dining	洗	to wash	动词	HSK 1	做饭前要先洗蔬菜。	Wash the vegetables before cooking.
+cooking-dining	炒	to stir-fry	动词	HSK 3	这道菜需要大火快炒。	This dish needs to be stir-fried quickly over high heat.
+cooking-dining	煮	to boil; cook	动词	HSK 3	面条再煮两分钟就好了。	The noodles will be ready after boiling for two more minutes.
+cooking-dining	烤	to roast; bake	动词	HSK 3	面包正在烤箱里烤。	The bread is baking in the oven.
+cooking-dining	蒸	to steam	动词	HSK 4	鱼蒸十分钟就熟了。	The fish will be cooked after steaming for ten minutes.
+cooking-dining	盘子	plate	名词	HSK 2	请把水果放在盘子里。	Please put the fruit on the plate.
+cooking-dining	筷子	chopsticks	名词	HSK 2	桌上少了一双筷子。	A pair of chopsticks is missing from the table.
+cooking-dining	勺子	spoon	名词	HSK 2	喝汤的时候可以用勺子。	You can use a spoon when drinking soup.
+cooking-dining	碗	bowl	名词	HSK 1	我想要一碗牛肉面。	I would like a bowl of beef noodles.
+cooking-dining	锅	pot; pan	名词	HSK 3	锅里的水已经开了。	The water in the pot is boiling.
+cooking-dining	味道	taste; flavor	名词	HSK 2	这道菜的味道很特别。	This dish has a distinctive flavor.
+cooking-dining	甜	sweet	形容词	HSK 2	这个蛋糕有一点太甜了。	This cake is a little too sweet.
+cooking-dining	咸	salty	形容词	HSK 3	汤太咸了，可以加一点水。	The soup is too salty, so you can add some water.
+cooking-dining	辣	spicy	形容词	HSK 2	我能吃辣，但是不能太辣。	I can eat spicy food, but not too spicy.
+cooking-dining	点菜	to order dishes	动词	HSK 3	大家到齐以后我们再点菜。	We will order after everyone arrives.
+housing-rental	房租	rent	名词	HSK 3	这里的房租包括水费吗？	Does the rent here include the water bill?
+housing-rental	房东	landlord	名词	HSK 3	房东答应明天来修水管。	The landlord agreed to repair the water pipe tomorrow.
+housing-rental	租客	tenant	名词	HSK 4	每位租客都需要遵守公寓规定。	Every tenant needs to follow the apartment rules.
+housing-rental	押金	deposit	名词	HSK 5	签合同的时候要交一个月押金。	You need to pay one month's deposit when signing the agreement.
+housing-rental	租期	rental period	名词	HSK 5	这套房子的最短租期是一年。	The minimum rental period for this apartment is one year.
+housing-rental	水费	water bill	名词	HSK 3	这个月的水费比上个月少。	This month's water bill is lower than last month's.
+housing-rental	电费	electricity bill	名词	HSK 3	夏天开空调会增加电费。	Using air conditioning in summer increases the electricity bill.
+housing-rental	物业	property management	名词	HSK 5	电梯坏了以后我联系了物业。	I contacted property management after the elevator broke.
+housing-rental	维修	repair; maintenance	名词 / 动词	HSK 4	房屋维修费用由谁负责？	Who is responsible for the home repair costs?
+housing-rental	搬进	to move in	动词	HSK 3	我们计划下周搬进新公寓。	We plan to move into the new apartment next week.
+housing-rental	搬出	to move out	动词	HSK 3	搬出以前要把房间打扫干净。	Clean the room before moving out.
+housing-rental	合租	to share a rental	动词	HSK 4	她和两个同学合租一套房子。	She shares an apartment with two classmates.
+housing-rental	单间	single room	名词	HSK 4	学校附近还有一间单间出租。	There is still a single room for rent near the school.
+housing-rental	小区	residential community	名词	HSK 3	这个小区的环境很安静。	This residential community is very quiet.
+housing-rental	中介	agent; intermediary	名词	HSK 5	中介带我们看了三套房子。	The agent showed us three apartments.
+housing-rental	看房	to view a property	动词	HSK 4	我们约在周六下午看房。	We arranged to view the apartment on Saturday afternoon.
+payments-services	余额	balance	名词	HSK 4	付款前请确认账户余额。	Check the account balance before paying.
+payments-services	转账	to transfer money	动词 / 名词	HSK 4	我已经通过手机银行转账了。	I have already transferred the money through mobile banking.
+payments-services	扫码	to scan a code	动词	HSK 3	请扫码查看电子菜单。	Scan the code to view the electronic menu.
+payments-services	支付	to pay; payment	动词 / 名词	HSK 3	这个平台支持多种支付方式。	This platform supports several payment methods.
+payments-services	取款	to withdraw money	动词	HSK 3	我需要去银行取款。	I need to go to the bank to withdraw money.
+payments-services	存钱	to deposit; save money	动词	HSK 2	她每个月都会存钱。	She saves money every month.
+payments-services	手续费	service fee	名词	HSK 5	跨行转账可能会收手续费。	A service fee may be charged for interbank transfers.
+payments-services	收款	to receive payment	动词	HSK 4	商家已经确认收款。	The seller has confirmed receiving the payment.
+payments-services	电子钱包	digital wallet	名词	HSK 5	电子钱包可以保存多张银行卡。	A digital wallet can store several bank cards.
+payments-services	自动取款机	ATM	名词	HSK 4	银行门口有一台自动取款机。	There is an ATM at the bank entrance.
+payments-services	柜台	service counter	名词	HSK 3	这项业务需要到柜台办理。	This service needs to be handled at the counter.
+payments-services	排号	to take a queue number	动词	HSK 4	请先排号，然后等候叫号。	Take a queue number first and wait to be called.
+payments-services	验证码	verification code	名词	HSK 4	不要把短信验证码告诉别人。	Do not tell anyone the SMS verification code.
+payments-services	账本	account book	名词	HSK 5	奶奶一直用账本记录家庭支出。	Grandma has always used an account book to record household expenses.
+payments-services	利率	interest rate	名词	HSK 5	贷款前要比较不同银行的利率。	Compare interest rates from different banks before taking a loan.
+payments-services	还款	to repay	动词	HSK 5	请在规定日期前完成还款。	Complete the repayment before the due date.
+delivery-documents	快递	express delivery	名词	HSK 2	你的快递已经到楼下了。	Your delivery has arrived downstairs.
+delivery-documents	包裹	parcel	名词	HSK 3	这个包裹需要本人签收。	This parcel must be signed for in person.
+delivery-documents	寄	to send; mail	动词	HSK 2	我想把这本书寄给朋友。	I want to mail this book to a friend.
+delivery-documents	签收	to sign for a delivery	动词	HSK 4	收件人已经签收了文件。	The recipient has signed for the document.
+delivery-documents	取件码	pickup code	名词	HSK 4	请出示短信里的取件码。	Show the pickup code in the text message.
+delivery-documents	收件人	recipient	名词	HSK 4	请填写收件人的姓名和电话。	Fill in the recipient's name and phone number.
+delivery-documents	寄件人	sender	名词	HSK 4	寄件人需要在这里签字。	The sender needs to sign here.
+delivery-documents	身份证	identity card	名词	HSK 3	办理手续时请带身份证。	Bring your identity card when completing the formalities.
+delivery-documents	复印件	photocopy	名词	HSK 4	申请材料里需要一份护照复印件。	The application materials require a photocopy of the passport.
+delivery-documents	证件照	ID photo	名词	HSK 4	这张证件照需要使用白色背景。	This ID photo needs a white background.
+delivery-documents	资料	documents; information	名词	HSK 3	工作人员正在核对你的资料。	The staff member is checking your documents.
+delivery-documents	盖章	to stamp; seal	动词	HSK 4	表格填写完以后要去窗口盖章。	Have the form stamped at the counter after completing it.
+delivery-documents	办理	to handle; process	动词	HSK 4	这项业务可以在网上办理。	This service can be handled online.
+delivery-documents	有效期	period of validity	名词	HSK 5	请检查签证的有效期。	Check the period of validity of the visa.
+delivery-documents	丢失	to lose; be missing	动词	HSK 3	证件丢失后要尽快报警。	Report to the police promptly after an identity document is lost.
+delivery-documents	补办	to replace a lost document	动词	HSK 5	学生证丢了可以到学校补办。	A lost student ID card can be replaced at the school.
+symptoms-pharmacy	肚子疼	stomachache	形容词 / 动词	HSK 2	我从早上开始有点肚子疼。	I have had a slight stomachache since this morning.
+symptoms-pharmacy	嗓子疼	sore throat	形容词 / 动词	HSK 3	她嗓子疼，说话有点困难。	She has a sore throat and finds it a little difficult to speak.
+symptoms-pharmacy	流鼻涕	to have a runny nose	动词	HSK 3	孩子感冒以后一直流鼻涕。	The child has had a runny nose since catching a cold.
+symptoms-pharmacy	头晕	dizzy	形容词	HSK 3	如果感到头晕，请马上坐下休息。	Sit down and rest immediately if you feel dizzy.
+symptoms-pharmacy	恶心	nauseated	形容词	HSK 4	吃完药后我有一点恶心。	I felt a little nauseated after taking the medicine.
+symptoms-pharmacy	失眠	insomnia	名词 / 动词	HSK 4	最近工作压力大，他有些失眠。	He has had some insomnia recently because of work pressure.
+symptoms-pharmacy	牙疼	toothache	形容词 / 动词	HSK 3	牙疼了好几天，应该去看医生。	You should see a doctor after having a toothache for several days.
+symptoms-pharmacy	受伤	to be injured	动词	HSK 3	他踢球时不小心受伤了。	He was accidentally injured while playing football.
+symptoms-pharmacy	药店	pharmacy	名词	HSK 2	医院对面有一家药店。	There is a pharmacy across from the hospital.
+symptoms-pharmacy	药片	tablet; pill	名词	HSK 3	这两片药片要饭后吃。	Take these two tablets after a meal.
+symptoms-pharmacy	说明书	instructions; leaflet	名词	HSK 4	用药前请仔细阅读说明书。	Read the instructions carefully before taking the medicine.
+symptoms-pharmacy	剂量	dosage	名词	HSK 5	不要自己增加药物剂量。	Do not increase the dosage by yourself.
+symptoms-pharmacy	饭前	before a meal	名词 / 副词	HSK 3	这种药需要饭前服用。	This medicine needs to be taken before a meal.
+symptoms-pharmacy	饭后	after a meal	名词 / 副词	HSK 3	医生让我饭后休息半小时。	The doctor told me to rest for half an hour after meals.
+symptoms-pharmacy	测体温	to take one's temperature	动词	HSK 3	护士先帮病人测体温。	The nurse first took the patient's temperature.
+symptoms-pharmacy	康复	to recover; rehabilitation	动词 / 名词	HSK 5	他正在医院接受康复训练。	He is receiving rehabilitation training at the hospital.
+subjects-exams	数学	mathematics	名词	HSK 1	我最喜欢的学科是数学。	My favorite subject is mathematics.
+subjects-exams	语文	Chinese language subject	名词	HSK 2	语文课上我们学习了一首诗。	We studied a poem in Chinese class.
+subjects-exams	英语	English language	名词	HSK 1	她每天练习半小时英语。	She practices English for half an hour every day.
+subjects-exams	物理	physics	名词	HSK 4	物理实验需要准确测量。	Physics experiments require accurate measurement.
+subjects-exams	化学	chemistry	名词	HSK 4	化学课要遵守实验室安全规则。	You must follow laboratory safety rules in chemistry class.
+subjects-exams	生物	biology	名词	HSK 4	生物课介绍了植物的生长过程。	Biology class introduced the process of plant growth.
+subjects-exams	地理	geography	名词	HSK 4	地理课上我们研究不同地区的气候。	We study the climates of different regions in geography class.
+subjects-exams	政治	politics	名词	HSK 5	这门课程讨论经济与政治的关系。	This course discusses the relationship between economics and politics.
+subjects-exams	题目	question; topic	名词	HSK 2	请先认真读清楚题目。	Read the question carefully first.
+subjects-exams	答案	answer	名词	HSK 2	老师公布了练习题的答案。	The teacher announced the answers to the exercises.
+subjects-exams	考场	examination room	名词	HSK 3	进入考场前请关闭手机。	Turn off your phone before entering the examination room.
+subjects-exams	报名	to register; registration	动词 / 名词	HSK 3	汉语考试报名下周截止。	Registration for the Chinese test closes next week.
+subjects-exams	及格	to pass an exam	动词 / 形容词	HSK 3	这门课六十分就算及格。	A score of sixty counts as passing this course.
+subjects-exams	不及格	to fail an exam	动词 / 形容词	HSK 3	如果不及格，可以参加补考。	If you fail, you can take a make-up exam.
+subjects-exams	论文	thesis; paper	名词	HSK 5	她正在写毕业论文。	She is writing her graduation thesis.
+subjects-exams	学分	academic credit	名词	HSK 5	完成这门课程可以获得三个学分。	Completing this course earns three academic credits.
+recruitment-meetings	求职	to seek employment	动词	HSK 5	求职前要准备好简历。	Prepare your résumé before seeking employment.
+recruitment-meetings	应聘	to apply for a job	动词	HSK 5	她来应聘市场经理的职位。	She came to apply for the marketing manager position.
+recruitment-meetings	实习	to intern; internship	动词 / 名词	HSK 4	大学生暑假期间可以参加实习。	University students can take an internship during the summer holiday.
+recruitment-meetings	候选人	candidate	名词	HSK 5	三位候选人进入了最后一轮面试。	Three candidates entered the final round of interviews.
+recruitment-meetings	面试官	interviewer	名词	HSK 5	面试官询问了她的工作经验。	The interviewer asked about her work experience.
+recruitment-meetings	录用	to hire	动词	HSK 5	公司决定录用这名毕业生。	The company decided to hire this graduate.
+recruitment-meetings	辞职	to resign	动词	HSK 4	他因为个人原因决定辞职。	He decided to resign for personal reasons.
+recruitment-meetings	升职	to be promoted	动词	HSK 4	她工作三年后升职了。	She was promoted after working for three years.
+recruitment-meetings	会议室	meeting room	名词	HSK 3	大家已经在会议室等候。	Everyone is already waiting in the meeting room.
+recruitment-meetings	议程	agenda	名词	HSK 6	本次会议共有四项议程。	This meeting has four agenda items.
+recruitment-meetings	发言	to speak; make a statement	动词 / 名词	HSK 4	每位代表有五分钟发言时间。	Each representative has five minutes to speak.
+recruitment-meetings	提议	to propose; proposal	动词 / 名词	HSK 5	她提议把会议改到周五。	She proposed moving the meeting to Friday.
+recruitment-meetings	记录	to record; record	动词 / 名词	HSK 3	请记录会议中的重要决定。	Record the important decisions made during the meeting.
+recruitment-meetings	截止日期	deadline	名词	HSK 5	申请材料的截止日期是本月底。	The deadline for the application materials is the end of this month.
+recruitment-meetings	反馈	feedback	名词 / 动词	HSK 5	团队会认真处理用户反馈。	The team will carefully handle user feedback.
+recruitment-meetings	确认	to confirm	动词	HSK 3	请确认你能按时参加会议。	Please confirm that you can attend the meeting on time.
+online-communication	电子邮件	email	名词	HSK 3	我已经通过电子邮件发送了文件。	I have sent the file by email.
+online-communication	短信	text message	名词	HSK 3	银行给我发了一条确认短信。	The bank sent me a confirmation text message.
+online-communication	聊天	to chat	动词	HSK 2	我们常常用中文聊天。	We often chat in Chinese.
+online-communication	视频通话	video call	名词 / 动词	HSK 4	我每周和家人视频通话一次。	I have a video call with my family once a week.
+online-communication	语音消息	voice message	名词	HSK 4	不方便打字时可以发送语音消息。	You can send a voice message when typing is inconvenient.
+online-communication	朋友圈	social media feed	名词	HSK 4	她在朋友圈分享了旅行照片。	She shared travel photos on her social media feed.
+online-communication	社交平台	social platform	名词	HSK 5	社交平台改变了人们交流的方式。	Social platforms have changed the way people communicate.
+online-communication	用户	user	名词	HSK 3	新用户需要先完成注册。	New users need to complete registration first.
+online-communication	关注	to follow; pay attention	动词	HSK 3	很多人关注这个教育账号。	Many people follow this educational account.
+online-communication	点赞	to like a post	动词	HSK 4	读者可以为喜欢的内容点赞。	Readers can like content they enjoy.
+online-communication	评论	to comment; comment	动词 / 名词	HSK 4	请在评论区礼貌表达意见。	Express your opinion politely in the comments section.
+online-communication	转发	to repost; forward	动词	HSK 4	未经确认不要随便转发消息。	Do not repost information casually without verifying it.
+online-communication	搜索	to search	动词 / 名词	HSK 3	输入关键词就可以搜索词条。	Enter a keyword to search for an entry.
+online-communication	链接	link	名词	HSK 4	老师把课程链接发到了群里。	The teacher sent the course link to the group.
+online-communication	二维码	QR code	名词	HSK 4	扫描二维码可以打开报名页面。	Scan the QR code to open the registration page.
+online-communication	通知	notification; to notify	名词 / 动词	HSK 3	系统会发送复习通知。	The system will send a review notification.
+news-economy	报道	to report; report	动词 / 名词	HSK 4	新闻节目报道了这次会议。	The news program reported on the meeting.
+news-economy	标题	headline; title	名词	HSK 3	这个新闻标题有点夸张。	This news headline is a little exaggerated.
+news-economy	事件	event; incident	名词	HSK 4	记者正在调查事件的经过。	Reporters are investigating what happened in the incident.
+news-economy	社会	society	名词	HSK 4	语言变化反映了社会发展。	Language change reflects social development.
+news-economy	经济	economy	名词	HSK 4	旅游业促进了当地经济发展。	Tourism has promoted the local economy.
+news-economy	企业	enterprise; company	名词	HSK 5	这家企业重视员工培训。	This company values employee training.
+news-economy	行业	industry	名词	HSK 5	人工智能正在影响多个行业。	Artificial intelligence is affecting several industries.
+news-economy	生产	to produce; production	动词 / 名词	HSK 4	工厂已经恢复正常生产。	The factory has resumed normal production.
+news-economy	贸易	trade	名词	HSK 5	两国之间的贸易持续增长。	Trade between the two countries continues to grow.
+news-economy	价格上涨	price increase	名词 / 动词	HSK 5	原材料价格上涨增加了生产成本。	Rising raw material prices increased production costs.
+news-economy	就业	employment	名词	HSK 5	新项目为当地创造了就业机会。	The new project created employment opportunities locally.
+news-economy	失业	unemployment; to lose one's job	名词 / 动词	HSK 5	政府推出了帮助失业人员的计划。	The government launched a program to help unemployed people.
+news-economy	增长	to grow; growth	动词 / 名词	HSK 5	今年网络销售继续增长。	Online sales continue to grow this year.
+news-economy	下降	to decline; decline	动词 / 名词	HSK 4	本月交通事故数量有所下降。	The number of traffic accidents declined this month.
+news-economy	政策	policy	名词	HSK 5	新的教育政策正在征求意见。	The new education policy is seeking public feedback.
+news-economy	趋势	trend	名词	HSK 5	这份报告分析了市场趋势。	This report analyzes market trends.
+logic-argumentation	假如	if; supposing	连词	HSK 4	假如明天下雨，活动就改到室内。	If it rains tomorrow, the event will move indoors.
+logic-argumentation	因此	therefore	连词 / 副词	HSK 4	路上堵车，因此我迟到了。	There was traffic, so I was late.
+logic-argumentation	然而	however	连词	HSK 5	计划很完整，然而执行起来并不容易。	The plan is thorough; however, it is not easy to carry out.
+logic-argumentation	此外	in addition	连词 / 副词	HSK 5	课程介绍词汇，此外还包括听力练习。	The course covers vocabulary and also includes listening practice.
+logic-argumentation	尽管	although	连词	HSK 4	尽管任务很难，团队还是按时完成了。	Although the task was difficult, the team completed it on time.
+logic-argumentation	一方面	on the one hand	连词 / 副词	HSK 5	一方面这个方案成本低，另一方面它也容易实施。	On the one hand, this plan is inexpensive; on the other hand, it is easy to implement.
+logic-argumentation	另一方面	on the other hand	连词 / 副词	HSK 5	价格很重要，另一方面质量也不能忽视。	Price is important; on the other hand, quality cannot be ignored.
+logic-argumentation	例如	for example	副词	HSK 4	很多运动都适合初学者，例如散步和游泳。	Many forms of exercise suit beginners, for example walking and swimming.
+logic-argumentation	相反	on the contrary	副词 / 形容词	HSK 5	他没有反对，相反还主动提供了帮助。	He did not object; on the contrary, he offered to help.
+logic-argumentation	一致	consistent; unanimous	形容词	HSK 5	调查结果与实验数据基本一致。	The survey results are generally consistent with the experimental data.
+logic-argumentation	矛盾	contradiction; contradictory	名词 / 形容词	HSK 5	这两种说法之间存在明显矛盾。	There is a clear contradiction between these two claims.
+logic-argumentation	合理	reasonable	形容词	HSK 4	这个解释听起来很合理。	This explanation sounds reasonable.
+logic-argumentation	客观	objective	形容词	HSK 5	评价学习效果时要尽量客观。	Be as objective as possible when evaluating learning outcomes.
+logic-argumentation	主观	subjective	形容词	HSK 5	个人感受往往比较主观。	Personal feelings are often subjective.
+logic-argumentation	论证	to argue; argumentation	动词 / 名词	HSK 6	作者用三组数据论证自己的观点。	The author uses three sets of data to support the argument.
+logic-argumentation	反驳	to refute	动词	HSK 6	他引用研究结果反驳了这个说法。	He cited research findings to refute the claim.

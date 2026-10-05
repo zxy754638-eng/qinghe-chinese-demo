@@ -431,7 +431,7 @@ function renderThemedDecks(){
   domainFilter.innerHTML=domains.map(domain=>'<button class="theme-domain-btn'+(themedDomainFilter===domain.id?' active':'')+'" type="button" onclick="filterThemedDomain(\''+escapeHtml(domain.id)+'\')"><span>'+escapeHtml(ui(domain.title,domain.titleEn))+'</span></button>').join('');
   const filter=document.getElementById('themedFilter');filter.setAttribute('aria-label',ui('按词性筛选','Filter by part of speech'));
   document.getElementById('themedPosLabel').textContent=ui('词语类型','Word type');
-  const filters=[['all','全部','All'],['noun','名词','Nouns'],['verb','动词','Verbs'],['adjective','形容词','Adjectives']];
+  const filters=[['all','全部','All'],['noun','名词','Nouns'],['verb','动词','Verbs'],['adjective','形容词','Adjectives'],['adverb','副词','Adverbs'],['measure','量词','Measure words'],['conjunction','连词','Conjunctions']];
   filter.innerHTML=filters.map(([id,zh,en])=>'<button class="theme-filter-btn'+(themedDeckFilter===id?' active':'')+'" type="button" onclick="filterThemedDecks(\''+id+'\')">'+escapeHtml(ui(zh,en))+'</button>').join('');
   const decks=themedVocabularyDecks.filter(deck=>(themedDomainFilter==='all'||deck.domain===themedDomainFilter)&&(themedDeckFilter==='all'||deck.pos.includes(themedDeckFilter)));
   const totalWords=decks.reduce((sum,deck)=>sum+deck.words.length,0),summary=document.getElementById('themeLibrarySummary');

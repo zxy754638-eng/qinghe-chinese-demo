@@ -5,10 +5,10 @@ import {fileURLToPath} from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const dist=path.join(root,'dist');
-const sources=['data-words.js','data-lessons.js','data-upper-lessons.js','data-upper-words.js','data-dictionary-fixes.js','data-themed-vocab.js','data-themed-example-en.js','data-hsk30-syllabus.js'];
-const code=sources.map(file=>fs.readFileSync(path.join(dist,file),'utf8')).join('\n')+'\n;globalThis.__auditData={lessons,words,themedVocabularyDecks,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA};';
+const sources=['data-words.js','data-lessons.js','data-upper-lessons.js','data-upper-words.js','data-dictionary-fixes.js','data-themed-vocab.js','data-themed-example-en.js','data-themed-vocab-balanced.js','data-hsk30-syllabus.js'];
+const code=sources.map(file=>fs.readFileSync(path.join(dist,file),'utf8')).join('\n')+'\n;globalThis.__auditData={lessons,words,themedVocabularyDecks,themedVocabularyCatalog,themedVocabularyStats,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA};';
 const context={console};vm.createContext(context);new vm.Script(code,{filename:'qinghe-content-bundle.js'}).runInContext(context);
-const {lessons,words,themedVocabularyDecks,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA}=context.__auditData;
+const {lessons,words,themedVocabularyDecks,themedVocabularyCatalog,themedVocabularyStats,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA}=context.__auditData;
 
 const problems=[];
 const add=(severity,scope,id,message)=>problems.push({severity,scope,id,message});
@@ -55,6 +55,18 @@ for(const deck of themedVocabularyDecks){for(const item of deck.words){
   if(/\b[a-züv:]+[1-5]\b/i.test(item.pinyin||''))add('error','themed-vocabulary',item.word,'展示拼音仍含数字声调');
 }}
 
+const themedPlacements=themedVocabularyDecks.flatMap(deck=>deck.words.map(item=>({deckId:deck.id,word:item.word})));
+const uniqueThemedWords=new Set(themedPlacements.map(item=>item.word));
+const deckSizes=themedVocabularyDecks.map(deck=>deck.words.length);
+const expectedThemedLevels={'HSK 1':107,'HSK 2':144,'HSK 3':199,'HSK 4':160,'HSK 5':100,'HSK 6':90};
+if(themedVocabularyDecks.length!==46)add('error','themed-vocabulary','decks',`应有 46 个主题词组，当前为 ${themedVocabularyDecks.length} 个`);
+if(themedPlacements.length!==800)add('error','themed-vocabulary','placements',`应有 800 个主题词位，当前为 ${themedPlacements.length} 个`);
+if(uniqueThemedWords.size!==800)add('error','themed-vocabulary','unique',`应有 800 个不重复主题词，当前为 ${uniqueThemedWords.size} 个`);
+if(Object.keys(themedVocabularyCatalog||{}).length!==800)add('error','themed-vocabulary','catalog',`中心词库应有 800 个词条，当前为 ${Object.keys(themedVocabularyCatalog||{}).length} 个`);
+if(deckSizes.filter(size=>size===18).length!==32||deckSizes.filter(size=>size===16).length!==14||deckSizes.some(size=>size!==16&&size!==18))add('error','themed-vocabulary','deck-size','主题词组结构应为 32 组 × 18 词，加 14 组 × 16 词');
+for(const item of Object.values(themedVocabularyCatalog||{}))if(!Array.isArray(item.deckIds)||item.deckIds.length!==1)add('error','themed-vocabulary',item.word||'未命名','中心词条必须归属且仅归属一个主题词组');
+for(const [level,expected] of Object.entries(expectedThemedLevels))if(themedVocabularyStats?.levels?.[level]!==expected)add('error','themed-vocabulary',level,`均衡版应有 ${expected} 词，当前为 ${themedVocabularyStats?.levels?.[level]??0} 词`);
+
 for(let level=1;level<=6;level++){
   const count=lessons.filter(item=>item.level===`HSK ${level}`).length;
   if(count!==10)add('error','level',`HSK ${level}`,`应有 10 门演示课，当前为 ${count} 门`);
@@ -66,7 +78,8 @@ const report={
   generatedAt:new Date().toISOString(),syllabus:HSK30_META,
   summary:{
     lessons:lessons.length,courseWords:[...new Set(lessons.flatMap(item=>item.vocab))].length,
-    learningDictionaryWords:wordEntries.length,themedDecks:themedVocabularyDecks.length,themedWords:themedVocabularyDecks.reduce((sum,deck)=>sum+deck.words.length,0),
+    learningDictionaryWords:wordEntries.length,themedDecks:themedVocabularyDecks.length,themedWords:themedPlacements.length,
+    themedUniqueWords:uniqueThemedWords.size,themedLevelDistribution:themedVocabularyStats.levels,themedCatalogCentralized:Object.keys(themedVocabularyCatalog).length===uniqueThemedWords.size,
     examplesWithoutTarget,singleExampleEntries,reusedExampleGroups:reusedExampleGroups.length,exampleMirrorMismatches,
     englishInChineseDefinitions,suspiciousEnglishMeanings,
     errors:problems.filter(item=>item.severity==='error').length,warnings:problems.filter(item=>item.severity==='warning').length,reviewStatus:'待人工审校'

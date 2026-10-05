@@ -10,8 +10,8 @@ Sites 预览：[qinghe-chinese-demo.zxy794393457.chatgpt.site](https://qinghe-ch
 
 - HSK 1–6 共 60 门原创场景课，每课标注 HSK 3.0 话题路径、能力任务和技能范围
 - 页面尾部的折叠备注列出 HSK 1–6 官方累计词汇目标（300 / 500 / 1,000 / 2,000 / 3,600 / 5,400）；当前课程是结构化 Demo，不代表已经覆盖全部大纲词汇
-- HSK 1 拼音学习区，以及 32 组主题词库；中文、带调拼音、英文对照，并接入间隔复习
-- 320 条主题词例句均含独立英文翻译、整句朗读入口，并支持悬停例句词语查看拼音、点击打开词卡
+- HSK 1 拼音学习区，以及 46 组、800 词的均衡主题词库；中文、带调拼音、英文对照，并接入间隔复习
+- 800 条主题词例句均含独立英文翻译、整句朗读入口，并支持悬停例句词语查看拼音、点击打开词卡
 - 中文/英文操作界面一键切换，学习内容保持中文
 - 词语悬停或点击查看拼音与英文释义
 - 词典支持汉字、繁体字、带调拼音、数字声调和英文释义反向检索
@@ -53,6 +53,12 @@ powershell -ExecutionPolicy Bypass -File scripts/build-portable.ps1
 
 ```powershell
 node scripts/update-cedict.mjs --input path/to/cedict.txt.gz
+```
+
+主题词库的教学种子位于 `scripts/data/themed-vocab-800.tsv`。修改后运行以下命令重新生成带声调拼音和中央词条索引：
+
+```powershell
+node scripts/build-themed-vocab-800.mjs
 ```
 
 ## HSK 3.0 内容审校
