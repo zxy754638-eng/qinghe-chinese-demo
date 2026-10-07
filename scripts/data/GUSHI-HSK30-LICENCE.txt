@@ -1,0 +1,48 @@
+HSK 3.0 syllabus data — Gushi
+https://gushi-chinese.online/hsk-3.0/downloads
+
+Licence
+-------
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+https://creativecommons.org/licenses/by-sa/4.0/
+
+You may copy, redistribute, adapt and build on this material, including
+commercially, on two conditions:
+
+  1. CREDIT. Name Gushi and link back:
+
+         HSK 3.0 syllabus data by Gushi (https://gushi-chinese.online/hsk-3.0/downloads),
+         licensed under CC BY-SA 4.0.
+
+  2. SHARE ALIKE. If you change the data and pass it on, it goes out under
+     CC BY-SA 4.0 as well.
+
+Share-alike is not a preference. The English meanings are adapted from
+CC-CEDICT, which is itself CC BY-SA 4.0, so this data could never have gone out
+under anything more permissive.
+
+Where it comes from
+-------------------
+The word, character and grammar lists: the official HSK 3.0 考试大纲, published
+November 2025. Facts out of a published document.
+
+The English meanings: adapted from CC-CEDICT
+(https://www.mdbg.net/chinese/dictionary?page=cc-cedict), CC BY-SA 4.0. This
+is why this data is share-alike.
+
+The example sentences: largely from the Tatoeba Project (https://tatoeba.org),
+CC BY 2.0 FR, plus sentences written for Gushi.
+
+The selection, the pinyin, the tone numbers, the sense ordering and the
+checking: Gushi.
+
+The syllabus is the authority: where this data and the 考试大纲 disagree, the
+syllabus is right, and we would like to hear about it: contact@gushi-chinese.online
+
+The audio column
+----------------
+Free to play from gushi-chinese.online. NOT covered by this licence: the
+recordings are synthesised speech and are not ours to relicense as a corpus.
+
+The clips are served from https://gushi-chinese.online/audio/ and anyone may play them from there.
+Please do not hotlink them from a product.

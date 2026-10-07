@@ -3,3 +3,4 @@
 __pycache__/
 .tmp-cedict/
 .tmp-hsk30/
+scripts/data/gushi-hsk30-words.json

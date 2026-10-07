@@ -9,6 +9,7 @@ const sources=['data-words.js','data-lessons.js','data-upper-lessons.js','data-u
 const code=sources.map(file=>fs.readFileSync(path.join(dist,file),'utf8')).join('\n')+'\n;globalThis.__auditData={lessons,words,themedVocabularyDecks,themedVocabularyCatalog,themedVocabularyStats,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA};';
 const context={console};vm.createContext(context);new vm.Script(code,{filename:'qinghe-content-bundle.js'}).runInContext(context);
 const {lessons,words,themedVocabularyDecks,themedVocabularyCatalog,themedVocabularyStats,HSK30_META,HSK30_LEVELS,HSK30_LESSON_MAP,HSK30_REVIEW_SCHEMA}=context.__auditData;
+const advancedVocabulary=JSON.parse(fs.readFileSync(path.join(dist,'data','hsk79-vocabulary.min.json'),'utf8'));
 
 const problems=[];
 const add=(severity,scope,id,message)=>problems.push({severity,scope,id,message});
@@ -75,12 +76,22 @@ const advancedLessonCount=lessons.filter(item=>item.level==='HSK 7–9').length;
 if(advancedLessonCount!==10)add('error','level','HSK 7–9',`应有 10 门高等演示课，当前为 ${advancedLessonCount} 门`);
 if(lessons.length!==70)add('error','catalog','all',`应有 70 门演示课，当前为 ${lessons.length} 门`);
 if(HSK30_LEVELS.length!==7)add('error','syllabus','levels','HSK 3.0 等级元数据不完整');
+const advancedRows=advancedVocabulary.entries||[],advancedSequences=advancedRows.map(item=>item[0]);
+if(advancedRows.length!==5600)add('error','advanced-vocabulary','count',`HSK 7–9 高级词库应有 5,600 个词目，当前为 ${advancedRows.length} 个`);
+if(advancedSequences[0]!==5401||advancedSequences.at(-1)!==11000)add('error','advanced-vocabulary','sequence','高级词目编号应覆盖 5401–11000');
+if(new Set(advancedSequences).size!==advancedRows.length)add('error','advanced-vocabulary','sequence','高级词目编号存在重复');
+for(let index=0;index<advancedRows.length;index++){
+  const [sequence,hanzi,pinyin,meaning]=advancedRows[index];
+  if(sequence!==5401+index)add('error','advanced-vocabulary',String(sequence),'高级词目编号不连续');
+  if(!hanzi||!pinyin||!meaning)add('error','advanced-vocabulary',String(sequence),'高级词条缺少汉字、拼音或英文义项');
+  if(/\b[a-züv:]+[1-5]\b/i.test(pinyin||''))add('error','advanced-vocabulary',hanzi||String(sequence),'展示拼音仍含数字声调');
+}
 
 const report={
   generatedAt:new Date().toISOString(),syllabus:HSK30_META,
   summary:{
     lessons:lessons.length,courseWords:[...new Set(lessons.flatMap(item=>item.vocab))].length,
-    learningDictionaryWords:wordEntries.length,themedDecks:themedVocabularyDecks.length,themedWords:themedPlacements.length,
+    learningDictionaryWords:wordEntries.length,advancedVocabularyWords:advancedRows.length,advancedVocabularyExamples:advancedRows.filter(item=>item[4]).length,themedDecks:themedVocabularyDecks.length,themedWords:themedPlacements.length,
     themedUniqueWords:uniqueThemedWords.size,themedLevelDistribution:themedVocabularyStats.levels,themedCatalogCentralized:Object.keys(themedVocabularyCatalog).length===uniqueThemedWords.size,
     examplesWithoutTarget,singleExampleEntries,reusedExampleGroups:reusedExampleGroups.length,exampleMirrorMismatches,
     englishInChineseDefinitions,suspiciousEnglishMeanings,
