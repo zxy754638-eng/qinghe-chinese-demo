@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T19:03:29.005Z",
+  "generatedAt": "2026-10-07T08:30:10.879Z",
   "syllabus": {
     "id": "HSK-3.0-2025",
     "name": "HSK 3.0（2025 大纲）",
@@ -12,6 +12,8 @@
     "lessons": 70,
     "courseWords": 492,
     "learningDictionaryWords": 1194,
+    "advancedVocabularyWords": 5600,
+    "advancedVocabularyExamples": 1326,
     "themedDecks": 46,
     "themedWords": 800,
     "themedUniqueWords": 800,
