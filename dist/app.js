@@ -145,12 +145,8 @@ function renderHomeMotivation(date=new Date()){
   zh.textContent=quote[0];en.textContent=quote[1];
 }
 function renderHomeHead(){
-  const now=new Date(),h=now.getHours();
-  const g=document.getElementById('homeGreeting'),d=document.getElementById('homeDate');
-  const name=String(learnerIdentity.name||'Alex').trim()||'Alex';
-  if(g)g.textContent=uiLanguage==='en'
-    ?(h<12?'Good morning':h<18?'Good afternoon':'Good evening')+', '+name+'.'
-    :(h<12?'早上好':h<18?'下午好':'晚上好')+'，'+name+'。';
+  const now=new Date();
+  const d=document.getElementById('homeDate');
   if(d)d.textContent=uiLanguage==='en'
     ?(UI_EN_MONTHS[now.getMonth()]+' '+now.getDate()+' · '+UI_EN_DAYS[now.getDay()])
     :((now.getMonth()+1)+'月'+now.getDate()+'日 · 星期'+UI_ZH_DAYS[now.getDay()]);
