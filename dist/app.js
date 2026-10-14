@@ -189,13 +189,9 @@ function renderHomeRecommendation(){
   homeRecommendedLessonId=lesson.id;
   renderHomeHead();
   const setText=(id,value)=>{const node=document.getElementById(id);if(node)node.textContent=value};
-  const noHistory=!state.last;
   const allComplete=Object.keys(learningState.completedLessons).filter(id=>lessons.some(lesson=>lesson.id===id)).length>=lessons.length;
   const goal=dailyGoalMinutes(),goalText=ui('今日目标 '+goal+' 分钟','Daily goal · '+goal+' min');
-  const status=(allComplete?ui('全部完成','All complete')
-    :noHistory?ui('为你推荐','Recommended')
-    :state.lastCompleted?ui('下一门课程','Next lesson')
-    :ui('继续上次学习','Resume last lesson'))+' · '+goalText;
+  const status=goalText;
   const action=allComplete?ui('再次学习','Study again')
     :noHistory?ui('开始学习','Start learning')
     :state.lastCompleted?ui('开始下一课','Start next lesson')
@@ -210,10 +206,11 @@ function renderHomeRecommendation(){
   setText('homeNextLesson',state.following?state.following.id+' · '+state.following.title:ui('全部课程已完成','All lessons completed'));
   setText('homeLessonAction',action);
   setText('homeProgressLabel',ui('本课真实进度','Actual lesson progress'));
-  setText('homeProgressText',state.percent+'% · '+ui(state.level+' 已完成 '+state.levelCompleted+' / '+state.levelTotal+' 课',state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' lessons'));
+  setText('homeProgressText',state.percent+'%');
+  setText('homeProgressDetail',ui(state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' 课',state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' lessons'));
   setText('currentLevelLabel',ui(state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' 课',state.level+' · '+state.levelCompleted+' / '+state.levelTotal+' lessons'));
   const card=document.getElementById('homeRecommendation');if(card)card.dataset.mark=(lesson.title.match(/[\u3400-\u9fff]/)||['学'])[0];
-  const bar=document.getElementById('homeProgressBar');if(bar){bar.setAttribute('aria-valuenow',String(state.percent));bar.setAttribute('aria-label',ui('本课完成 '+state.percent+'%','Lesson '+state.percent+'% complete'));const fill=bar.querySelector('span');if(fill)fill.style.width=state.percent+'%'}
+  const ring=document.getElementById('homeProgressRing');if(ring){ring.style.setProperty('--progress',String(state.percent));ring.setAttribute('aria-valuenow',String(state.percent));ring.setAttribute('aria-label',ui('本课完成 '+state.percent+'%','Lesson '+state.percent+'% complete'))}
   const name=String(learnerIdentity.name||'Alex').trim()||'Alex',initial=String(learnerIdentity.initial||name.charAt(0)||'A').toUpperCase();
   setText('profileMainName',name);setText('profileMainAvatar',initial);setText('profileIdentity',ui(name+' · 现在学习 '+state.level,name+' · Currently learning '+state.level));
   return state;
