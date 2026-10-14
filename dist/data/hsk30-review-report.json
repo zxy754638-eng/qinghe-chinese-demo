@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T08:30:10.879Z",
+  "generatedAt": "2026-10-14T14:48:10.397Z",
   "syllabus": {
     "id": "HSK-3.0-2025",
     "name": "HSK 3.0（2025 大纲）",
@@ -9,9 +9,9 @@
     "note": "等级目标来自官方大纲；课程顺序、对话、释义、例句和练习为青禾中文原创。"
   },
   "summary": {
-    "lessons": 70,
-    "courseWords": 492,
-    "learningDictionaryWords": 1194,
+    "lessons": 90,
+    "courseWords": 545,
+    "learningDictionaryWords": 1266,
     "advancedVocabularyWords": 5600,
     "advancedVocabularyExamples": 1326,
     "themedDecks": 46,
@@ -27,13 +27,14 @@
     },
     "themedCatalogCentralized": true,
     "examplesWithoutTarget": 0,
-    "singleExampleEntries": 807,
+    "singleExampleEntries": 801,
     "reusedExampleGroups": 40,
     "exampleMirrorMismatches": 0,
     "englishInChineseDefinitions": 0,
     "suspiciousEnglishMeanings": 0,
+    "levelRangeWarnings": 0,
     "errors": 0,
-    "warnings": 847,
+    "warnings": 841,
     "reviewStatus": "待人工审校"
   },
   "reviewChecks": [
@@ -421,6 +422,12 @@
     {
       "severity": "warning",
       "scope": "example-count",
+      "id": "消息",
+      "message": "当前只有 1 条例句，建议至少补到 2 条"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-count",
       "id": "推荐",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
@@ -446,12 +453,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "地址",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "消息",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -944,12 +945,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "鸡蛋",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "牛奶",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -1885,12 +1880,6 @@
     {
       "severity": "warning",
       "scope": "example-count",
-      "id": "药",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
       "id": "处方",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
@@ -1910,12 +1899,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "健身",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "比赛",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -1988,12 +1971,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "电脑",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "手机",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -2503,12 +2480,6 @@
     {
       "severity": "warning",
       "scope": "example-count",
-      "id": "公交车",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
       "id": "轻轨",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
@@ -2828,12 +2799,6 @@
       "severity": "warning",
       "scope": "example-count",
       "id": "自信",
-      "message": "当前只有 1 条例句，建议至少补到 2 条"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-count",
-      "id": "开始",
       "message": "当前只有 1 条例句，建议至少补到 2 条"
     },
     {
@@ -5059,6 +5024,12 @@
     {
       "severity": "warning",
       "scope": "example-reuse",
+      "id": "附近、推荐、值得",
+      "message": "同一例句被 3 个词条复用：附近有没有值得推荐的餐厅？"
+    },
+    {
+      "severity": "warning",
+      "scope": "example-reuse",
       "id": "发送、确认、重新",
       "message": "同一例句被 3 个词条复用：抱歉，我马上重新发送，请你收到后确认一下。"
     },
@@ -5073,12 +5044,6 @@
       "scope": "example-reuse",
       "id": "及时、能力、执行",
       "message": "同一例句被 3 个词条复用：还要看团队的执行能力，以及遇到变化时能不能及时调整。"
-    },
-    {
-      "severity": "warning",
-      "scope": "example-reuse",
-      "id": "推荐、值得、附近",
-      "message": "同一例句被 3 个词条复用：附近有没有值得推荐的餐厅？"
     },
     {
       "severity": "warning",
