@@ -30,6 +30,28 @@ for(const lesson of lessons){
     if(!entry.cn||/待审校|待人工/.test(entry.cn))add('warning','word',word,'中文学习释义待审校');
     if(!entry.e||/暂时没有/.test(entry.e))add('warning','word',word,'原创例句待补充');
   }
+  if(/^HSK [123]$/.test(lesson.level)){
+    if(!Array.isArray(lesson.characters)||!lesson.characters.length)add('error','literacy',lesson.id,'缺少认读字');
+    if(!lesson.reading?.task)add('error','literacy',lesson.id,'缺少阅读微任务');
+    if(!lesson.writing?.task)add('error','literacy',lesson.id,'缺少书写微任务');
+  }
+}
+
+const forbiddenByLevel={
+  'HSK 1':['见面','咖啡'],
+  'HSK 2':['周末','地方','饱','公里','计划','取消','城市','照片','景点','旅行','公交','看书','有空','慢慢','还没'],
+  'HSK 3':['本来','快递','楼下','材料','安排','活动','淋','秘密','钥匙','结果','偷','旅行','计划','条件','面试','成功','找到','越来越']
+};
+let levelRangeWarnings=0;
+for(const lesson of lessons.filter(item=>forbiddenByLevel[item.level]))for(const word of lesson.vocab){if(forbiddenByLevel[lesson.level].includes(word)){levelRangeWarnings++;add('error','level-range',lesson.id,`${word} 不应作为 ${lesson.level} 核心词`)}}
+const grammarRequirements={
+  'HSK 1':['了（完成 / 变化）','在 / 正在 + 动词','正反问句 A 不 A','钱数表达','序数“第”'],
+  'HSK 2':['结果补语1','持续态“着”','“是……的”句1','别；还是……吧','选择问句','趋向补语1','虽然……但是……'],
+  'HSK 3':['可能补语','程度补语','比较句2','不但……而且……','只要……就；只有……才']
+};
+for(const [level,required] of Object.entries(grammarRequirements)){
+  const names=lessons.filter(item=>item.level===level).map(item=>item.grammar?.name||'');
+  for(const name of required)if(!names.some(value=>value.includes(name)))add('error','grammar',level,`缺少语法：${name}`);
 }
 
 const wordEntries=Object.entries(words);
@@ -68,13 +90,14 @@ if(deckSizes.filter(size=>size===18).length!==32||deckSizes.filter(size=>size===
 for(const item of Object.values(themedVocabularyCatalog||{}))if(!Array.isArray(item.deckIds)||item.deckIds.length!==1)add('error','themed-vocabulary',item.word||'未命名','中心词条必须归属且仅归属一个主题词组');
 for(const [level,expected] of Object.entries(expectedThemedLevels))if(themedVocabularyStats?.levels?.[level]!==expected)add('error','themed-vocabulary',level,`均衡版应有 ${expected} 词，当前为 ${themedVocabularyStats?.levels?.[level]??0} 词`);
 
+const expectedLessonCounts={'HSK 1':15,'HSK 2':19,'HSK 3':16,'HSK 4':10,'HSK 5':10,'HSK 6':10};
 for(let level=1;level<=6;level++){
   const count=lessons.filter(item=>item.level===`HSK ${level}`).length;
-  if(count!==10)add('error','level',`HSK ${level}`,`应有 10 门演示课，当前为 ${count} 门`);
+  const expected=expectedLessonCounts[`HSK ${level}`];if(count!==expected)add('error','level',`HSK ${level}`,`应有 ${expected} 门精选场景课，当前为 ${count} 门`);
 }
 const advancedLessonCount=lessons.filter(item=>item.level==='HSK 7–9').length;
 if(advancedLessonCount!==10)add('error','level','HSK 7–9',`应有 10 门高等演示课，当前为 ${advancedLessonCount} 门`);
-if(lessons.length!==70)add('error','catalog','all',`应有 70 门演示课，当前为 ${lessons.length} 门`);
+if(lessons.length!==90)add('error','catalog','all',`应有 90 门精选场景课，当前为 ${lessons.length} 门`);
 if(HSK30_LEVELS.length!==7)add('error','syllabus','levels','HSK 3.0 等级元数据不完整');
 const advancedRows=advancedVocabulary.entries||[],advancedSequences=advancedRows.map(item=>item[0]);
 if(advancedRows.length!==5600)add('error','advanced-vocabulary','count',`HSK 7–9 高级词库应有 5,600 个词目，当前为 ${advancedRows.length} 个`);
@@ -94,7 +117,7 @@ const report={
     learningDictionaryWords:wordEntries.length,advancedVocabularyWords:advancedRows.length,advancedVocabularyExamples:advancedRows.filter(item=>item[4]).length,themedDecks:themedVocabularyDecks.length,themedWords:themedPlacements.length,
     themedUniqueWords:uniqueThemedWords.size,themedLevelDistribution:themedVocabularyStats.levels,themedCatalogCentralized:Object.keys(themedVocabularyCatalog).length===uniqueThemedWords.size,
     examplesWithoutTarget,singleExampleEntries,reusedExampleGroups:reusedExampleGroups.length,exampleMirrorMismatches,
-    englishInChineseDefinitions,suspiciousEnglishMeanings,
+    englishInChineseDefinitions,suspiciousEnglishMeanings,levelRangeWarnings,
     errors:problems.filter(item=>item.severity==='error').length,warnings:problems.filter(item=>item.severity==='warning').length,reviewStatus:'待人工审校'
   },
   reviewChecks:HSK30_REVIEW_SCHEMA.checks,levels:HSK30_LEVELS,problems
