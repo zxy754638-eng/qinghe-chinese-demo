@@ -123,6 +123,27 @@ function captureUiOriginals(){
 }
 const UI_EN_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const UI_ZH_DAYS=['日','一','二','三','四','五','六'],UI_EN_DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const HOME_MOTIVATION_QUOTES=Object.freeze([
+  ['今天学会的一个词，会成为明天说出口的一句话。','A word learned today becomes a sentence you can speak tomorrow.'],
+  ['慢一点没关系，只要每一天都比昨天更接近中文。','It is fine to go slowly, as long as each day brings you closer to Chinese.'],
+  ['听懂一点，敢说一点，中文就会一点点属于你。','Understand a little, speak a little, and Chinese will gradually become yours.'],
+  ['每一次开口，都是把陌生变成熟悉。','Every time you speak, the unfamiliar becomes familiar.'],
+  ['不必一次记住全部，只要今天留下一个清楚的声音。','You do not have to remember everything at once; keep one clear sound today.'],
+  ['学语言不是赶路，是让新的世界慢慢长进心里。','Learning a language is not a race; it is a new world growing within you.'],
+  ['今天的认真，会在下一次对话里给你答案。','Today’s effort will answer you in your next conversation.'],
+  ['先允许自己说得不完美，才有机会越说越自然。','Let yourself speak imperfectly before you learn to speak naturally.'],
+  ['一个字一个字地走，也能走进更大的世界。','Character by character, you can still step into a wider world.'],
+  ['你重复的每一遍，都在为流利积蓄力量。','Every repetition is building the strength of fluency.'],
+  ['把不会说的留给今天，把敢开口的带到明天。','Leave what you cannot yet say with today, and carry your courage into tomorrow.'],
+  ['语言会记得你每天给它的时间。','A language remembers the time you give it each day.']
+]);
+function renderHomeMotivation(date=new Date()){
+  const zh=document.getElementById('homeQuoteZh'),en=document.getElementById('homeQuoteEn');
+  if(!zh||!en)return;
+  const dayNumber=Math.floor(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate())/DAY_MS);
+  const quote=HOME_MOTIVATION_QUOTES[Math.abs(dayNumber)%HOME_MOTIVATION_QUOTES.length];
+  zh.textContent=quote[0];en.textContent=quote[1];
+}
 function renderHomeHead(){
   const now=new Date(),h=now.getHours();
   const g=document.getElementById('homeGreeting'),d=document.getElementById('homeDate');
@@ -133,6 +154,7 @@ function renderHomeHead(){
   if(d)d.textContent=uiLanguage==='en'
     ?(UI_EN_MONTHS[now.getMonth()]+' '+now.getDate()+' · '+UI_EN_DAYS[now.getDay()])
     :((now.getMonth()+1)+'月'+now.getDate()+'日 · 星期'+UI_ZH_DAYS[now.getDay()]);
+  renderHomeMotivation(now);
 }
 function lastStudiedLesson(){
   const saved=lessons.find(lesson=>lesson.id===learningState.lastLessonId);
