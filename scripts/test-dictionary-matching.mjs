@@ -1,0 +1,17 @@
+import{readFileSync}from'node:fs';
+import vm from'node:vm';
+import assert from'node:assert/strict';
+const source=readFileSync('dist/app.js','utf8');
+const names=['normalizePinyin','toneSyllable','numberedPinyinToMarks','matchesDictionaryPinyin','advancedMatches'];
+const code=names.map(name=>{const start=source.indexOf('function '+name+'(');if(start<0)throw new Error('Missing '+name);const end=source.indexOf('\nfunction ',start+1);return source.slice(start,end)}).join('\n');
+const context=vm.createContext({});vm.runInContext(code,context);
+assert.equal(context.advancedMatches('学习',[5401,'挨','ái','suffer']),false);
+assert.equal(context.advancedMatches('学习',[5402,'学习','xué xí','study']),true);
+assert.equal(context.matchesDictionaryPinyin('shi','shì'),true);
+assert.equal(context.matchesDictionaryPinyin('shi4','shì'),true);
+assert.equal(context.matchesDictionaryPinyin('shi4','shí'),false);
+assert.equal(context.matchesDictionaryPinyin('xue2xi2','xué xí'),true);
+assert.equal(context.matchesDictionaryPinyin('xué xí','xue2 xi2'),true);
+assert.equal(context.matchesDictionaryPinyin('xue','xué xí'),false);
+assert.equal(context.matchesDictionaryPinyin('学习','ái'),false);
+console.log('Dictionary regressions passed: Han queries do not match empty pinyin; full pinyin and specified tones match; prefixes are excluded.');
