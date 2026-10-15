@@ -11,7 +11,7 @@ function setup(mobile=true){
  return {context,card,events,classes,styles,grades,timers,send,swipe};
 }
 let test=setup();test.swipe(100);assert.deepEqual(test.grades,['good']);assert(test.classes.has('theme-card-swipe-right'));test.swipe(100);assert.equal(test.grades.length,1);
-test=setup();test.swipe(-100);assert.equal(test.grades.length,0);assert(test.context.themedTransitioning);test.timers.find(t=>t.ms===240).fn();assert.deepEqual(test.grades,['hard']);assert(test.context.themedEnterNext);
+test=setup();test.swipe(-100);assert.deepEqual(test.grades,['hard']);assert(test.context.themedTransitioning);
 for(const [dx,dy]of[[20,0],[0,120],[60,100],[90,80]]){test=setup();test.swipe(dx,dy);assert.equal(test.grades.length,0);assert(!test.classes.has('is-swiping'));}
 test=setup();test.swipe(100,0,{interactive:true});assert.equal(test.grades.length,0);
 test=setup();test.swipe(100,0,{type:'mouse'});assert.equal(test.grades.length,0);

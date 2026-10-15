@@ -1,8 +1,9 @@
-const CACHE_NAME='qinghe-shell-v54';
-const APP_SHELL=['./','./index.html','./app.js?v=54','./auth.js?v=54','./pwa.js?v=54','./data-words.js?v=54','./data-lessons.js?v=54','./data-upper-lessons.js?v=54','./data-upper-words.js?v=54','./data-advanced-lessons.js?v=54','./data-advanced-words.js?v=54','./data-dictionary-fixes.js?v=54','./data-themed-vocab.js?v=54','./data-themed-example-en.js?v=54','./data-themed-vocab-balanced.js?v=54','./data-hsk30-syllabus.js?v=54','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
+const CACHE_NAME='qinghe-shell-v55';
+const APP_SHELL=['./','./index.html','./app.js?v=55','./auth.js?v=55','./pwa.js?v=55','./data-words.js?v=55','./data-lessons.js?v=55','./data-upper-lessons.js?v=55','./data-upper-words.js?v=55','./data-advanced-lessons.js?v=55','./data-advanced-words.js?v=55','./data-dictionary-fixes.js?v=55','./data-themed-vocab.js?v=55','./data-themed-example-en.js?v=55','./data-themed-vocab-balanced.js?v=55','./data-hsk30-syllabus.js?v=55','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
 
-APP_SHELL.push('./exam.css?v=54','./exam-core.js?v=54','./data-exam-demo.js?v=54','./exam.js?v=54','./exam-paper-template.json','./exam-import-guide.md');
+APP_SHELL.push('./exam.css?v=55','./exam-core.js?v=55','./data-exam-demo.js?v=55','./exam.js?v=55','./exam-paper-template.json','./exam-import-guide.md');
 
+APP_SHELL.push('./advanced-study.js?v=55','./advanced-study.css?v=55');
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('qinghe-')&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',event=>{

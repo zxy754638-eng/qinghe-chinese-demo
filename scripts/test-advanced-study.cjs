@@ -1,0 +1,9 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('dist/advanced-study.js','utf8'),data=JSON.parse(fs.readFileSync('dist/data/hsk79-vocabulary.min.json','utf8'));
+const store=new Map(),context={window:{},document:{addEventListener(){},getElementById(){return null}},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v)},hsk79Vocabulary:data,words:{},Map,Set};vm.createContext(context);vm.runInContext(source,context);vm.runInContext('buildAdvancedGroups()',context);
+const decks=[...context.window.advancedStudyDecks.values()],all=decks.flatMap(deck=>deck.words);assert.equal(all.length,5600);assert.equal(new Set(all.map(word=>word.sequence)).size,5600);assert(decks.every(deck=>deck.words.length>0));
+const food=decks.find(deck=>deck.id==='adv-life-food'),thought=decks.find(deck=>deck.id==='adv-expression-reason');assert(!food.words.some(word=>word.word==='权衡'));assert(thought.words.some(word=>word.word==='权衡'));assert(all.every(word=>word.hsk==='HSK 7–9'));assert(all.every(word=>word.pos===''));assert(!food.words.some(word=>word.word==='算法'));
+vm.runInContext('buildAdvancedGroups()',context);assert.equal(context.window.advancedStudyDecks.size,decks.length);
+const css=fs.readFileSync('dist/advanced-study.css','utf8');assert(css.includes('backdrop-filter:blur(24px)'));assert(!/rotate\(/.test(css));assert(css.includes('prefers-reduced-motion'));
+console.log('PASS: all 5,600 headwords reachable exactly once, exact topic membership, no invented POS/levels, repeatable index, glass fallback, slide-only and reduced-motion CSS.');
+console.log('Topic entries:',decks.filter(deck=>!deck.id.startsWith('adv-index')).reduce((n,deck)=>n+deck.words.length,0),'General entries:',decks.filter(deck=>deck.id.startsWith('adv-index')).reduce((n,deck)=>n+deck.words.length,0));
