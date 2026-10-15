@@ -32,6 +32,30 @@
   let authStatus='loading';
   let authErrorType='connection';
   let lastIdentitySignature='';
+  let operation=0;
+  let loginPopup=null;
+  let popupPending=false;
+
+  function deadline(promise,ms=15000){
+    let timer;
+    return Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('AUTH_TIMEOUT')),ms)})]).finally(()=>clearTimeout(timer));
+  }
+  function cleanCallbackUrl(){
+    const url=new URL(location.href);
+    ['code','state','error','error_description','session_state','iss'].forEach(key=>url.searchParams.delete(key));
+    if(/(?:access_token|id_token|error)=/.test(url.hash))url.hash='';
+    history.replaceState(history.state,document.title,url.pathname+url.search+url.hash);
+  }
+  function cancelAuthingLogin(){
+    operation++;
+    if(loginPopup&&!loginPopup.closed)loginPopup.close();
+    loginPopup=null;
+    byId('authCallbackBanner')?.classList.add('hidden');
+    cleanCallbackUrl();
+    authStatus=authLoginState?'signed-in':'signed-out';
+    renderAuthUI();
+    closeAccountModal();
+  }
 
   const byId=id=>document.getElementById(id);
   const authModal=byId('accountModal');
@@ -39,7 +63,9 @@
   const text=(zh,en)=>document.body.dataset.uiLang==='en'?en:zh;
 
   function getAuthErrorText(){
-    if(authErrorType==='login')return text('未能打开登录页，请稍后重试。','Could not open the sign-in page. Please try again.');
+    if(authErrorType==='popup')return text('登录窗口被浏览器拦截，请允许本站弹出窗口后重试。你也可以先返回学习。','Allow pop-ups for this site and try again, or return to learning.');
+    if(authErrorType==='timeout')return text('账户服务响应超时。可以返回学习，不会删除本机学习记录。','The account service timed out. You can return to learning; local progress is preserved.');
+    if(authErrorType==='login')return text('登录未完成。若 Authing 提示验证码错误，请检查验证码类型、接收账号及最新一条验证码；该校验由 Authing 完成。','Sign-in was not completed. If Authing rejects a code, check the code type, recipient and latest code. Codes are verified by Authing.');
     if(authErrorType==='logout')return text('退出登录失败，请稍后重试。','Sign-out failed. Please try again.');
     return text('无法连接账户服务，请检查网络后重试。','Could not connect to the account service. Check your connection and try again.');
   }
@@ -125,15 +151,17 @@
 
   function openAccountModal(){
     renderAuthUI();
-    authModal?.classList.add('show');
+    if(typeof window.openManagedModal==='function')window.openManagedModal(authModal);
+    else authModal?.classList.add('show');
   }
 
   function closeAccountModal(){
-    authModal?.classList.remove('show');
+    if(typeof window.closeManagedModal==='function')window.closeManagedModal(authModal);
+    else authModal?.classList.remove('show');
   }
 
   async function loadUserInfo(){
-    try{authUserInfo=await authingClient.getUserInfo()}catch(error){authUserInfo=null}
+    try{return await deadline(authingClient.getUserInfo(),5000)}catch(error){return null}
   }
 
   // 网络慢时 getLoginState 可能超时（SDK 内部警告"登录态获取超时"），
@@ -153,6 +181,8 @@
   }
 
   async function initAuthing(){
+    if(popupPending)return;
+    const current=++operation;
     authStatus='loading';
     authErrorType='connection';
     renderAuthUI();
@@ -161,40 +191,66 @@
       authingClient=authingClient||new window.AuthingFactory.Authing(AUTHING_CONFIG);
       if(authingClient.isRedirectCallback()){
         byId('authCallbackBanner')?.classList.remove('hidden');
-        authLoginState=await authingClient.handleRedirectCallback();
-        await loadUserInfo();
+        const state=await deadline(authingClient.handleRedirectCallback());
+        if(current!==operation)return;
+        authLoginState=state;
+        const info=await loadUserInfo();
+        if(current!==operation)return;
+        authUserInfo=info;
         authStatus=authLoginState?'signed-in':'signed-out';
-        history.replaceState({},document.title,location.pathname||'/');
+        cleanCallbackUrl();
         byId('authCallbackBanner')?.classList.add('hidden');
       }else{
-        authLoginState=await getLoginStateWithRetry();
-        if(authLoginState)await loadUserInfo();
+        const state=await deadline(getLoginStateWithRetry());
+        if(current!==operation)return;
+        authLoginState=state;
+        if(state){const info=await loadUserInfo();if(current!==operation)return;authUserInfo=info;}
         authStatus=authLoginState?'signed-in':'signed-out';
       }
     }catch(error){
-      console.error('[qinghe-auth] init failed:',error);
+      if(current!==operation)return;
       byId('authCallbackBanner')?.classList.add('hidden');
       authStatus='error';
-      authErrorType='connection';
+      authErrorType=error?.message==='AUTH_TIMEOUT'?'timeout':'connection';
+      cleanCallbackUrl();
     }
     renderAuthUI();
   }
 
   async function startAuthingLogin(){
+    if(popupPending)return;
+    const current=++operation;
     try{
-      if(!authingClient)await initAuthing();
-      if(!authingClient||authStatus==='error')return;
+      if(!window.AuthingFactory?.Authing)throw new Error('SDK unavailable');
+      authingClient=authingClient||new window.AuthingFactory.Authing(AUTHING_CONFIG);
+      // 在点击事件内预开窗口，避免 SDK 生成 PKCE 后失去用户手势而被拦截。
+      loginPopup=window.open('about:blank','authing-spa-login-window','popup,width=500,height=720');
+      if(!loginPopup){authErrorType='popup';authStatus='error';renderAuthUI();return;}
+      popupPending=true;
       authStatus='loading';
       renderAuthUI();
-      await authingClient.loginWithRedirect({
+      const state=await deadline(authingClient.loginWithPopup({
         redirectUri:AUTHING_CONFIG.redirectUri,
-        originalUri:AUTHING_CONFIG.redirectUri,
         forced:false
-      });
-    }catch(error){
-      authStatus='error';
-      authErrorType='login';
+      }),180000);
+      if(current!==operation)return;
+      if(state){
+        authLoginState=state;
+        const info=await loadUserInfo();
+        if(current!==operation)return;
+        authUserInfo=info;
+      }
+      authStatus=authLoginState?'signed-in':'signed-out';
       renderAuthUI();
+    }catch(error){
+      if(current!==operation)return;
+      authStatus='error';
+      authErrorType=error?.message==='AUTH_TIMEOUT'?'timeout':'login';
+      renderAuthUI();
+    }finally{
+      if(loginPopup&&!loginPopup.closed)loginPopup.close();
+      loginPopup=null;
+      popupPending=false;
     }
   }
 
@@ -210,14 +266,16 @@
   }
 
   window.openAccountModal=openAccountModal;
-  window.closeAccountModal=closeAccountModal;
+  window.closeAccountModal=cancelAuthingLogin;
   window.initAuthing=initAuthing;
   window.startAuthingLogin=startAuthingLogin;
   window.logoutAuthing=logoutAuthing;
+  window.cancelAuthingLogin=cancelAuthingLogin;
 
-  authModal?.addEventListener('click',event=>{if(event.target===authModal)closeAccountModal()});
-  document.addEventListener('keydown',event=>{if(event.key==='Escape')closeAccountModal()});
+  authModal?.addEventListener('click',event=>{if(event.target===authModal)cancelAuthingLogin()});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&(authModal?.classList.contains('show')||!byId('authCallbackBanner')?.classList.contains('hidden')))cancelAuthingLogin()});
   document.addEventListener('qinghe:languagechange',renderAuthUI);
   ensureProfileCard();
   initAuthing();
 })();
+
