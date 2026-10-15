@@ -22,6 +22,7 @@
     appId:'6abc74da833f137d76ec5f25',
     userPoolId:'6abc74d9e8a3bce782835196',
     redirectUri:CURRENT_REDIRECT,
+    redirectResponseMode:'query',
     scope:'openid profile email phone',
     useImplicitMode:false
   };
@@ -35,6 +36,11 @@
   let operation=0;
   let loginPopup=null;
   let popupPending=false;
+
+  function useMobileRedirect(){
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||
+      (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  }
 
   function deadline(promise,ms=15000){
     let timer;
@@ -65,7 +71,9 @@
   function getAuthErrorText(){
     if(authErrorType==='popup')return text('登录窗口被浏览器拦截，请允许本站弹出窗口后重试。你也可以先返回学习。','Allow pop-ups for this site and try again, or return to learning.');
     if(authErrorType==='timeout')return text('账户服务响应超时。可以返回学习，不会删除本机学习记录。','The account service timed out. You can return to learning; local progress is preserved.');
-    if(authErrorType==='login')return text('登录未完成。若 Authing 提示验证码错误，请检查验证码类型、接收账号及最新一条验证码；该校验由 Authing 完成。','Sign-in was not completed. If Authing rejects a code, check the code type, recipient and latest code. Codes are verified by Authing.');
+    if(authErrorType==='login')return text('登录流程未完成，网站尚未收到登录结果。请重新连接；此提示不代表验证码错误。','The sign-in flow did not complete and this site has not received the result. Please retry; this does not mean your verification code was incorrect.');
+    if(authErrorType==='callback')return text('返回网站后未能完成登录状态确认。请从本页面重新登录，不要重复打开旧的回调链接。','The site could not complete sign-in after returning. Start a new sign-in here instead of reopening an old callback link.');
+    if(authErrorType==='denied')return text('身份服务拒绝了本次登录。请检查账号的应用访问权限，或联系管理员。','The identity service denied this sign-in. Check application access or contact the administrator.');
     if(authErrorType==='logout')return text('退出登录失败，请稍后重试。','Sign-out failed. Please try again.');
     return text('无法连接账户服务，请检查网络后重试。','Could not connect to the account service. Check your connection and try again.');
   }
@@ -186,10 +194,12 @@
     authStatus='loading';
     authErrorType='connection';
     renderAuthUI();
+    let handlingCallback=false;
     try{
       if(!window.AuthingFactory?.Authing)throw new Error('SDK unavailable');
       authingClient=authingClient||new window.AuthingFactory.Authing(AUTHING_CONFIG);
       if(authingClient.isRedirectCallback()){
+        handlingCallback=true;
         byId('authCallbackBanner')?.classList.remove('hidden');
         const state=await deadline(authingClient.handleRedirectCallback());
         if(current!==operation)return;
@@ -211,8 +221,10 @@
       if(current!==operation)return;
       byId('authCallbackBanner')?.classList.add('hidden');
       authStatus='error';
-      authErrorType=error?.message==='AUTH_TIMEOUT'?'timeout':'connection';
+      const callbackError=new URLSearchParams(location.search).get('error');
+      authErrorType=error?.message==='AUTH_TIMEOUT'?'timeout':handlingCallback?(callbackError==='access_denied'?'denied':'callback'):'connection';
       cleanCallbackUrl();
+      if(handlingCallback)openAccountModal();
     }
     renderAuthUI();
   }
@@ -223,6 +235,13 @@
     try{
       if(!window.AuthingFactory?.Authing)throw new Error('SDK unavailable');
       authingClient=authingClient||new window.AuthingFactory.Authing(AUTHING_CONFIG);
+      if(useMobileRedirect()){
+        popupPending=true;
+        authStatus='loading';
+        renderAuthUI();
+        await deadline(authingClient.loginWithRedirect({redirectUri:AUTHING_CONFIG.redirectUri,forced:false}));
+        return;
+      }
       // 在点击事件内预开窗口，避免 SDK 生成 PKCE 后失去用户手势而被拦截。
       loginPopup=window.open('about:blank','authing-spa-login-window','popup,width=500,height=720');
       if(!loginPopup){authErrorType='popup';authStatus='error';renderAuthUI();return;}
