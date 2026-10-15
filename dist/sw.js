@@ -1,7 +1,7 @@
-const CACHE_NAME='qinghe-shell-v50';
-const APP_SHELL=['./','./index.html','./app.js?v=50','./auth.js?v=50','./pwa.js?v=50','./data-words.js?v=50','./data-lessons.js?v=50','./data-upper-lessons.js?v=50','./data-upper-words.js?v=50','./data-advanced-lessons.js?v=50','./data-advanced-words.js?v=50','./data-dictionary-fixes.js?v=50','./data-themed-vocab.js?v=50','./data-themed-example-en.js?v=50','./data-themed-vocab-balanced.js?v=50','./data-hsk30-syllabus.js?v=50','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
+const CACHE_NAME='qinghe-shell-v51';
+const APP_SHELL=['./','./index.html','./app.js?v=51','./auth.js?v=51','./pwa.js?v=51','./data-words.js?v=51','./data-lessons.js?v=51','./data-upper-lessons.js?v=51','./data-upper-words.js?v=51','./data-advanced-lessons.js?v=51','./data-advanced-words.js?v=51','./data-dictionary-fixes.js?v=51','./data-themed-vocab.js?v=51','./data-themed-example-en.js?v=51','./data-themed-vocab-balanced.js?v=51','./data-hsk30-syllabus.js?v=51','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
 
-APP_SHELL.push('./exam.css?v=50','./exam-core.js?v=50','./data-exam-demo.js?v=50','./exam.js?v=50','./exam-paper-template.json','./exam-import-guide.md');
+APP_SHELL.push('./exam.css?v=51','./exam-core.js?v=51','./data-exam-demo.js?v=51','./exam.js?v=51','./exam-paper-template.json','./exam-import-guide.md');
 
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('qinghe-')&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
