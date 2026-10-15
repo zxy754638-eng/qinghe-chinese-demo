@@ -5,5 +5,10 @@ const decks=[...context.window.advancedStudyDecks.values()],all=decks.flatMap(de
 const food=decks.find(deck=>deck.id==='adv-life-food'),thought=decks.find(deck=>deck.id==='adv-expression-reason');assert(!food.words.some(word=>word.word==='权衡'));assert(thought.words.some(word=>word.word==='权衡'));assert(all.every(word=>word.hsk==='HSK 7–9'));assert(all.every(word=>word.pos===''));assert(!food.words.some(word=>word.word==='算法'));
 vm.runInContext('buildAdvancedGroups()',context);assert.equal(context.window.advancedStudyDecks.size,decks.length);
 const css=fs.readFileSync('dist/advanced-study.css','utf8');assert(css.includes('backdrop-filter:blur(24px)'));assert(!/rotate\(/.test(css));assert(css.includes('prefers-reduced-motion'));
+assert(!source.includes('advancedPathSearch'));assert(!source.includes('advancedSearchSubmit'));
+const body={innerHTML:''},section={innerHTML:'',querySelector:()=>body,scrollIntoView(){}};
+context.document.getElementById=id=>id==='advancedVocabulary'?section:null;context.ui=zh=>zh;context.escapeHtml=value=>String(value);context.readThemedProgress=()=>({reviewed:[]});context.themedProgressKey=item=>'advanced:'+item.sequence;
+context.window.renderAdvancedPath();assert(body.innerHTML.includes('advanced-area-grid'));assert(!section.innerHTML.includes('<form'));assert(!section.innerHTML.includes('type="search"'));
+vm.runInContext("advancedAreaOpen('life')",context);assert(body.innerHTML.includes('advanced-topic-list'));assert(body.innerHTML.includes('健康与身心'));
 console.log('PASS: all 5,600 headwords reachable exactly once, exact topic membership, no invented POS/levels, repeatable index, glass fallback, slide-only and reduced-motion CSS.');
 console.log('Topic entries:',decks.filter(deck=>!deck.id.startsWith('adv-index')).reduce((n,deck)=>n+deck.words.length,0),'General entries:',decks.filter(deck=>deck.id.startsWith('adv-index')).reduce((n,deck)=>n+deck.words.length,0));

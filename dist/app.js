@@ -497,7 +497,7 @@ function ensureThemedVocabularySection(){
   const quick=ensureLearningQuickNav();quick?quick.insertAdjacentElement('afterend',section):catalog.insertBefore(section,catalog.firstChild);ensureThemedVocabularyModal();renderThemedDecks();return section;
 }
 function showThemedLibraryTab(tab='themed'){
-  const section=ensureThemedVocabularySection();if(!section)return;const advanced=tab==='advanced';
+  const section=ensureThemedVocabularySection();if(!section)return;const advanced=tab==='advanced';section.classList.toggle('advanced-active',advanced);
   section.querySelectorAll('[data-themed-library-tab]').forEach(button=>{const active=button.dataset.themedLibraryTab===tab;button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active))});
   const core=document.getElementById('themedCorePanel');if(core)core.hidden=advanced;
   const advancedSection=advanced?ensureAdvancedVocabularySection():document.getElementById('advancedVocabulary');if(advancedSection)advancedSection.hidden=!advanced;
