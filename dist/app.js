@@ -70,7 +70,7 @@ function completeCurrentLesson(){
 // ---------- 界面语言（学习内容始终保留中文） ----------
 const UI_TEXT=Object.freeze({
   '输入汉字、繁体字、拼音或英文，直接查发音、义项、搭配和例句。':'Search with simplified Chinese, traditional Chinese, pinyin or English to find pronunciation, meanings, collocations and examples.','本来 / 本來 / běn lái / ben3 lai2 / late':'本来 / 本來 / běn lái / ben3 lai2 / late',
-  '主要导航':'Main navigation','首页':'Home','学习':'Learn','复习':'Review','词典':'Dictionary','我的':'Profile',
+  '主要导航':'Main navigation','首页':'Home','学习':'Learn','复习':'Review','模考':'Mock exams','模考错题':'Exam review','词典':'Dictionary','我的':'Profile',
   '中文辅助模式':'Chinese helper mode','切换中文辅助模式':'Toggle Chinese helper mode','开启后，有帮助的词语会显示虚线。鼠标停留看拼音，点击查看完整词卡。':'Helpful words have dotted underlines. Hover to see pinyin, or click for the full word card.',
   '切换界面语言':'Switch interface language','搜索':'Search','通知':'Notifications','HSK 3 · 第 12 周':'HSK 3 · Week 12',
   '下午好，Alex。':'Good afternoon, Alex.','今天也学一点中文吧。':'Let’s learn a little Chinese today.','九月二十九日 · 星期二':'September 29 · Tuesday',
@@ -692,6 +692,10 @@ const demoReviewItems=[
 let reviewItems=demoReviewItems,currentReviewCorrect=false;
 function rotateOptions(correct,distractors,seed){const list=[correct,...distractors.filter(x=>x&&x!==correct).slice(0,2)],offset=Math.abs(seed)%list.length,rotated=list.slice(offset).concat(list.slice(0,offset));return{options:rotated,answer:rotated.indexOf(correct)}}
 function reviewItemFromQueue(queueItem,index){
+  if(queueItem.type==='exam'&&queueItem.examQuestion){
+    const q=queueItem.examQuestion;
+    return {queueId:queueItem.id,type:'模考错题',prompt:(q.passage?q.passage+'\n\n':'')+q.prompt,mode:q.type==='choice'?'choice':'input',options:q.options,answer:q.answer,answers:q.answers,audio:q.audioText||'',audioUrl:q.audio||'',feedback:q.explanation};
+  }
   if(queueItem.type==='grammar'){
     const lesson=lessons.find(x=>x.id===queueItem.lessonId),grammar=lesson?.grammar;
     return{queueId:queueItem.id,type:'主动表达',prompt:'用“'+queueItem.value+'”写一句自己的话。',mode:'open',required:queueItem.value.split('……').filter(x=>x.length>1),feedback:grammar?.explain||'先说完整意思，再检查目标结构是否自然。'};
@@ -704,7 +708,7 @@ function reviewItemFromQueue(queueItem,index){
 function buildReviewItems(){
   const sorted=[...learningState.reviewQueue].sort((a,b)=>(Number(a.dueAt)||0)-(Number(b.dueAt)||0)),due=sorted.filter(x=>(Number(x.dueAt)||0)<=Date.now()),pool=due.length?due:sorted;
   if(!pool.length)return demoReviewItems.map(x=>({...x}));
-  const selected=pool.filter(x=>x.type==='word').slice(0,3),grammar=pool.find(x=>x.type==='grammar');if(grammar)selected.push(grammar);pool.forEach(x=>{if(selected.length<4&&!selected.some(y=>y.id===x.id))selected.push(x)});
+  const selected=pool.filter(x=>x.type==='exam').slice(0,2),grammar=pool.find(x=>x.type==='grammar');pool.filter(x=>x.type==='word').slice(0,grammar?3-selected.length:4-selected.length).forEach(x=>selected.push(x));if(grammar&&selected.length<4)selected.push(grammar);pool.forEach(x=>{if(selected.length<4&&!selected.some(y=>y.id===x.id))selected.push(x)});
   return selected.map(reviewItemFromQueue);
 }
 function dueLabel(dueAt){const ms=(Number(dueAt)||Date.now())-Date.now();if(ms<=0)return ui('今天到期','Due today');if(ms<=60*60*1000)return ui('1 小时内','Within an hour');const days=Math.ceil(ms/DAY_MS);if(days===1)return ui('明天','Tomorrow');return ui(days+' 天后','In '+days+' days')}

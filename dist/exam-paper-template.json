@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "qh-hsk1-paper-001",
+  "version": "0.1",
+  "title": "HSK 1 试卷模板（请替换示例题）",
+  "level": "HSK 1",
+  "durationMinutes": 10,
+  "status": "draft",
+  "demo": true,
+  "instructions": "这是一份数据填写模板，时长、题量、分值和示例题均需按实际命题计划修改。它不是正式模拟卷。",
+  "sections": [
+    {
+      "title": "听力",
+      "skill": "listening",
+      "questions": [
+        {"id":"l1","type":"choice","prompt":"听录音，选择正确答案。","audioText":"小明喜欢喝茶。小明喜欢喝什么？","options":["茶","牛奶","咖啡"],"answer":0,"points":5,"explanation":"录音说小明喜欢喝茶。","keywords":["茶"]}
+      ]
+    },
+    {
+      "title": "阅读",
+      "skill": "reading",
+      "questions": [
+        {"id":"r1","type":"choice","passage":"小王在学校学习中文。","prompt":"小王在哪里学习中文？","options":["在学校","在医院","在机场"],"answer":0,"points":5,"explanation":"材料写明小王在学校学习中文。","keywords":["学校"]},
+        {"id":"r2","type":"fill","prompt":"请填写：一、二、___、四。","answers":["三"],"points":5,"explanation":"二和四之间是三。","keywords":["三"]}
+      ]
+    },
+    {
+      "title": "写作（仅演示支持的题型，按实际试卷要求保留或删除）",
+      "skill": "writing",
+      "questions": [
+        {"id":"w1","type":"writing","prompt":"用中文介绍你喜欢的一种食物。","points":10,"sampleAnswer":"我喜欢面条。面条很好吃。","rubric":"回应题意 4 分；句子与语法 4 分；用字 2 分。","explanation":"请根据量表人工评分。范文仅供参考。","keywords":[]}
+      ]
+    }
+  ]
+}

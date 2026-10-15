@@ -1,0 +1,1 @@
+{"schemaVersion":1,"id":"qa-timeout","version":"qa","title":"自动交卷测试（本地检查）","level":"HSK 2","durationMinutes":1,"status":"draft","demo":true,"instructions":"仅用于本地验证到时交卷。","sections":[{"title":"阅读","skill":"reading","questions":[{"id":"q1","type":"choice","prompt":"请选择“三”。","options":["三","四"],"answer":0,"points":5,"explanation":"正确答案为三。"}]}]}
