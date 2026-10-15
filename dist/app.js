@@ -294,31 +294,42 @@ const modalObserver=new MutationObserver(records=>records.forEach(record=>{const
 modalObserver.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
 
 // ---------- 学习页快捷导航 ----------
+let activeLearningSection='themed';
+try{const saved=localStorage.getItem('qinghe-learning-section');if(['themed','courses','pinyin'].includes(saved))activeLearningSection=saved;}catch(e){}
 function ensureLearningQuickNav(){
   let nav=document.getElementById('learningQuickNav');if(nav)return nav;
   const catalog=document.getElementById('courseCatalog');if(!catalog)return null;
   nav=document.createElement('nav');nav.id='learningQuickNav';nav.className='card learning-quick-nav';nav.setAttribute('data-no-ui-translate','');
-  nav.innerHTML='<button class="learning-quick-btn" type="button" data-learning-section="themed" onclick="openLearningSection(\'themed\')"><span class="learning-quick-icon">词</span><strong></strong><small></small></button><button class="learning-quick-btn" type="button" data-learning-section="pinyin" onclick="openLearningSection(\'pinyin\')"><span class="learning-quick-icon">音</span><strong></strong><small></small></button><button class="learning-quick-btn" type="button" data-learning-section="courses" onclick="openLearningSection(\'courses\')"><span class="learning-quick-icon">课</span><strong></strong><small></small></button>';
+  nav.setAttribute('role','tablist');
+  nav.innerHTML=['themed','courses','pinyin'].map(id=>'<button class="learning-quick-btn" id="learningTab-'+id+'" type="button" role="tab" data-learning-section="'+id+'" onclick="openLearningSection(\''+id+'\')"><strong></strong></button>').join('');
+  nav.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;const buttons=[...nav.querySelectorAll('button')],index=buttons.indexOf(document.activeElement);if(index<0)return;event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:(index+(event.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[next].click();buttons[next].focus();});
   catalog.insertBefore(nav,catalog.firstChild);renderLearningQuickNav();return nav;
 }
 function renderLearningQuickNav(){
   const nav=ensureLearningQuickNav();if(!nav)return;
-  nav.setAttribute('aria-label',ui('学习内容快捷入口','Study shortcuts'));
-  const copy={themed:[ui('分类背词','Vocabulary decks'),ui('主题词库与 HSK 7–9 高级词库','Themed decks and HSK 7–9 lexicon')],pinyin:[ui('拼音库','Pinyin lab'),ui('声母、韵母和声调','Initials, finals and tones')],courses:[ui('课程路线','Course path'),ui('浏览 HSK 1–9 课程','Browse HSK 1–9 lessons')]};
-  nav.querySelectorAll('.learning-quick-btn').forEach(button=>{const text=copy[button.dataset.learningSection];button.querySelector('strong').textContent=text[0];button.querySelector('small').textContent=text[1];button.setAttribute('aria-label',text.join('：'))});
+  nav.setAttribute('aria-label',ui('学习内容导航','Study navigation'));
+  const copy={themed:ui('HSK 词汇','HSK words'),courses:ui('课程路线','Courses'),pinyin:ui('拼音库','Pinyin')},panels={themed:'themedVocabulary',courses:'learningCourses',pinyin:'pinyinLab'};
+  nav.querySelectorAll('.learning-quick-btn').forEach(button=>{const id=button.dataset.learningSection,active=id===activeLearningSection;button.querySelector('strong').textContent=copy[id];button.setAttribute('aria-label',copy[id]);button.setAttribute('aria-selected',String(active));button.setAttribute('aria-controls',panels[id]);button.tabIndex=active?0:-1;button.classList.toggle('active',active);});
+  const heading=document.getElementById('learningPageTitle');if(heading)heading.textContent=ui('学习','Study');
 }
 function scrollToLearningTarget(target){setTimeout(()=>target?.scrollIntoView({behavior:'smooth',block:'start'}),80)}
+function ensureLearningPages(){
+  const catalog=document.getElementById('courseCatalog');if(!catalog)return;
+  ensureLearningQuickNav();ensureThemedVocabularySection();ensurePinyinLab();
+  if(!document.getElementById('learningPageTitle')){const heading=document.createElement('h1');heading.id='learningPageTitle';heading.setAttribute('data-no-ui-translate','');catalog.prepend(heading);}
+  let coursesPanel=document.getElementById('learningCourses');
+  if(!coursesPanel){coursesPanel=document.createElement('section');coursesPanel.id='learningCourses';catalog.append(coursesPanel);['.catalog-head','.course-summary','#courseGrid'].forEach(selector=>{const node=catalog.querySelector(selector);if(node)coursesPanel.append(node);});}
+  const panels={themed:document.getElementById('themedVocabulary'),courses:coursesPanel,pinyin:document.getElementById('pinyinLab')};
+  for(const [id,panel]of Object.entries(panels)){if(!panel)continue;panel.classList.add('learning-page');panel.setAttribute('role','tabpanel');panel.setAttribute('aria-labelledby','learningTab-'+id);panel.hidden=id!==activeLearningSection;}
+  panels.pinyin?.classList.remove('hidden-by-filter');renderLearningQuickNav();
+}
 function openLearningSection(section){
-  showView('learn');showLessonCatalog();ensureLearningQuickNav();ensureThemedVocabularySection();ensurePinyinLab();ensureAdvancedVocabularySection();
-  const navSection=section==='advanced'?'themed':section;document.querySelectorAll('.learning-quick-btn').forEach(button=>button.classList.toggle('active',button.dataset.learningSection===navSection));
-  let target=document.querySelector('#courseCatalog .catalog-head');
-  if(section==='themed'){target=document.getElementById('themedVocabulary');showThemedLibraryTab('themed')}
-  if(section==='pinyin'){target=document.getElementById('pinyinLab');target?.classList.remove('hidden-by-filter')}
-  if(section==='advanced'){showThemedLibraryTab('advanced');target=document.getElementById('themedVocabulary')}
-  scrollToLearningTarget(target);
+  activeLearningSection=section==='advanced'?'themed':(['themed','courses','pinyin'].includes(section)?section:'themed');
+  try{localStorage.setItem('qinghe-learning-section',activeLearningSection);}catch(e){}
+  showView('learn');ensureLearningPages();if(section==='advanced')showThemedLibraryTab('advanced');window.scrollTo({top:0,behavior:'instant'});
 }
 function openLevelPath(level){
-  showView('learn');showLessonCatalog();ensureLearningQuickNav();
+  openLearningSection('courses');
   const button=[...document.querySelectorAll('.level-filters .filter-btn')].find(item=>item.dataset.level===level);
   filterCourses(level,button);document.querySelectorAll('.learning-quick-btn').forEach(item=>item.classList.toggle('active',item.dataset.learningSection==='courses'));
   scrollToLearningTarget(document.querySelector('#courseCatalog .catalog-head'));
@@ -498,24 +509,34 @@ function ensureThemedVocabularyModal(){
 }
 function renderThemedDecks(){
   const grid=document.getElementById('themeDeckGrid');if(!grid||typeof themedVocabularyDecks==='undefined')return;
-  document.getElementById('themedVocabEyebrow').textContent=ui('分类背词','Vocabulary decks');
+  document.getElementById('themedVocabEyebrow').textContent='';
   document.getElementById('themedVocabTitle').textContent=ui('青禾主题词库','Qinghe themed vocabulary');
-  document.getElementById('themedVocabIntro').textContent=ui('从日常沟通逐步走向学习、职场和专业话题；每个词都配有中文、带声调拼音、英文和原创例句。','Move from everyday communication to study, work and specialist topics. Every word includes Chinese, tone-marked pinyin, English and an original example.');
-  const themedTab=document.querySelector('[data-themed-library-tab="themed"]'),advancedTab=document.querySelector('[data-themed-library-tab="advanced"]');if(themedTab)themedTab.textContent=ui('主题分类 · 800 词','Themed decks · 800 words');if(advancedTab)advancedTab.textContent=ui('HSK 7–9 高级词库 · 5,600 词','HSK 7–9 lexicon · 5,600 words');
+  document.getElementById('themedVocabIntro').textContent=ui('按生活场景分类，循序积累中文词汇。','Build your Chinese vocabulary, one everyday topic at a time.');
+  const themedTab=document.querySelector('[data-themed-library-tab="themed"]'),advancedTab=document.querySelector('[data-themed-library-tab="advanced"]');if(themedTab)themedTab.textContent=ui('主题分类','Topics');if(advancedTab)advancedTab.textContent=ui('HSK 7–9 高级词库','HSK 7–9 lexicon');
   const domainFilter=document.getElementById('themedDomainFilter'),domains=typeof themedVocabularyDomains==='undefined'?[{id:'all',title:'全部领域',titleEn:'All areas'}]:themedVocabularyDomains;
   document.getElementById('themedDomainLabel').textContent=ui('学习领域','Area');
   domainFilter.setAttribute('aria-label',ui('按学习领域筛选','Filter by learning area'));
-  domainFilter.innerHTML=domains.map(domain=>'<button class="theme-domain-btn'+(themedDomainFilter===domain.id?' active':'')+'" type="button" onclick="filterThemedDomain(\''+escapeHtml(domain.id)+'\')"><span>'+escapeHtml(ui(domain.title,domain.titleEn))+'</span></button>').join('');
+  let domainSelect=domainFilter.querySelector('select');if(!domainSelect){domainSelect=document.createElement('select');domainSelect.id='themeDomainSelect';domainSelect.addEventListener('change',()=>filterThemedDomain(domainSelect.value));domainFilter.replaceChildren(domainSelect);}
+  domainSelect.setAttribute('aria-label',ui('学习领域','Learning area'));domainSelect.innerHTML=domains.map(domain=>'<option value="'+escapeHtml(domain.id)+'">'+escapeHtml(ui(domain.title,domain.titleEn))+'</option>').join('');domainSelect.value=themedDomainFilter;
   const filter=document.getElementById('themedFilter');filter.setAttribute('aria-label',ui('按词性筛选','Filter by part of speech'));
   document.getElementById('themedPosLabel').textContent=ui('词语类型','Word type');
   const filters=[['all','全部','All'],['noun','名词','Nouns'],['verb','动词','Verbs'],['adjective','形容词','Adjectives'],['adverb','副词','Adverbs'],['measure','量词','Measure words'],['conjunction','连词','Conjunctions']];
-  filter.innerHTML=filters.map(([id,zh,en])=>'<button class="theme-filter-btn'+(themedDeckFilter===id?' active':'')+'" type="button" onclick="filterThemedDecks(\''+id+'\')">'+escapeHtml(ui(zh,en))+'</button>').join('');
+  let posSelect=filter.querySelector('select');if(!posSelect){posSelect=document.createElement('select');posSelect.id='themePosSelect';posSelect.addEventListener('change',()=>filterThemedDecks(posSelect.value));filter.replaceChildren(posSelect);}
+  posSelect.setAttribute('aria-label',ui('词性','Part of speech'));posSelect.innerHTML=filters.map(([id,zh,en])=>'<option value="'+id+'">'+escapeHtml(ui(id==='all'?'全部词性':zh,id==='all'?'All word types':en))+'</option>').join('');posSelect.value=themedDeckFilter;
   const decks=themedVocabularyDecks.filter(deck=>(themedDomainFilter==='all'||deck.domain===themedDomainFilter)&&(themedDeckFilter==='all'||deck.pos.includes(themedDeckFilter)));
   const totalWords=decks.reduce((sum,deck)=>sum+deck.words.length,0),summary=document.getElementById('themeLibrarySummary');
-  summary.innerHTML='<strong>'+decks.length+'</strong><span>'+ui('个主题','topics')+'</span><i></i><strong>'+totalWords+'</strong><span>'+ui('个分类精学词','curated themed words')+'</span><i></i><strong>5,600</strong><span>'+ui('个高级词目','advanced entries')+'</span>';
+  summary.innerHTML='<span><strong>'+themedVocabularyDecks.length+'</strong> '+ui('个主题','topics')+'</span><span><strong>'+themedVocabularyDecks.reduce((sum,deck)=>sum+deck.words.length,0)+'</strong> '+ui('个精学词','curated words')+'</span><span><strong>5,600</strong> '+ui('个高级词目','advanced entries')+'</span>';
   const domainName=id=>domains.find(domain=>domain.id===id),visibleDecks=decks.slice(0,themedDeckVisibleCount);
-  grid.innerHTML=visibleDecks.map(deck=>{const progress=readThemedProgress(deck.id),count=progress.reviewed.filter(word=>deck.words.some(item=>item.word===word)).length,percent=Math.round(count/deck.words.length*100),label=count?ui('继续背词','Continue deck'):ui('开始背词','Start deck'),domain=domainName(deck.domain);return '<article class="theme-deck-card" data-deck="'+escapeHtml(deck.id)+'"><div class="theme-deck-top"><span class="theme-deck-mark">'+escapeHtml(deck.mark)+'</span><span class="theme-deck-badges"><small>'+escapeHtml(domain?ui(domain.title,domain.titleEn):'')+'</small><span class="pill">'+escapeHtml(deck.level)+'</span></span></div><h3 class="theme-deck-title">'+escapeHtml(deck.title)+'</h3><p class="theme-deck-en" lang="en">'+escapeHtml(deck.titleEn)+'</p><div class="theme-deck-meta"><span>'+ui(deck.words.length+' 个词',deck.words.length+' words')+'</span><strong>'+ui(count+' 个已学',count+' learned')+'</strong></div><div class="theme-deck-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+percent+'"><span style="width:'+percent+'%"></span></div><button class="secondary wide" type="button" onclick="openThemedDeck(\''+escapeHtml(deck.id)+'\')">'+label+'</button></article>'}).join('');
-  const moreWrap=document.getElementById('themeDeckMoreWrap'),more=document.getElementById('themeDeckMore'),remaining=Math.max(0,decks.length-visibleDecks.length);moreWrap.hidden=!remaining;if(remaining)more.textContent=ui('显示更多主题（还剩 '+remaining+' 组）','Show more topics ('+remaining+' remaining)');
+  let categoryHead=document.getElementById('themeCategoryHead');if(!categoryHead){categoryHead=document.createElement('div');categoryHead.id='themeCategoryHead';categoryHead.className='theme-category-head';grid.before(categoryHead);}
+  const selectedDomain=domainName(themedDomainFilter);
+  categoryHead.innerHTML=(themedDomainFilter==='all'?'':'<button class="ghost" type="button" onclick="filterThemedDomain(\'all\')">'+ui('← 全部领域','← All areas')+'</button>')+'<h3>'+escapeHtml(themedDomainFilter==='all'?ui('学习领域','Learning areas'):ui(selectedDomain?.title||'',selectedDomain?.titleEn||''))+'</h3>';
+  if(themedDomainFilter==='all'){
+    grid.innerHTML=domains.filter(domain=>domain.id!=='all').map(domain=>{const group=decks.filter(deck=>deck.domain===domain.id);if(!group.length)return '';return '<button class="theme-category-card" type="button" data-domain="'+escapeHtml(domain.id)+'" onclick="filterThemedDomain(\''+escapeHtml(domain.id)+'\')"><span class="theme-category-copy"><strong>'+escapeHtml(ui(domain.title,domain.titleEn))+'</strong><span class="theme-category-description">'+escapeHtml(group.slice(0,4).map(deck=>ui(deck.title,deck.titleEn)).join(ui('、',', ')))+'</span><small>'+ui(group.reduce((sum,deck)=>sum+deck.words.length,0)+' 词 · '+group.length+' 个主题',group.reduce((sum,deck)=>sum+deck.words.length,0)+' words · '+group.length+' topics')+'</small></span><span class="theme-category-arrow" aria-hidden="true">→</span></button>';}).join('');
+  }else{
+    grid.innerHTML=visibleDecks.map(deck=>{const progress=readThemedProgress(deck.id),count=progress.reviewed.filter(word=>deck.words.some(item=>item.word===word)).length;return '<button class="theme-category-card" type="button" data-deck="'+escapeHtml(deck.id)+'" onclick="openThemedDeck(\''+escapeHtml(deck.id)+'\')"><span class="theme-category-copy"><strong class="theme-deck-title">'+escapeHtml(deck.title)+'</strong><span class="theme-category-description" lang="en">'+escapeHtml(deck.titleEn)+'</span><small>'+ui(deck.words.length+' 词 · 已学 '+count,deck.words.length+' words · '+count+' learned')+'</small></span><span class="theme-category-arrow" aria-hidden="true">→</span></button>';}).join('');
+  }
+  if(!grid.innerHTML)grid.innerHTML='<p class="theme-empty" role="status">'+ui('没有符合筛选条件的主题，请调整领域或词性。','No topics match these filters. Try another area or word type.')+'</p>';
+  const moreWrap=document.getElementById('themeDeckMoreWrap'),more=document.getElementById('themeDeckMore'),remaining=themedDomainFilter==='all'?0:Math.max(0,decks.length-visibleDecks.length);moreWrap.hidden=!remaining;if(remaining)more.textContent=ui('显示更多主题（还剩 '+remaining+' 组）','Show more topics ('+remaining+' remaining)');
 }
 function filterThemedDomain(filter){themedDomainFilter=filter;themedDeckVisibleCount=12;renderThemedDecks()}
 function filterThemedDecks(filter){themedDeckFilter=filter;themedDeckVisibleCount=12;renderThemedDecks()}
@@ -597,7 +618,7 @@ function renderCourses(level='全部'){
   scheduleUiLanguage();
 }
 function filterCourses(level,button){document.querySelectorAll('.level-filters .filter-btn').forEach(b=>b.classList.toggle('active',b===button));document.getElementById('pinyinLab')?.classList.toggle('hidden-by-filter',level!=='全部'&&level!=='HSK 1');renderCourses(level)}
-function showLessonCatalog(){document.getElementById('courseCatalog').classList.remove('hidden');document.getElementById('lessonDetail').classList.add('hidden');ensurePinyinLab()}
+function showLessonCatalog(){document.getElementById('courseCatalog').classList.remove('hidden');document.getElementById('lessonDetail').classList.add('hidden');ensureLearningPages()}
 function openLesson(id){const l=lessons.find(x=>x.id===id);if(!l)return;currentLesson=l;learningState.lastLessonId=id;markLearningActivity();saveLearningState();closeCourseModal();showView('learn');document.getElementById('courseCatalog').classList.add('hidden');document.getElementById('lessonDetail').classList.remove('hidden');renderLesson();window.scrollTo({top:0,behavior:'smooth'})}
 function openCurrentLesson(){openLesson(homeRecommendedLessonId||currentLesson.id)}
 function openCoursePreview(id){const c=courses.find(x=>x.id===id);if(!c)return;document.getElementById('courseModalLevel').textContent=c.level+' · HSK 3.0 · '+c.id;document.getElementById('courseModalTitle').textContent=c.title;document.getElementById('courseModalScene').textContent=c.scene;document.getElementById('courseModalGrammar').textContent=c.grammar;document.getElementById('courseModalVocab').textContent=c.vocab;document.getElementById('courseModalListening').textContent=c.listening;document.getElementById('courseModalSpeaking').textContent=c.speaking;document.getElementById('courseModalReview').textContent=c.review;const standard=document.getElementById('courseModalStandard');if(standard)standard.textContent=c.topicPath.join(' · ')+'｜'+c.task;const action=document.getElementById('courseModalAction');action.textContent=ui('进入课程','Open lesson');action.onclick=()=>openLesson(id);openManagedModal(courseModal,'#courseModalAction')}
@@ -858,6 +879,7 @@ ensureLearningQuickNav();
 ensureThemedVocabularySection();
 ensurePinyinLab();
 ensureAdvancedVocabularySection();
+ensureLearningPages();
 ensureAdvancedLicenseNotice();
 renderHSK30Overview();
 renderCourses();
