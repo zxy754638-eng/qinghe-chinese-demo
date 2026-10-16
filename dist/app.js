@@ -408,12 +408,12 @@ let pinyinMode='initials',lastPinyinSample={a:'妈',s:'mā'};
 
 function ensurePinyinLab(){
   if(document.getElementById('pinyinLab'))return;
-  const summary=document.querySelector('#courseCatalog .course-summary');
-  if(!summary)return;
+  const summary=document.querySelector('#courseCatalog .course-summary'),catalog=document.getElementById('courseCatalog');
+  if(!catalog)return;
   const lab=document.createElement('section');
   lab.id='pinyinLab';lab.className='card pinyin-lab';
   lab.innerHTML='<div class="pinyin-lab-head"><div><span class="pinyin-lab-badge">HSK 1 · 拼音</span><h2>拼音发音室</h2><p class="sub">从声母、韵母和声调开始，点击卡片听标准普通话示范。</p></div><div class="pinyin-mini-actions"><button class="secondary" type="button" onclick="playPinyinToneSeries()">播放全部声调</button><button class="secondary" type="button" onclick="repeatLastPinyin()">慢速播放</button></div></div><div class="pinyin-lab-body"><div class="pinyin-tabs" role="tablist" aria-label="拼音分类"><button class="pinyin-tab active" type="button" data-pinyin-mode="initials" onclick="renderPinyinLab(\'initials\')">声母</button><button class="pinyin-tab" type="button" data-pinyin-mode="finals" onclick="renderPinyinLab(\'finals\')">韵母</button><button class="pinyin-tab" type="button" data-pinyin-mode="tones" onclick="renderPinyinLab(\'tones\')">声调</button></div><div id="pinyinLabContent"></div><p class="pinyin-help">点击任意卡片听发音。先听，再观察口形并模仿。</p></div>';
-  summary.insertAdjacentElement('afterend',lab);
+  if(summary)summary.insertAdjacentElement('afterend',lab);else catalog.append(lab);
   renderPinyinLab('initials');
 }
 function pinyinButton(item,tone=false){
@@ -801,7 +801,7 @@ function gradeReview(level){
   if(queueItem){const oldInterval=Math.max(1,Number(queueItem.interval)||1);days=level==='hard'?1:level==='good'?Math.max(3,Math.round(oldInterval*2.2)):Math.max(7,Math.round(oldInterval*3));queueItem.interval=days;queueItem.ease=Math.max(1.3,(Number(queueItem.ease)||2.5)+(level==='hard'?-.2:level==='easy'?.1:0));queueItem.repetitions=(Number(queueItem.repetitions)||0)+1;queueItem.lastGrade=level;queueItem.dueAt=Date.now()+days*DAY_MS}
   learningState.stats.selfRatings=learningState.stats.selfRatings||{good:0,hard:0};learningState.stats.selfRatings[level]=(Number(learningState.stats.selfRatings[level])||0)+1;
   if(['choice','input'].includes(item.mode)){learningState.stats.objectiveReviewed=(Number(learningState.stats.objectiveReviewed)||0)+1;if(currentReviewCorrect)learningState.stats.objectiveCorrect=(Number(learningState.stats.objectiveCorrect)||0)+1;}
-  learningState.stats.reviewed++;if(currentReviewCorrect)learningState.stats.correct++;markLearningActivity();saveLearningState();renderLearningState();toastMsg(ui('已根据你的选择更新复习时间','Review time updated from your rating')+' · '+dueLabel(Date.now()+days*DAY_MS));
+  learningState.stats.reviewed++;if(currentReviewCorrect)learningState.stats.correct++;markLearningActivity();saveLearningState();renderLearningState();toastMsg(queueItem?ui('已根据你的选择更新复习时间','Review time updated from your rating')+' · '+dueLabel(Date.now()+days*DAY_MS):ui('已记录本次练习','Practice recorded'));
   reviewIndex++;if(reviewIndex>=reviewItems.length){document.getElementById('reviewTypeLabel').textContent=ui('本轮完成','Round complete');document.getElementById('reviewProgressBar').style.width='100%';document.getElementById('reviewQuestion').textContent=ui(reviewItems.length+' 项练习已完成','You completed '+reviewItems.length+' review activities.');document.getElementById('reviewMedia').innerHTML='<p class="sub">'+ui('系统会根据刚才的难度选择安排下一次出现。','The next review will be scheduled from the difficulty you chose.')+'</p>';document.getElementById('reviewOptions').innerHTML='<button class="secondary" onclick="resetReview()">'+ui('再练一轮','Practice another round')+'</button>';document.getElementById('reviewInput').classList.add('hidden');document.getElementById('reviewCheckBtn').classList.add('hidden');document.getElementById('reviewFeedback').classList.remove('show');document.getElementById('reviewGrades').classList.remove('show');return}renderReviewItem()
 }
 function resetReview(){reviewItems=buildReviewItems();reviewIndex=0;renderReviewItem()}
