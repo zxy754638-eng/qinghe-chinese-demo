@@ -1,4 +1,4 @@
-const CACHE_NAME='qinghe-shell-v65';
+const CACHE_NAME='qinghe-shell-v66';
 const APP_SHELL=['./','./index.html','./app.js?v=65','./auth.js?v=65','./pwa.js?v=65','./data-words.js?v=65','./data-lessons.js?v=65','./data-upper-lessons.js?v=65','./data-upper-words.js?v=65','./data-advanced-lessons.js?v=65','./data-advanced-words.js?v=65','./data-dictionary-fixes.js?v=65','./data-themed-vocab.js?v=65','./data-themed-example-en.js?v=65','./data-themed-vocab-balanced.js?v=65','./data-hsk30-syllabus.js?v=65','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
 
 APP_SHELL.push('./exam.css?v=65','./exam-core.js?v=65','./data-exam-demo.js?v=65','./exam.js?v=65','./exam-paper-template.json','./exam-import-guide.md');
