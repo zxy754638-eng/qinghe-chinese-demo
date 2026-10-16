@@ -90,7 +90,8 @@
     const claims=getClaims();
     const email=claims.email||'';
     const phone=claims.phone_number||claims.phone||claims.mobile||'';
-    const name=claims.name||claims.nickname||claims.preferred_username||claims.username||email||phone||text('学习者','Learner');
+    const candidate=claims.nickname||claims.name||claims.preferred_username||claims.username||'';
+    const name=candidate&&!String(candidate).includes('@')&&!/^\+?\d[\d\s-]{6,}$/.test(String(candidate))?candidate:text('学习者','Learner');
     const initial=String(name).trim().charAt(0).toUpperCase()||'A';
     return {name:String(name),email:String(email),phone:String(phone),initial};
   }
@@ -131,7 +132,7 @@
       byId('authModalAvatar').textContent=identity.initial;
       byId('authUserName').textContent=identity.name;
       byId('authUserEmail').textContent=identity.email||text('未提供','Not provided');
-      byId('authUserPhone').textContent=identity.phone||text('未提供','Not provided');
+      byId('authUserPhone').textContent=identity.phone?identity.phone.replace(/(\d{3})\d+(\d{4})$/,'$1****$2'):text('未提供','Not provided');
       byId('authSyncNote').classList.remove('hidden');
     }
 
@@ -143,7 +144,7 @@
     if(profileAvatar)profileAvatar.textContent=signedIn?identity.initial:'A';
     if(profileTitle)profileTitle.textContent=text('账户与登录','Account & sign-in');
     if(profileStatus){
-      profileStatus.textContent=signedIn?text('已连接 Authing','Authing connected'):text('未登录','Not signed in');
+      profileStatus.textContent=signedIn?text('已登录','Signed in'):text('未登录','Not signed in');
       profileStatus.classList.toggle('signed-in',signedIn);
     }
     if(profileDescription)profileDescription.textContent=signedIn
