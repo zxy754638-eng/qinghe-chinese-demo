@@ -1,10 +1,10 @@
-const CACHE_NAME='qinghe-shell-v59';
-const APP_SHELL=['./','./index.html','./app.js?v=59','./auth.js?v=59','./pwa.js?v=59','./data-words.js?v=59','./data-lessons.js?v=59','./data-upper-lessons.js?v=59','./data-upper-words.js?v=59','./data-advanced-lessons.js?v=59','./data-advanced-words.js?v=59','./data-dictionary-fixes.js?v=59','./data-themed-vocab.js?v=59','./data-themed-example-en.js?v=59','./data-themed-vocab-balanced.js?v=59','./data-hsk30-syllabus.js?v=59','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
+const CACHE_NAME='qinghe-shell-v62';
+const APP_SHELL=['./','./index.html','./app.js?v=62','./auth.js?v=62','./pwa.js?v=62','./data-words.js?v=62','./data-lessons.js?v=62','./data-upper-lessons.js?v=62','./data-upper-words.js?v=62','./data-advanced-lessons.js?v=62','./data-advanced-words.js?v=62','./data-dictionary-fixes.js?v=62','./data-themed-vocab.js?v=62','./data-themed-example-en.js?v=62','./data-themed-vocab-balanced.js?v=62','./data-hsk30-syllabus.js?v=62','./data/hsk30-review-report.json','./data/hsk79-vocabulary.min.json','./licenses/GUSHI-HSK30-NOTICE.txt','./vendor/axios.min.js','./vendor/authing-web.global.js','./manifest.webmanifest','./icon.svg','./share-card.png'];
 
-APP_SHELL.push('./exam.css?v=59','./exam-core.js?v=59','./data-exam-demo.js?v=59','./exam.js?v=59','./exam-paper-template.json','./exam-import-guide.md');
+APP_SHELL.push('./exam.css?v=62','./exam-core.js?v=62','./data-exam-demo.js?v=62','./exam.js?v=62','./exam-paper-template.json','./exam-import-guide.md');
 
-APP_SHELL.push('./advanced-study.js?v=59','./advanced-study.css?v=59');
-APP_SHELL.push('./experience.css?v=59','./experience-core.js?v=59','./experience.js?v=59','./fonts/InterVariable.woff2','./fonts/SourceHanSansCN-VF.woff2');
+APP_SHELL.push('./advanced-study.js?v=62','./advanced-study.css?v=62');
+APP_SHELL.push('./experience.css?v=62','./experience-core.js?v=62','./experience.js?v=62','./fonts/InterVariable.woff2','./fonts/SourceHanSansCN-VF.woff2');
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('qinghe-')&&key!==CACHE_NAME).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',event=>{

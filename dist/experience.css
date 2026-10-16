@@ -23,3 +23,81 @@ body.experience-refresh h1{font-size:var(--type-page);font-weight:var(--weight-t
 @media(max-width:360px){.experience-refresh .app{padding-inline:12px}.exp-course-row{gap:8px;padding:14px 10px}.experience-refresh .exp-course-copy h3{font-size:18px}.exp-course-enter{max-width:62px;font-size:11px}.exp-course-number{width:28px;height:28px}.exp-goal>div:first-child{font-size:12px}.exp-three-stats strong{font-size:16px}.exp-personal small{font-size:12px}}
 body.experience-refresh .view h1{font-family:var(--font-ui);font-size:var(--type-page);font-weight:600;line-height:var(--leading-title)}
 @media(prefers-reduced-motion:reduce){.experience-refresh .view{animation:none}}
+
+/* Shared surface tokens derive from the selected theme, never from the reference image. */
+body.experience-refresh{--surface-profile:color-mix(in srgb,var(--sage) 82%,var(--paper));--surface-avatar:color-mix(in srgb,var(--leaf) 18%,var(--sage));--surface-stat-a:color-mix(in srgb,var(--sage) 42%,var(--paper));--surface-stat-b:color-mix(in srgb,var(--sage) 27%,var(--paper));--surface-stat-c:color-mix(in srgb,var(--soft) 65%,var(--paper));--radius-module:18px;--module-gap:16px;--icon-size:22px;--leading-control:1.4;font-family:var(--font-ui);font-size:var(--type-body);line-height:var(--leading-body)}
+body.experience-refresh :is(button,input,select,textarea,label,summary),body.experience-refresh :is(.word,.pinyin-key,.pinyin-item,.theme-deck-mark,.theme-word-hanzi,.entry-word,.result-word,.review-question,.advanced-word,.advanced-study-word,.advanced-study-hanzi,.theme-category-title,.home-lesson-title){font-family:var(--font-ui)}
+body.experience-refresh .view :is(h1,h2,h3,h4){font-family:var(--font-ui);line-height:var(--leading-title)}
+body.experience-refresh :is(.hanzi,.count b,.home-progress-ring strong,.pinyin-symbol,.review-card .tag,.week-card .sub){font-family:var(--font-ui)}
+body.experience-refresh #learningPageTitle{font-size:var(--type-page);font-weight:var(--weight-title)}
+body.experience-refresh :is(.top-actions,.topbar)>button[aria-label*="搜索"]{display:none}
+.exp-profile-main .exp-personal,.exp-profile-main .exp-record-summary,.exp-profile-links,.exp-profile-main .exp-module{border-radius:var(--radius-module);box-shadow:none}
+.exp-profile-main .exp-personal{background:var(--surface-profile);padding:24px;margin:0;align-items:center}
+.exp-personal .exp-avatar{background:var(--surface-avatar);color:var(--leaf)}
+.exp-avatar svg{width:30px;height:30px;flex:none}
+.exp-personal-copy{overflow-wrap:anywhere}
+.exp-personal .exp-account-link{font-size:13px;color:var(--leaf);font-weight:500;line-height:1.6;margin-top:4px}
+.exp-personal-arrow{display:none}
+.exp-profile-main .exp-record-summary{background:var(--paper);border:0;padding:22px;margin:0}
+.exp-profile-main .exp-three-stats>div{border-radius:12px;padding:12px 6px;background:var(--surface-stat-a)}
+.exp-profile-main .exp-three-stats>div:nth-child(2){background:var(--surface-stat-b)}
+.exp-profile-main .exp-three-stats>div:nth-child(3){background:var(--surface-stat-c)}
+.exp-profile-main .exp-three-stats strong{color:var(--leaf);font-size:22px;font-weight:500}
+.exp-record-summary .exp-section-title h2{font-size:20px}
+.exp-record-summary>.exp-row{border:0;padding:12px 0 0;min-height:44px;font-size:13px;color:var(--leaf)}
+.exp-record-summary .exp-progress{background:var(--surface-avatar)}
+.exp-module-icon{display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:12px;background:var(--surface-stat-a);color:var(--leaf)}
+.exp-module-icon svg{width:var(--icon-size);height:var(--icon-size)}
+.exp-profile-main .exp-module{display:flex;align-items:center;gap:12px;text-align:left;min-width:0;margin:0;padding:18px;background:var(--paper);color:var(--ink);border:0;min-height:80px;font-size:15px}
+.exp-module-copy{display:grid;gap:6px;flex:1;min-width:0;overflow-wrap:anywhere}
+.exp-module-copy strong{font-size:15px;font-weight:500;line-height:var(--leading-control)}
+.exp-module-copy small{font-size:13px;color:var(--muted);font-weight:400;line-height:1.6}
+.exp-module-arrow{color:var(--muted);flex:none}
+.exp-theme-swatches{display:flex;gap:6px;margin-top:2px}.exp-theme-swatches i{width:15px;height:15px;border-radius:50%;background:var(--leaf)}.exp-theme-swatches i:nth-child(2){background:var(--sage);border:1px solid var(--line)}.exp-theme-swatches i:nth-child(3){background:var(--soft);border:1px solid var(--line)}
+.exp-desktop-tools{display:none}
+@media(min-width:981px){
+ .experience-refresh .exp-profile-main{max-width:1200px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--module-gap)}
+ .exp-profile-main>*+*{margin:0}.exp-profile-links,.exp-desktop-tools{display:contents}
+ .exp-profile-main .exp-personal{grid-column:span 4;flex-direction:column;text-align:center;justify-content:center;min-height:250px}
+ .exp-personal>span:nth-child(2){flex:0;gap:8px}.exp-personal .exp-avatar{width:64px;height:64px}
+ .exp-profile-main .exp-record-summary{grid-column:span 8;min-width:0}
+ .exp-profile-main .exp-module{grid-column:span 3;flex-wrap:wrap;align-content:center;min-height:120px}
+ .exp-profile-main .exp-module-wordbook{grid-row:2;grid-column:1 / span 3}.exp-profile-main .exp-module-preferences{grid-row:2;grid-column:4 / span 3}.exp-profile-main .exp-module-appearance{grid-row:2;grid-column:7 / span 3}.exp-profile-main .exp-module-language{grid-row:2;grid-column:10 / span 3}
+ .exp-profile-main .exp-module-data{grid-row:3;grid-column:1 / span 6;min-height:94px}.exp-profile-main .exp-module-help{grid-row:3;grid-column:7 / span 6;min-height:94px}
+ .exp-profile-main .exp-module-settings{display:none}.exp-profile-main .exp-three-stats{margin:14px 0 18px}
+}
+@media(min-width:981px) and (max-width:1150px){
+ .exp-profile-main .exp-personal{grid-column:span 4}.exp-profile-main .exp-record-summary{grid-column:span 8}
+ .exp-profile-main .exp-module-wordbook{grid-column:1 / span 6;grid-row:2}.exp-profile-main .exp-module-preferences{grid-column:7 / span 6;grid-row:2}.exp-profile-main .exp-module-appearance{grid-column:1 / span 6;grid-row:3}.exp-profile-main .exp-module-language{grid-column:7 / span 6;grid-row:3}.exp-profile-main .exp-module-data{grid-column:1 / span 6;grid-row:4}.exp-profile-main .exp-module-help{grid-column:7 / span 6;grid-row:4}
+}
+body.experience-refresh.exp-dictionary-open .site-footer{display:none}
+body.experience-refresh #dictionary .exp-dictionary-stage{display:block;min-height:0;width:100%;padding:0}
+body.experience-refresh #dictionary.exp-dictionary-idle .exp-dictionary-stage{min-height:var(--dict-available,60dvh);display:flex;align-items:center;justify-content:center}
+.exp-dictionary-group{width:100%;max-width:760px;min-width:0;margin-inline:auto}
+body.experience-refresh #dictionary .dict-search{width:100%;display:flex;align-items:stretch;gap:10px;margin:0}
+body.experience-refresh #dictionary .dict-search input{flex:1;width:0;min-width:0;min-height:48px;padding:12px 16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-control);font-size:15px;line-height:1.4}
+body.experience-refresh #dictionary .dict-search button{display:flex;align-items:center;justify-content:center;text-align:center;flex:none;min-width:88px;min-height:48px;margin:0;padding:10px 20px;font-size:15px;line-height:1.4;box-shadow:none;border-radius:var(--radius-control)}
+body.experience-refresh #dictionary .dict-results,body.experience-refresh #dictionary .dict-entry,body.experience-refresh #dictFeedback{max-width:900px;margin-inline:auto}
+body.experience-refresh #dictionary:not(.exp-dictionary-idle) .exp-dictionary-stage{margin-bottom:22px}
+body.experience-refresh #dictionary .exp-search-history{max-width:none;margin-top:20px}
+.exp-search-history .exp-section-title{margin-bottom:8px}.exp-search-history .exp-section-title h2{font-size:14px;font-weight:500}.exp-search-history .exp-section-title button{font-size:12px;min-height:36px;padding:4px 0}
+.exp-history-list{display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;max-height:var(--dict-history-max,220px);overflow-y:auto;overscroll-behavior:contain;padding:2px}
+.exp-search-history .exp-history-row{display:flex;align-items:center;max-width:100%;border:0;background:var(--surface-stat-a);border-radius:99px;padding:0 2px 0 12px;gap:0;min-height:40px}
+.exp-search-history .exp-history-query{flex:0 1 auto;font-size:14px;line-height:1.5;padding:7px 2px;overflow-wrap:anywhere;min-width:0;max-width:none}
+.exp-search-history .exp-history-delete{min-height:38px;min-width:36px;padding:5px;flex:none}
+body.experience-refresh #dictionary.exp-keyboard-open .exp-dictionary-stage{min-height:0;align-items:flex-start;padding-top:10px}
+@media(max-width:980px){
+ body.experience-refresh #courseCatalog>.exp-brand{display:none;margin:0;padding:0}
+ body.experience-refresh #learningQuickNav .learning-quick-btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;line-height:var(--leading-control);padding:8px 4px}
+ body.experience-refresh #learningQuickNav .learning-quick-btn strong{flex:none;margin:0;width:auto;text-align:center;line-height:var(--leading-control)}
+ body.experience-refresh #themedVocabulary .themed-vocab-head{display:none;margin:0;padding:0}
+ body.experience-refresh #themedVocabulary .themed-library-tabs{margin-top:0;margin-bottom:14px;align-items:stretch}
+ body.experience-refresh #themedVocabulary .themed-library-tab{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;line-height:var(--leading-control);padding:9px 8px;box-shadow:none}
+ body.experience-refresh .exp-profile-main{display:grid;gap:14px}.exp-profile-main>*+*{margin-top:0}
+ .exp-profile-main .exp-personal{padding:20px 18px;gap:14px}.exp-personal .exp-avatar{width:52px;height:52px}.exp-personal .exp-personal-copy{gap:4px}.exp-personal .exp-personal-copy strong{font-size:20px}.exp-personal .exp-personal-copy small{font-size:12px}.exp-personal .exp-account-link{display:none}.exp-personal-arrow{display:block;color:var(--leaf)}
+ .exp-profile-main .exp-record-summary{padding:20px 16px}.exp-profile-main .exp-three-stats{gap:6px;margin:16px 0}.exp-profile-main .exp-three-stats>div{padding:12px 3px}.exp-profile-main .exp-three-stats strong{font-size:18px;min-height:29px}.exp-profile-main .exp-three-stats small{font-size:12px}
+ .exp-profile-links{display:block;background:var(--paper);padding:0 16px}.exp-profile-main .exp-profile-links .exp-module{background:transparent;border-radius:0;border-bottom:1px solid var(--line);padding:16px 0;min-height:74px}.exp-profile-main .exp-profile-links .exp-module:last-child{border-bottom:0}.exp-profile-links .exp-module-copy{display:flex;align-items:center;justify-content:space-between;gap:8px}.exp-profile-links .exp-module-help small{display:none}.exp-profile-links .exp-module-copy small{font-size:12px;text-align:right}.exp-profile-links .exp-module-icon{width:36px;height:36px;border-radius:10px}
+ body.experience-refresh #dictionary .dict-search{gap:8px}body.experience-refresh #dictionary .dict-search input{font-size:16px;padding:12px 10px}body.experience-refresh #dictionary .dict-search button{min-width:64px;padding:10px 12px}
+ body.experience-refresh #dictionary .exp-dictionary-group{max-width:600px}
+}
+@media(max-width:360px){.exp-profile-main .exp-three-stats strong{font-size:16px}.exp-profile-main .exp-three-stats small{font-size:11px}.exp-profile-main .exp-personal{padding:18px 14px}.exp-profile-links{padding-inline:14px}.exp-profile-main .exp-module{gap:8px}.exp-profile-links .exp-module-copy{flex-wrap:wrap}.exp-profile-main .exp-record-summary{padding-inline:12px}}

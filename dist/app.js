@@ -70,6 +70,7 @@ function completeCurrentLesson(){
 
 // ---------- 界面语言（学习内容始终保留中文） ----------
 const UI_TEXT=Object.freeze({
+  '搜索汉字、拼音或英文':'Search Chinese, pinyin or English',
   '输入汉字、繁体字、拼音或英文，直接查发音、义项、搭配和例句。':'Search with simplified Chinese, traditional Chinese, pinyin or English to find pronunciation, meanings, collocations and examples.','本来 / 本來 / běn lái / ben3 lai2 / late':'本来 / 本來 / běn lái / ben3 lai2 / late',
   '主要导航':'Main navigation','首页':'Home','学习':'Learn','复习':'Review','模考':'Mock exams','模考错题':'Exam review','词典':'Dictionary','我的':'Profile',
   '中文辅助模式':'Chinese helper mode','切换中文辅助模式':'Toggle Chinese helper mode','开启后，有帮助的词语会显示虚线。鼠标停留看拼音，点击查看完整词卡。':'Helpful words have dotted underlines. Hover to see pinyin, or click for the full word card.',
