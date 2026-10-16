@@ -172,3 +172,28 @@ body.experience-refresh #learningQuickNav .learning-quick-btn strong{line-height
 }
 @media(min-width:981px) and (max-width:1050px){.exp-review-overview{grid-template-columns:1fr}}
 @media(max-width:360px){.exp-review-card-head{align-items:flex-start}.exp-review-due{white-space:normal}.exp-practice-row{gap:8px}.exp-practice-row small{font-size:12px}}
+
+/* Dictionary-only, quiet landscape: the search/history group stays unobstructed. */
+body.experience-refresh.exp-dictionary-idle-open .app{padding-bottom:0}
+body.experience-refresh.exp-dictionary-idle-open main{padding-bottom:0}
+body.experience-refresh #dictionary .exp-dictionary-stage{position:relative;isolation:isolate}
+body.experience-refresh #dictionary .exp-dictionary-group{position:relative;z-index:1;max-width:760px}
+body.experience-refresh #dictionary .dict-search{display:flex;align-items:center;gap:10px;padding:6px 7px 6px 18px;min-height:60px;max-width:none;border:1px solid var(--line);border-radius:999px;background:var(--paper);box-shadow:none}
+body.experience-refresh #dictionary .dict-search:focus-within{outline:2px solid color-mix(in srgb,var(--leaf) 20%,transparent);outline-offset:2px}
+body.experience-refresh #dictionary .dict-search input{width:0;min-width:0;min-height:44px;padding:8px 0;border:0;outline:0;border-radius:0;box-shadow:none;background:transparent;font-family:var(--font-ui);font-size:16px;line-height:1.5}
+.dict-search-icon{display:flex;align-items:center;justify-content:center;flex:none;width:20px;height:24px;color:var(--muted)}.dict-search-icon svg{width:20px;height:20px}
+body.experience-refresh #dictionary .dict-search .dict-search-submit{display:flex;align-items:center;justify-content:center;flex:0 0 46px;width:46px;min-width:46px;max-width:46px;min-height:46px;height:46px;padding:0;margin:0;border:0;border-radius:50%;background:var(--leaf);color:var(--paper);box-shadow:none}
+.dict-search-submit svg{width:23px;height:23px}.dict-search-submit:focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+.dict-scenery{position:absolute;z-index:0;left:0;right:0;pointer-events:none;user-select:none;color:var(--leaf);overflow:hidden}
+.dict-scenery svg{display:block;width:100%;height:100%;overflow:hidden}.dict-scenery .dict-scenery-compact{display:none}
+.dict-mountain-far{fill:currentColor;opacity:.095}.dict-mountain-near{fill:currentColor;opacity:.06}.dict-water{stroke:currentColor;stroke-width:1.2;stroke-linecap:round;fill:none;opacity:.11}.dict-boat{fill:currentColor;opacity:.24}.dict-oar{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round}
+body.experience-refresh #dictionary:not(.exp-dictionary-idle) .dict-scenery,body.experience-refresh #dictionary.exp-keyboard-open .dict-scenery{display:none}
+body.experience-refresh #dictionary .exp-search-history{padding-inline:12px}
+@media(max-width:980px){
+ body.experience-refresh #dictionary .dict-search{gap:9px;min-height:56px;padding:5px 6px 5px 14px}
+ body.experience-refresh #dictionary .dict-search input{font-size:16px;min-height:44px;padding:8px 0}
+ body.experience-refresh #dictionary .dict-search .dict-search-submit{flex-basis:44px;width:44px;min-width:44px;max-width:44px;height:44px;min-height:44px}
+ .dict-scenery .dict-scenery-wide{display:none}.dict-scenery .dict-scenery-compact{display:block}
+ body.experience-refresh #dictionary .exp-search-history{padding-inline:6px}
+}
+@media(max-width:360px){body.experience-refresh #dictionary .dict-search{gap:7px;padding-left:12px}.dict-search-icon,.dict-search-icon svg{width:18px}body.experience-refresh #dictionary .dict-search input{font-size:16px}}

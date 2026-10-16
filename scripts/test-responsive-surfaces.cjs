@@ -5,7 +5,7 @@ function check({width=390,height=844,visualHeight=height,navTop=760,submitted=fa
  const classes=new Set(),styles={},groupClasses=new Set(),input={};
  const dictionary={hidden:false,querySelector:()=>({hidden:!entry}),classList:{toggle:(key,on)=>on?classes.add(key):classes.delete(key)},getBoundingClientRect:()=>({top:12}),style:{setProperty:(key,value)=>styles[key]=value}};
  const context={dictionary,dictInput:input,searchSubmitted:submitted,route:{view:'dictionary'},mobile:()=>width<=980,innerHeight:height,scrollY:0,window:{visualViewport:{height:visualHeight,offsetTop:0}},document:{activeElement:focus?input:null,documentElement:{clientHeight:height},body:{classList:{toggle:(key,on)=>on?groupClasses.add(key):groupClasses.delete(key)}},querySelector:()=>({getBoundingClientRect:()=>({top:navTop})})}};
- vm.createContext(context);vm.runInContext(fn+';syncDictionaryLayout()',context);return {classes,styles};
+ context.positionDictionaryScenery=()=>{};vm.createContext(context);vm.runInContext(fn+';syncDictionaryLayout()',context);return {classes,styles};
 }
 let result=check();assert(result.classes.has('exp-dictionary-idle'));assert.equal(result.styles['--dict-available'],'736px');
 result=check({width:1366,height:900});assert.equal(result.styles['--dict-available'],'868px');
