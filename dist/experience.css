@@ -186,7 +186,7 @@ body.experience-refresh #dictionary .dict-search .dict-search-submit{display:fle
 .dict-search-submit svg{width:23px;height:23px}.dict-search-submit:focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
 .dict-scenery{position:absolute;z-index:0;left:0;right:0;pointer-events:none;user-select:none;color:var(--leaf);overflow:hidden}
 .dict-scenery svg{display:block;width:100%;height:100%;overflow:hidden}.dict-scenery .dict-scenery-compact{display:none}
-.dict-mountain-far{fill:currentColor;opacity:.095}.dict-mountain-near{fill:currentColor;opacity:.06}.dict-water{stroke:currentColor;stroke-width:1.2;stroke-linecap:round;fill:none;opacity:.11}.dict-boat{fill:currentColor;opacity:.24}.dict-oar{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round}
+.dict-ridge-back{opacity:.48}.dict-ridge-front{opacity:.82}.dict-water{stroke:currentColor;stroke-width:.8;stroke-linecap:round;fill:none;opacity:.1}.dict-boat{fill:currentColor;opacity:.42}.dict-figure{opacity:.85}.dict-oar{fill:none;stroke:currentColor;stroke-width:.8;stroke-linecap:round;opacity:.7}.dict-boat-reflection{opacity:.2}.dict-wake{fill:none;stroke:currentColor;stroke-width:.65;stroke-linecap:round;opacity:.3}
 body.experience-refresh #dictionary:not(.exp-dictionary-idle) .dict-scenery,body.experience-refresh #dictionary.exp-keyboard-open .dict-scenery{display:none}
 body.experience-refresh #dictionary .exp-search-history{padding-inline:12px}
 @media(max-width:980px){
