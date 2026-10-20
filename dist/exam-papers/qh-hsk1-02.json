@@ -1,0 +1,1107 @@
+{
+  "schemaVersion": 1,
+  "id": "qh-hsk1-02",
+  "version": "1.0-word-20261020",
+  "title": "HSK 一级模拟卷二",
+  "level": "HSK 1",
+  "durationMinutes": 40,
+  "readingDurationMinutes": 20,
+  "status": "draft",
+  "demo": false,
+  "instructions": "青禾中文原创练习卷，非官方试卷。每卷听力、阅读各 20 题，每题 1 分。当前内容待人工审校，听力音频待上传；阅读专项可先使用。",
+  "sections": [
+    {
+      "title": "听力第一部分",
+      "skill": "listening",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q01",
+          "number": 1,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "B 是猫，A 是狗，C 是鸟。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q01.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C"
+          ],
+          "transcript": "猫。",
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-q01-a.png",
+            "exam-papers/images/qh-hsk1-02-q01-b.png",
+            "exam-papers/images/qh-hsk1-02-q01-c.png"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q02",
+          "number": 2,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "C 中是一碗面条。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q02.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C"
+          ],
+          "transcript": "面条。",
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-q02-a.png",
+            "exam-papers/images/qh-hsk1-02-q02-b.png",
+            "exam-papers/images/qh-hsk1-02-q02-c.png"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q03",
+          "number": 3,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "B 中男子坐着；A 站着，C 在走路。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q03.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C"
+          ],
+          "transcript": "他坐在椅子上。",
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-q03-a.png",
+            "exam-papers/images/qh-hsk1-02-q03-b.png",
+            "exam-papers/images/qh-hsk1-02-q03-c.png"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q04",
+          "number": 4,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "A 是自行车。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q04.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C"
+          ],
+          "transcript": "自行车。",
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-q04-a.png",
+            "exam-papers/images/qh-hsk1-02-q04-b.png",
+            "exam-papers/images/qh-hsk1-02-q04-c.png"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q05",
+          "number": 5,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "C 有四个杯子；A 有两个，B 有三个。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q05.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C"
+          ],
+          "transcript": "四个杯子。",
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-q05-a.png",
+            "exam-papers/images/qh-hsk1-02-q05-b.png",
+            "exam-papers/images/qh-hsk1-02-q05-c.png"
+          ]
+        }
+      ],
+      "instructions": "听词语或句子，选择相应的图片。每题听两遍。"
+    },
+    {
+      "title": "听力第二部分",
+      "skill": "listening",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q06",
+          "number": 6,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "恰当回答是“在医院”。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q06.mp3",
+          "options": [
+            "在医院",
+            "很喜欢",
+            "六点"
+          ],
+          "optionsPinyin": [
+            "zài yīyuàn",
+            "hěn xǐhuan",
+            "liù diǎn"
+          ],
+          "transcript": "你哥哥在哪儿工作？"
+        },
+        {
+          "id": "qh-hsk1-02-q07",
+          "number": 7,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "恰当回答是“一些水果”。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q07.mp3",
+          "options": [
+            "昨天",
+            "两个人",
+            "一些水果"
+          ],
+          "optionsPinyin": [
+            "zuótiān",
+            "liǎng ge rén",
+            "yìxiē shuǐguǒ"
+          ],
+          "transcript": "你想买什么？"
+        },
+        {
+          "id": "qh-hsk1-02-q08",
+          "number": 8,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "恰当回答是“八岁”。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q08.mp3",
+          "options": [
+            "不太贵",
+            "八岁",
+            "在这儿"
+          ],
+          "optionsPinyin": [
+            "bú tài guì",
+            "bā suì",
+            "zài zhèr"
+          ],
+          "transcript": "你女儿几岁了？"
+        },
+        {
+          "id": "qh-hsk1-02-q09",
+          "number": 9,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "恰当回答是“有时间”。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q09.mp3",
+          "options": [
+            "有时间",
+            "十五块",
+            "这是我的"
+          ],
+          "optionsPinyin": [
+            "yǒu shíjiān",
+            "shíwǔ kuài",
+            "zhè shì wǒ de"
+          ],
+          "transcript": "明天上午你有时间吗？"
+        },
+        {
+          "id": "qh-hsk1-02-q10",
+          "number": 10,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "恰当回答是“很好看”。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q10.mp3",
+          "options": [
+            "坐飞机",
+            "在家里",
+            "很好看"
+          ],
+          "optionsPinyin": [
+            "zuò fēijī",
+            "zài jiā lǐ",
+            "hěn hǎokàn"
+          ],
+          "transcript": "这件衣服怎么样？"
+        }
+      ],
+      "instructions": "听问句，选择恰当的回答。每题听两遍。"
+    },
+    {
+      "title": "听力第三部分",
+      "skill": "listening",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q11",
+          "number": 11,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "女子在桌前写信。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q11.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-l3-a.png",
+            "exam-papers/images/qh-hsk1-02-l3-b.png",
+            "exam-papers/images/qh-hsk1-02-l3-c.png",
+            "exam-papers/images/qh-hsk1-02-l3-d.png",
+            "exam-papers/images/qh-hsk1-02-l3-e.png",
+            "exam-papers/images/qh-hsk1-02-l3-f.png"
+          ],
+          "disabledOptions": [
+            4
+          ],
+          "transcript": "男：你在写什么？\n女：我在给中国朋友写信。"
+        },
+        {
+          "id": "qh-hsk1-02-q12",
+          "number": 12,
+          "type": "choice",
+          "points": 1,
+          "answer": 3,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "男子在跑步。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q12.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-l3-a.png",
+            "exam-papers/images/qh-hsk1-02-l3-b.png",
+            "exam-papers/images/qh-hsk1-02-l3-c.png",
+            "exam-papers/images/qh-hsk1-02-l3-d.png",
+            "exam-papers/images/qh-hsk1-02-l3-e.png",
+            "exam-papers/images/qh-hsk1-02-l3-f.png"
+          ],
+          "disabledOptions": [
+            4
+          ],
+          "transcript": "女：你每天早上都做什么？\n男：我先跑步，然后去上班。"
+        },
+        {
+          "id": "qh-hsk1-02-q13",
+          "number": 13,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "男子在水池边洗盘子。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q13.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-l3-a.png",
+            "exam-papers/images/qh-hsk1-02-l3-b.png",
+            "exam-papers/images/qh-hsk1-02-l3-c.png",
+            "exam-papers/images/qh-hsk1-02-l3-d.png",
+            "exam-papers/images/qh-hsk1-02-l3-e.png",
+            "exam-papers/images/qh-hsk1-02-l3-f.png"
+          ],
+          "disabledOptions": [
+            4
+          ],
+          "transcript": "女：吃完饭了，你休息一下吧。\n男：我先洗盘子。"
+        },
+        {
+          "id": "qh-hsk1-02-q14",
+          "number": 14,
+          "type": "choice",
+          "points": 1,
+          "answer": 5,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "男子用钥匙开门。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q14.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-l3-a.png",
+            "exam-papers/images/qh-hsk1-02-l3-b.png",
+            "exam-papers/images/qh-hsk1-02-l3-c.png",
+            "exam-papers/images/qh-hsk1-02-l3-d.png",
+            "exam-papers/images/qh-hsk1-02-l3-e.png",
+            "exam-papers/images/qh-hsk1-02-l3-f.png"
+          ],
+          "disabledOptions": [
+            4
+          ],
+          "transcript": "女：你怎么还不进来？\n男：我在找钥匙，我来开门。"
+        },
+        {
+          "id": "qh-hsk1-02-q15",
+          "number": 15,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "画面中的人在看电视。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q15.mp3",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-l3-a.png",
+            "exam-papers/images/qh-hsk1-02-l3-b.png",
+            "exam-papers/images/qh-hsk1-02-l3-c.png",
+            "exam-papers/images/qh-hsk1-02-l3-d.png",
+            "exam-papers/images/qh-hsk1-02-l3-e.png",
+            "exam-papers/images/qh-hsk1-02-l3-f.png"
+          ],
+          "disabledOptions": [
+            4
+          ],
+          "transcript": "男：你们想出去玩吗？\n女：我们想先看电视。"
+        }
+      ],
+      "instructions": "选择与对话相应的图片；示例图片不再用于正式题。",
+      "example": "示例答案：E"
+    },
+    {
+      "title": "听力第四部分",
+      "skill": "listening",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q16",
+          "number": 16,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "电影八点开始，现在七点是干扰信息。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q16.mp3",
+          "options": [
+            "七点",
+            "八点",
+            "九点"
+          ],
+          "optionsPinyin": [
+            "qī diǎn",
+            "bā diǎn",
+            "jiǔ diǎn"
+          ],
+          "transcript": "现在七点，电影八点开始。我们先吃饭，再去看电影。\n问：电影几点开始？"
+        },
+        {
+          "id": "qh-hsk1-02-q17",
+          "number": 17,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "正在进行的动作是打电话。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q17.mp3",
+          "options": [
+            "打电话",
+            "上课",
+            "买东西"
+          ],
+          "optionsPinyin": [
+            "dǎ diànhuà",
+            "shàngkè",
+            "mǎi dōngxi"
+          ],
+          "transcript": "王老师今天上午不上课。他在家里给学生打电话。\n问：王老师正在做什么？"
+        },
+        {
+          "id": "qh-hsk1-02-q18",
+          "number": 18,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "小狗在椅子下面睡觉。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q18.mp3",
+          "options": [
+            "桌子上",
+            "床上",
+            "椅子下面"
+          ],
+          "optionsPinyin": [
+            "zhuōzi shang",
+            "chuáng shang",
+            "yǐzi xiàmian"
+          ],
+          "transcript": "我家有一只小狗，它喜欢在椅子下面睡觉。\n问：小狗在哪里睡觉？"
+        },
+        {
+          "id": "qh-hsk1-02-q19",
+          "number": 19,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "妹妹选择那杯冷水。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q19.mp3",
+          "options": [
+            "热水",
+            "冷水",
+            "牛奶"
+          ],
+          "optionsPinyin": [
+            "rè shuǐ",
+            "lěng shuǐ",
+            "niúnǎi"
+          ],
+          "transcript": "这杯水是热的，那杯水是冷的。妹妹想喝那杯冷水。\n问：妹妹想喝什么？"
+        },
+        {
+          "id": "qh-hsk1-02-q20",
+          "number": 20,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "听录音，选择正确答案。",
+          "explanation": "在学校教汉语的人是老师。",
+          "audioPending": true,
+          "audioSlot": "audio/exams/qh-hsk1-02/q20.mp3",
+          "options": [
+            "医生",
+            "学生",
+            "老师"
+          ],
+          "optionsPinyin": [
+            "yīshēng",
+            "xuésheng",
+            "lǎoshī"
+          ],
+          "transcript": "我哥哥在学校教汉语。他很喜欢和学生一起学习。\n问：哥哥做什么工作？"
+        }
+      ],
+      "instructions": "听一段话和一个问题，选择正确答案。每题听两遍。"
+    },
+    {
+      "title": "阅读第一部分",
+      "skill": "reading",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q21",
+          "number": 21,
+          "type": "choice",
+          "points": 1,
+          "answer": 4,
+          "prompt": "小猫在椅子上睡觉。",
+          "explanation": "E 中猫在椅子上睡觉。",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-r1-a.png",
+            "exam-papers/images/qh-hsk1-02-r1-b.png",
+            "exam-papers/images/qh-hsk1-02-r1-c.png",
+            "exam-papers/images/qh-hsk1-02-r1-d.png",
+            "exam-papers/images/qh-hsk1-02-r1-e.png",
+            "exam-papers/images/qh-hsk1-02-r1-f.png"
+          ],
+          "disabledOptions": [
+            5
+          ],
+          "promptPinyin": "xiǎo māo zài yǐzi shang shuìjiào。"
+        },
+        {
+          "id": "qh-hsk1-02-q22",
+          "number": 22,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "她很喜欢唱歌。",
+          "explanation": "A 中女孩正在唱歌。",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-r1-a.png",
+            "exam-papers/images/qh-hsk1-02-r1-b.png",
+            "exam-papers/images/qh-hsk1-02-r1-c.png",
+            "exam-papers/images/qh-hsk1-02-r1-d.png",
+            "exam-papers/images/qh-hsk1-02-r1-e.png",
+            "exam-papers/images/qh-hsk1-02-r1-f.png"
+          ],
+          "disabledOptions": [
+            5
+          ],
+          "promptPinyin": "tā hěn xǐhuan chàng gē。"
+        },
+        {
+          "id": "qh-hsk1-02-q23",
+          "number": 23,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "弟弟在用电脑。",
+          "explanation": "B 中男孩在用电脑。",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-r1-a.png",
+            "exam-papers/images/qh-hsk1-02-r1-b.png",
+            "exam-papers/images/qh-hsk1-02-r1-c.png",
+            "exam-papers/images/qh-hsk1-02-r1-d.png",
+            "exam-papers/images/qh-hsk1-02-r1-e.png",
+            "exam-papers/images/qh-hsk1-02-r1-f.png"
+          ],
+          "disabledOptions": [
+            5
+          ],
+          "promptPinyin": "dìdi zài yòng diànnǎo。"
+        },
+        {
+          "id": "qh-hsk1-02-q24",
+          "number": 24,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "你好，很高兴认识你。",
+          "explanation": "C 中两人握手问候。",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-r1-a.png",
+            "exam-papers/images/qh-hsk1-02-r1-b.png",
+            "exam-papers/images/qh-hsk1-02-r1-c.png",
+            "exam-papers/images/qh-hsk1-02-r1-d.png",
+            "exam-papers/images/qh-hsk1-02-r1-e.png",
+            "exam-papers/images/qh-hsk1-02-r1-f.png"
+          ],
+          "disabledOptions": [
+            5
+          ],
+          "promptPinyin": "nǐ hǎo，hěn gāoxìng rènshi nǐ。"
+        },
+        {
+          "id": "qh-hsk1-02-q25",
+          "number": 25,
+          "type": "choice",
+          "points": 1,
+          "answer": 3,
+          "prompt": "妹妹正在外面玩球。",
+          "explanation": "D 中女孩在外面玩球。",
+          "options": [
+            "图片 A",
+            "图片 B",
+            "图片 C",
+            "图片 D",
+            "图片 E",
+            "图片 F"
+          ],
+          "optionImages": [
+            "exam-papers/images/qh-hsk1-02-r1-a.png",
+            "exam-papers/images/qh-hsk1-02-r1-b.png",
+            "exam-papers/images/qh-hsk1-02-r1-c.png",
+            "exam-papers/images/qh-hsk1-02-r1-d.png",
+            "exam-papers/images/qh-hsk1-02-r1-e.png",
+            "exam-papers/images/qh-hsk1-02-r1-f.png"
+          ],
+          "disabledOptions": [
+            5
+          ],
+          "promptPinyin": "mèimei zhèngzài wàimiàn wán qiú。"
+        }
+      ],
+      "instructions": "选择与句子相应的图片；示例图片不再用于正式题。",
+      "example": "他在喝茶。 → F",
+      "examplePinyin": "tā zài hē chá。"
+    },
+    {
+      "title": "阅读第二部分",
+      "skill": "reading",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q26",
+          "number": 26,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "您姓什么？",
+          "explanation": "恰当回答是“我姓王。”。",
+          "promptPinyin": "nín xìng shénme？",
+          "options": [
+            "不去了，我有点儿累。",
+            "在学校前面。",
+            "我姓王。",
+            "不贵，才十块钱。",
+            "有，我有一个儿子。",
+            "没关系。"
+          ],
+          "optionsPinyin": [
+            "bú qù le，wǒ yǒudiǎnr lèi。",
+            "zài xuéxiào qiánmiàn。",
+            "wǒ xìng Wáng。",
+            "bú guì，cái shí kuài qián。",
+            "yǒu，wǒ yǒu yí ge érzi。",
+            "méi guānxi。"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q27",
+          "number": 27,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "超市在哪儿？",
+          "explanation": "恰当回答是“在学校前面。”。",
+          "promptPinyin": "chāoshì zài nǎr？",
+          "options": [
+            "不去了，我有点儿累。",
+            "在学校前面。",
+            "我姓王。",
+            "不贵，才十块钱。",
+            "有，我有一个儿子。",
+            "没关系。"
+          ],
+          "optionsPinyin": [
+            "bú qù le，wǒ yǒudiǎnr lèi。",
+            "zài xuéxiào qiánmiàn。",
+            "wǒ xìng Wáng。",
+            "bú guì，cái shí kuài qián。",
+            "yǒu，wǒ yǒu yí ge érzi。",
+            "méi guānxi。"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q28",
+          "number": 28,
+          "type": "choice",
+          "points": 1,
+          "answer": 4,
+          "prompt": "你有孩子吗？",
+          "explanation": "恰当回答是“有，我有一个儿子。”。",
+          "promptPinyin": "nǐ yǒu háizi ma？",
+          "options": [
+            "不去了，我有点儿累。",
+            "在学校前面。",
+            "我姓王。",
+            "不贵，才十块钱。",
+            "有，我有一个儿子。",
+            "没关系。"
+          ],
+          "optionsPinyin": [
+            "bú qù le，wǒ yǒudiǎnr lèi。",
+            "zài xuéxiào qiánmiàn。",
+            "wǒ xìng Wáng。",
+            "bú guì，cái shí kuài qián。",
+            "yǒu，wǒ yǒu yí ge érzi。",
+            "méi guānxi。"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q29",
+          "number": 29,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "晚上一起去看电影，好吗？",
+          "explanation": "恰当回答是“不去了，我有点儿累。”。",
+          "promptPinyin": "wǎnshang yìqǐ qù kàn diànyǐng，hǎo ma？",
+          "options": [
+            "不去了，我有点儿累。",
+            "在学校前面。",
+            "我姓王。",
+            "不贵，才十块钱。",
+            "有，我有一个儿子。",
+            "没关系。"
+          ],
+          "optionsPinyin": [
+            "bú qù le，wǒ yǒudiǎnr lèi。",
+            "zài xuéxiào qiánmiàn。",
+            "wǒ xìng Wáng。",
+            "bú guì，cái shí kuài qián。",
+            "yǒu，wǒ yǒu yí ge érzi。",
+            "méi guānxi。"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q30",
+          "number": 30,
+          "type": "choice",
+          "points": 1,
+          "answer": 3,
+          "prompt": "这个杯子贵吗？",
+          "explanation": "恰当回答是“不贵，才十块钱。”。",
+          "promptPinyin": "zhè ge bēizi guì ma？",
+          "options": [
+            "不去了，我有点儿累。",
+            "在学校前面。",
+            "我姓王。",
+            "不贵，才十块钱。",
+            "有，我有一个儿子。",
+            "没关系。"
+          ],
+          "optionsPinyin": [
+            "bú qù le，wǒ yǒudiǎnr lèi。",
+            "zài xuéxiào qiánmiàn。",
+            "wǒ xìng Wáng。",
+            "bú guì，cái shí kuài qián。",
+            "yǒu，wǒ yǒu yí ge érzi。",
+            "méi guānxi。"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        }
+      ],
+      "instructions": "每个选项只用一次；示例选项不再使用。",
+      "example": "对不起。 → F",
+      "examplePinyin": "duìbuqǐ。"
+    },
+    {
+      "title": "阅读第三部分",
+      "skill": "reading",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q31",
+          "number": 31,
+          "type": "choice",
+          "points": 1,
+          "answer": 3,
+          "prompt": "这（　　）书是我妈妈的。",
+          "explanation": "书的量词是“本”。",
+          "promptPinyin": "zhè（　　）shū shì wǒ māma de。",
+          "options": [
+            "也",
+            "漂亮",
+            "回来",
+            "本",
+            "喝",
+            "医生"
+          ],
+          "optionsPinyin": [
+            "yě",
+            "piàoliang",
+            "huílái",
+            "běn",
+            "hē",
+            "yīshēng"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q32",
+          "number": 32,
+          "type": "choice",
+          "points": 1,
+          "answer": 4,
+          "prompt": "这杯水不热了，你（　　）吧。",
+          "explanation": "喝水的动作使用“喝”。",
+          "promptPinyin": "zhè bēi shuǐ bú rè le，nǐ（　　）ba。",
+          "options": [
+            "也",
+            "漂亮",
+            "回来",
+            "本",
+            "喝",
+            "医生"
+          ],
+          "optionsPinyin": [
+            "yě",
+            "piàoliang",
+            "huílái",
+            "běn",
+            "hē",
+            "yīshēng"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q33",
+          "number": 33,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "我喜欢学中文，我弟弟（　　）喜欢。",
+          "explanation": "“也”表示弟弟同样喜欢。",
+          "promptPinyin": "wǒ xǐhuan xué Zhōngwén，wǒ dìdi（　　）xǐhuan。",
+          "options": [
+            "也",
+            "漂亮",
+            "回来",
+            "本",
+            "喝",
+            "医生"
+          ],
+          "optionsPinyin": [
+            "yě",
+            "piàoliang",
+            "huílái",
+            "běn",
+            "hē",
+            "yīshēng"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q34",
+          "number": 34,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "这件衣服真（　　）！",
+          "explanation": "“漂亮”形容衣服好看。",
+          "promptPinyin": "zhè jiàn yīfu zhēn（　　）！",
+          "options": [
+            "也",
+            "漂亮",
+            "回来",
+            "本",
+            "喝",
+            "医生"
+          ],
+          "optionsPinyin": [
+            "yě",
+            "piàoliang",
+            "huílái",
+            "běn",
+            "hē",
+            "yīshēng"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q35",
+          "number": 35,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "爸爸去商店了，他一会儿就（　　）。",
+          "explanation": "“回来”说明他过一会儿返回。",
+          "promptPinyin": "bàba qù shāngdiàn le，tā yíhuìr jiù（　　）。",
+          "options": [
+            "也",
+            "漂亮",
+            "回来",
+            "本",
+            "喝",
+            "医生"
+          ],
+          "optionsPinyin": [
+            "yě",
+            "piàoliang",
+            "huílái",
+            "běn",
+            "hē",
+            "yīshēng"
+          ],
+          "disabledOptions": [
+            5
+          ]
+        }
+      ],
+      "instructions": "每个选项只用一次；示例选项不再使用。",
+      "example": "她在医院工作，她是（ F ）。",
+      "examplePinyin": "tā zài yīyuàn gōngzuò，tā shì（ F ）。"
+    },
+    {
+      "title": "阅读第四部分",
+      "skill": "reading",
+      "questions": [
+        {
+          "id": "qh-hsk1-02-q36",
+          "number": 36,
+          "type": "choice",
+          "points": 1,
+          "answer": 1,
+          "prompt": "谁在学汉语？",
+          "explanation": "学汉语的是小王，爸爸在医院工作。",
+          "promptPinyin": "shéi zài xué Hànyǔ？",
+          "passage": "小王在学校学汉语，他爸爸在医院工作。",
+          "passagePinyin": "Xiǎo Wáng zài xuéxiào xué Hànyǔ，tā bàba zài yīyuàn gōngzuò。",
+          "options": [
+            "爸爸",
+            "小王",
+            "妈妈"
+          ],
+          "optionsPinyin": [
+            "bàba",
+            "Xiǎo Wáng",
+            "māma"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q37",
+          "number": 37,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "他想喝什么？",
+          "explanation": "明确要喝一杯热茶，不是咖啡。",
+          "promptPinyin": "tā xiǎng hē shénme？",
+          "passage": "我不想喝咖啡，给我一杯热茶吧。",
+          "passagePinyin": "wǒ bù xiǎng hē kāfēi，gěi wǒ yì bēi rè chá ba。",
+          "options": [
+            "水",
+            "咖啡",
+            "茶"
+          ],
+          "optionsPinyin": [
+            "shuǐ",
+            "kāfēi",
+            "chá"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q38",
+          "number": 38,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "今天他怎么来学校？",
+          "explanation": "今天坐公共汽车，爸爸开车送是昨天的事。",
+          "promptPinyin": "jīntiān tā zěnme lái xuéxiào？",
+          "passage": "今天我坐公共汽车来学校，昨天是爸爸开车送我来的。",
+          "passagePinyin": "jīntiān wǒ zuò gōnggòng qìchē lái xuéxiào，zuótiān shì bàba kāi chē sòng wǒ lái de。",
+          "options": [
+            "坐公共汽车",
+            "坐爸爸的车",
+            "骑自行车"
+          ],
+          "optionsPinyin": [
+            "zuò gōnggòng qìchē",
+            "zuò bàba de chē",
+            "qí zìxíngchē"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q39",
+          "number": 39,
+          "type": "choice",
+          "points": 1,
+          "answer": 0,
+          "prompt": "说话人的生日是哪天？",
+          "explanation": "问的是说话人，他的生日为五月十号。",
+          "promptPinyin": "shuōhuàrén de shēngrì shì nǎ tiān？",
+          "passage": "妹妹的生日是五月九号。我的生日是五月十号。",
+          "passagePinyin": "mèimei de shēngrì shì wǔ yuè jiǔ hào。wǒ de shēngrì shì wǔ yuè shí hào。",
+          "options": [
+            "五月十号",
+            "五月八号",
+            "五月九号"
+          ],
+          "optionsPinyin": [
+            "wǔ yuè shí hào",
+            "wǔ yuè bā hào",
+            "wǔ yuè jiǔ hào"
+          ]
+        },
+        {
+          "id": "qh-hsk1-02-q40",
+          "number": 40,
+          "type": "choice",
+          "points": 1,
+          "answer": 2,
+          "prompt": "他们中午在哪儿吃饭？",
+          "explanation": "吃饭地点是学校旁边的饭店。",
+          "promptPinyin": "tāmen zhōngwǔ zài nǎr chī fàn？",
+          "passage": "今天妈妈不做饭。我们中午去学校旁边的饭店吃饭。",
+          "passagePinyin": "jīntiān māma bú zuò fàn。wǒmen zhōngwǔ qù xuéxiào pángbiān de fàndiàn chī fàn。",
+          "options": [
+            "家里",
+            "学校里",
+            "饭店"
+          ],
+          "optionsPinyin": [
+            "jiā lǐ",
+            "xuéxiào lǐ",
+            "fàndiàn"
+          ]
+        }
+      ],
+      "instructions": "阅读短文，选择正确答案。"
+    }
+  ]
+}

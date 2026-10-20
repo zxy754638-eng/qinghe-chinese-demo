@@ -5,6 +5,7 @@
   function validatePaper(raw){
     const fail=message=>{throw new Error(message)};
     const text=(v,label,max=4000)=>{if(typeof v!=='string'||!v.trim()||v.length>max)fail(label+'需填写，且不得超过 '+max+' 字符');return v.trim()};
+    const asset=(v,label)=>{const value=text(v,label,2000);if(/^[a-z]+:/i.test(value)&&!/^https:\/\//i.test(value)||value.startsWith('//')||/[\u0000-\u0020\\]/.test(value)||value.split('/').includes('..'))fail(label+'需为安全的站内路径或 HTTPS 链接');return value};
     if(!raw||typeof raw!=='object'||Array.isArray(raw))fail('试卷必须是一个 JSON 对象');
     if(raw.schemaVersion!==1)fail('schemaVersion 必须为 1');
     const id=text(raw.id,'试卷编号',80);if(!/^[a-zA-Z0-9_-]+$/.test(id))fail('试卷编号只能使用字母、数字、下划线和短横线');
@@ -25,12 +26,17 @@
         if(s.skill!=='writing'&&q.type==='writing')fail(label+'写作题需放入 writing 部分');
         if(!Number.isFinite(q.points)||q.points<=0||q.points>1000)fail(label+'分值应大于 0 且不超过 1000');
         const clean={id:qid,type:q.type,prompt:text(q.prompt,label+'题干',12000),points:q.points,explanation:text(q.explanation,label+'解析或评分说明',8000),passage:typeof q.passage==='string'?q.passage.slice(0,20000):'',keywords:Array.isArray(q.keywords)?q.keywords.filter(x=>typeof x==='string').slice(0,10).map(x=>x.slice(0,80)):[]};
+        for(const field of ['promptPinyin','passagePinyin','transcript'])if(typeof q[field]==='string')clean[field]=q[field].slice(0,20000);
+        if(Number.isInteger(q.number)&&q.number>0&&q.number<=300)clean.number=q.number;
         if(q.type==='choice'){
           if(!Array.isArray(q.options)||q.options.length<2||q.options.length>8)fail(label+'需要 2–8 个选项');
           clean.options=q.options.map(x=>text(x,label+'选项',2000));
           if(new Set(clean.options).size!==clean.options.length)fail(label+'选项不可重复');
           if(!Number.isInteger(q.answer)||q.answer<0||q.answer>=clean.options.length)fail(label+'answer 必须是从 0 开始的正确选项索引');
           clean.answer=q.answer;
+          if(q.optionsPinyin){if(!Array.isArray(q.optionsPinyin)||q.optionsPinyin.length!==clean.options.length||q.optionsPinyin.some(x=>typeof x!=='string'))fail(label+'选项拼音需与选项一一对应');clean.optionsPinyin=q.optionsPinyin.map(x=>x.slice(0,2000))}
+          if(q.optionImages){if(!Array.isArray(q.optionImages)||q.optionImages.length!==clean.options.length)fail(label+'选项图片需与选项一一对应');clean.optionImages=q.optionImages.map(x=>x?asset(x,label+'图片'):'')}
+          if(q.disabledOptions){if(!Array.isArray(q.disabledOptions)||q.disabledOptions.some(x=>!Number.isInteger(x)||x<0||x>=clean.options.length||x===q.answer))fail(label+'示例选项索引错误');clean.disabledOptions=[...new Set(q.disabledOptions)]}
         }else if(q.type==='fill'){
           if(!Array.isArray(q.answers)||!q.answers.length||q.answers.length>20)fail(label+'需填写可接受答案 answers');
           clean.answers=q.answers.map(x=>text(x,label+'答案',2000));
@@ -44,20 +50,30 @@
             if(/^[a-z]+:/i.test(audio)&&!/^https?:\/\//i.test(audio)||audio.startsWith('//')||/[\u0000-\u0020\\]/.test(audio))fail(label+'音频需为站内相对路径或 https/http 链接');
             clean.audio=audio;
           }else if(raw.demo&&typeof q.audioText==='string'&&q.audioText.trim())clean.audioText=q.audioText.slice(0,5000);
+          else if(raw.status==='draft'&&q.audioPending===true){clean.audioPending=true;if(q.audioSlot)clean.audioSlot=asset(q.audioSlot,label+'待上传音频位置')}
           else fail(label+'缺少音频 audio；机器语音仅供演示卷使用');
         }
         return clean;
       });
-      return {title:text(s.title,'部分标题',100),skill:s.skill,questions};
+      const section={title:text(s.title,'部分标题',100),skill:s.skill,questions};for(const field of ['instructions','example','examplePinyin'])if(typeof s[field]==='string')section[field]=s[field].slice(0,4000);return section;
     });
     if(total>300)fail('每份试卷最多 300 题');
-    return {schemaVersion:1,id,version:text(raw.version,'版本号',80),title:text(raw.title,'试卷名称',200),level:raw.level,durationMinutes:raw.durationMinutes,status:raw.status,demo:raw.demo,instructions:typeof raw.instructions==='string'?raw.instructions.slice(0,8000):'',sections};
+    const paper={schemaVersion:1,id,version:text(raw.version,'版本号',80),title:text(raw.title,'试卷名称',200),level:raw.level,durationMinutes:raw.durationMinutes,status:raw.status,demo:raw.demo,instructions:typeof raw.instructions==='string'?raw.instructions.slice(0,8000):'',sections};if(Number.isInteger(raw.readingDurationMinutes)&&raw.readingDurationMinutes>0&&raw.readingDurationMinutes<=raw.durationMinutes)paper.readingDurationMinutes=raw.readingDurationMinutes;return paper;
   }
-  function flatten(paper){return paper.sections.flatMap(s=>s.questions.map(q=>({...q,section:s.title,skill:s.skill})))}
-  function answered(q,value){return q.type==='choice'?Number.isInteger(value)&&value>=0&&value<q.options.length:typeof value==='string'&&value.trim().length>0}
+  function flatten(paper){return paper.sections.flatMap(s=>s.questions.map(q=>({...q,section:s.title,skill:s.skill,sectionInstructions:s.instructions||'',sectionExample:s.example||'',sectionExamplePinyin:s.examplePinyin||''})))}
+  function answered(q,value){return q.type==='choice'?Number.isInteger(value)&&value>=0&&value<q.options.length&&!q.disabledOptions?.includes(value):typeof value==='string'&&value.trim().length>0}
   function grade(paper,answers){
     const rows=flatten(paper).map(q=>{const value=answers[q.id];const pending=q.type==='writing';const correct=pending?null:q.type==='choice'?value===q.answer:q.answers.some(a=>normalize(a)===normalize(value));return {id:q.id,skill:q.skill,points:q.points,answered:answered(q,value),pending,correct,earned:correct?q.points:0}});
     return {rows,earned:rows.reduce((n,r)=>n+r.earned,0),objectiveMax:rows.filter(r=>!r.pending).reduce((n,r)=>n+r.points,0),pendingMax:rows.filter(r=>r.pending).reduce((n,r)=>n+r.points,0),wrongIds:rows.filter(r=>!r.pending&&!r.correct).map(r=>r.id)};
   }
-  root.QingheExamCore={levels,validatePaper,flatten,answered,grade};
+  function availablePaper(paper,scope='full'){
+    if(!['full','reading'].includes(scope))throw new Error('无效的练习范围');
+    const copy=JSON.parse(JSON.stringify(paper));if(scope==='reading'){
+      copy.sections=copy.sections.filter(s=>s.skill==='reading');if(!copy.sections.length)throw new Error('此试卷没有阅读题');
+      if(!copy.readingDurationMinutes)throw new Error('阅读专项未配置计时时长');copy.durationMinutes=copy.readingDurationMinutes;
+    }
+    if(flatten(copy).some(q=>q.skill==='listening'&&!q.audio&&!q.audioText))throw new Error('听力音频待上传，完整试卷暂不可开始');
+    return copy;
+  }
+  root.QingheExamCore={levels,validatePaper,flatten,answered,grade,availablePaper};
 })(typeof window!=='undefined'?window:globalThis);

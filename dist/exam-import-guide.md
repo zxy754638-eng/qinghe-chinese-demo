@@ -36,6 +36,22 @@
 
 ## 向所有学习者发布试卷
 
+### 两种模式与待上传音频
+
+- 逐题练习：一次一道、不限时；点击“核对答案”后展示解析、锁定该题，记录第一次作答。可以标记、前后切题和保存返回。
+- 仿真考试：按部分展示整卷，答题卡跳转、统一计时、交卷后查看答案；计时在离开和刷新后仍继续。
+- 共用同一题库与判分，记录注明模式及范围。现有记录与复习计划不重置。
+- 草稿听力题允许 `audioPending: true` 与 `audioSlot` 预留文件位置；此时不能开始完整卷，不生成机器语音。已审校卷不得缺少音频。
+- 当前两套一级卷各 40 题，听力各 20 题待上传；已配置 `readingDurationMinutes: 20`，可先做 20 题的阅读专项，不将其称为整卷成绩。
+- 录音命名：`audio/exams/qh-hsk1-01/q01.mp3` 至 `q20.mp3`，第二套为 `audio/exams/qh-hsk1-02/q01.mp3` 至 `q20.mp3`。每题录音包含两遍朗读；第四部分包含短文与问题。第三部分示例可编入该部分第一题录音。
+- 上传文件后，把每题 `audio` 设为对应 `audioSlot` 路径，移除 `audioPending`，递增版本并检查后发布。网站不会因为填写了预留路径就假定录音已经存在。
+
+### 图片与拼音
+
+`promptPinyin`、`passagePinyin` 分别对应题干与阅读材料拼音；`optionsPinyin`、`optionImages` 与选项数量一致，图片使用安全站内路径或 HTTPS 链接。`disabledOptions` 是示例已用选项的零起始索引，不得包含正确答案。部分可以有 `instructions`、`example`、`examplePinyin`。`transcript` 仅在逐题核对后或交卷后展示。
+
+本次导入的图片取自用户提供的最新 Word，署名见 `licenses/HSK1-MOCK-IMAGES.txt`。练习分数不等同官方 HSK 成绩；40 分钟的完整卷练习设置沿用 Word 说明，尚不表示已核准的官方机考时长。
+
 审校完成后，将试卷 JSON 放入 `dist/exam-papers/`，例如 `hsk1-001.json`。在同目录 `index.json` 的 `papers` 数组中添加文件名：
 
 ```json

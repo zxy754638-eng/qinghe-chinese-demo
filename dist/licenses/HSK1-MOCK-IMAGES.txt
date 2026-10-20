@@ -1,0 +1,170 @@
+图片来源与许可
+图片优先使用明确标注开放许可的网络素材。以下列出来源、作者和许可；补充插图单独标明。网络图片均作适配尺寸、白底排版及灰度处理，未把人物形象视作对本产品的推荐。
+OpenMoji 物品和表情图标
+作者：OpenMoji contributors。许可：CC BY-SA 4.0。处理：灰度、缩放；模拟卷二第 5 题将杯子图标重复排布以表示数量。对应图片及改编图继续遵循该许可。
+项目与许可：https://github.com/hfg-gmuend/openmoji
+许可全文：https://creativecommons.org/licenses/by-sa/4.0/
+使用位置：模拟卷一听力第 1、2、4、5 题全部选项；模拟卷二听力第 1、2、4、5 题全部选项，以及第 3 题 A、C。
+单图链接模板：https://github.com/hfg-gmuend/openmoji/blob/master/color/svg/代码.svg
+本册所用代码：1F4D6, 1F4BB, 1F34E, 1F375, 1F95B, 1F9C3, 231A, 1F4F1, 1F453, 1F604, 1F622, 1F634, 1F415, 1F408, 1F426, 1F35A, 1F35E, 1F35C, 1F9CD, 1F6B6, 1F6B2, 2708, 1F68C, 1F964
+补充插图
+模拟卷一听力第 3 题全部选项；模拟卷二听力第 3 题 B；下列来源清单中标为 AI 生成插图的场景图，均为按题意生成的补充插图，不属于网络开源图片。
+许可适用范围
+开放许可仅适用于相应图片。对 CC BY-SA 图片所作的灰度、缩放等改编，按原许可提供；复用或单独提取图片时，应保留来源、作者、许可及改编说明。本册原创试题文字不因此被表述为采用图片的许可。
+
+场景图片来源 1 至 4
+模拟卷一 听力第三部分 图片 A
+Woman Reading a Book.jpg
+作者：Nefrit Lazurit
+许可：CC BY-SA 4.0
+来源：https://commons.wikimedia.org/wiki/File:Woman_Reading_a_Book.jpg
+许可：https://creativecommons.org/licenses/by-sa/4.0
+模拟卷一 听力第三部分 图片 B
+Man cooking at home in Laos.jpg
+作者：Basile Morin
+许可：CC BY-SA 4.0
+来源：https://commons.wikimedia.org/wiki/File:Man_cooking_at_home_in_Laos.jpg
+许可：https://creativecommons.org/licenses/by-sa/4.0
+模拟卷一 听力第三部分 图片 C
+Woman smiling while talking on the phone by the window.jpg
+作者：Shixart1985
+许可：CC BY 2.0
+来源：https://commons.wikimedia.org/wiki/File:Woman_smiling_while_talking_on_the_phone_by_the_window.jpg
+许可：https://creativecommons.org/licenses/by/2.0
+模拟卷一 听力第三部分 图片 D
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+
+场景图片来源 5 至 8
+模拟卷一 听力第三部分 图片 E
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+模拟卷一 听力第三部分 图片 F
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+模拟卷一 阅读第一部分 图片 A
+Man riding bicycle on Pieter Calandlaan, Amsterdam.jpg
+作者：Andrej Shadura
+许可：CC BY 4.0
+来源：https://commons.wikimedia.org/wiki/File:Man_riding_bicycle_on_Pieter_Calandlaan,_Amsterdam.jpg
+许可：https://creativecommons.org/licenses/by/4.0
+模拟卷一 阅读第一部分 图片 B
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+
+场景图片来源 9 至 12
+模拟卷一 阅读第一部分 图片 C
+Boy-in-brown-hoodie-carrying-red-backpack-while-walking-on-207697.jpg
+作者：ambermb
+许可：CC0
+来源：https://commons.wikimedia.org/wiki/File:Boy-in-brown-hoodie-carrying-red-backpack-while-walking-on-207697.jpg
+许可：http://creativecommons.org/publicdomain/zero/1.0/deed.en
+模拟卷一 阅读第一部分 图片 D
+Doctor talking with a patient.jpg
+作者：National Cancer Institute
+许可：Public domain
+来源：https://commons.wikimedia.org/wiki/File:Doctor_talking_with_a_patient.jpg
+许可：
+模拟卷一 阅读第一部分 图片 E
+Woman in red dress with umbrella.jpg
+作者：Ev17n1d
+许可：CC BY-SA 4.0
+来源：https://commons.wikimedia.org/wiki/File:Woman_in_red_dress_with_umbrella.jpg
+许可：https://creativecommons.org/licenses/by-sa/4.0
+模拟卷一 阅读第一部分 图片 F
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+
+场景图片来源 13 至 16
+模拟卷二 听力第三部分 图片 A
+Woman Writing a Letter.gif
+作者：Marta Stankevica
+许可：CC BY 4.0
+来源：https://commons.wikimedia.org/wiki/File:Woman_Writing_a_Letter.gif
+许可：https://creativecommons.org/licenses/by/4.0
+模拟卷二 听力第三部分 图片 B
+Family watching television 1958 cropped2.jpg
+作者：Evert F. Baumgardner - National Archives and Records Administration.
+许可：CC0
+来源：https://commons.wikimedia.org/wiki/File:Family_watching_television_1958_cropped2.jpg
+许可：http://creativecommons.org/publicdomain/zero/1.0/deed.en
+模拟卷二 听力第三部分 图片 C
+Washing dishes for Our Community Place soup kitchen Little Grill Collective Harrisonburg VA June 2008.jpg
+作者：Artaxerxes
+许可：CC BY-SA 3.0
+来源：https://commons.wikimedia.org/wiki/File:Washing_dishes_for_Our_Community_Place_soup_kitchen_Little_Grill_Collective_Harrisonburg_VA_June_2008.jpg
+许可：https://creativecommons.org/licenses/by-sa/3.0
+模拟卷二 听力第三部分 图片 D
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+
+场景图片来源 17 至 20
+模拟卷二 听力第三部分 图片 E
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+模拟卷二 听力第三部分 图片 F
+按题意生成的场景图
+作者：青禾中文练习材料
+许可：AI 生成插图
+来源：按题意生成的补充插图。
+模拟卷二 阅读第一部分 图片 A
+Girl singing at a concert at school Russia 2021.jpg
+作者：English:  Andrew Krizhanovsky
+Русский:  Андрей Крижановский
+许可：Public domain
+来源：https://commons.wikimedia.org/wiki/File:Girl_singing_at_a_concert_at_school_Russia_2021.jpg
+许可：
+模拟卷二 阅读第一部分 图片 B
+A boy in a yellow shirt plays games in a computer shop in 2007.jpg
+作者：nina.bruja
+许可：CC BY-SA 2.0
+来源：https://commons.wikimedia.org/wiki/File:A_boy_in_a_yellow_shirt_plays_games_in_a_computer_shop_in_2007.jpg
+许可：https://creativecommons.org/licenses/by-sa/2.0
+
+场景图片来源 21 至 24
+模拟卷二 阅读第一部分 图片 C
+Carl Albert and Richard Nixon shaking hands.jpg
+作者：Carl Albert Research and Studies Center, Congressional Collection
+许可：CC BY-SA 4.0
+来源：https://commons.wikimedia.org/wiki/File:Carl_Albert_and_Richard_Nixon_shaking_hands.jpg
+许可：https://creativecommons.org/licenses/by-sa/4.0
+模拟卷二 阅读第一部分 图片 D
+Little Zambian girl playing football.jpg
+作者：Mepereshka
+许可：CC BY-SA 4.0
+来源：https://commons.wikimedia.org/wiki/File:Little_Zambian_girl_playing_football.jpg
+许可：https://creativecommons.org/licenses/by-sa/4.0
+模拟卷二 阅读第一部分 图片 E
+Supine cat sleeping on the back on a bamboo and wicker armchair in Don Det Laos.jpg
+作者：Basile Morin
+许可：CC BY-SA 4.0
+来源：https://commons.wikimedia.org/wiki/File:Supine_cat_sleeping_on_the_back_on_a_bamboo_and_wicker_armchair_in_Don_Det_Laos.jpg
+许可：https://creativecommons.org/licenses/by-sa/4.0
+模拟卷二 阅读第一部分 图片 F
+Old Bangladeshi drinking tea.jpg
+作者：synthia k.
+许可：CC BY 2.0
+来源：https://commons.wikimedia.org/wiki/File:Old_Bangladeshi_drinking_tea.jpg
+许可：https://creativecommons.org/licenses/by/2.0
+
+用户替换的模拟卷一听力第三部分 B、C 图片来源（取代前述同位置图片署名）
+B Man prepares vegetables in a modern kitchen.jpg / Shixart1985 / CC BY 2.0
+https://commons.wikimedia.org/wiki/File:Man_prepares_vegetables_in_a_modern_kitchen.jpg
+C Young woman using a mobile phone.jpg / Peter Drier / CC BY 2.0
+https://commons.wikimedia.org/wiki/File:Young_woman_using_a_mobile_phone.jpg
+许可 https://creativecommons.org/licenses/by/2.0/
+以上替换图按提供的 Word 内嵌图片原样提取，网站适配尺寸展示。

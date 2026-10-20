@@ -1,1 +1,7 @@
-{"schemaVersion":1,"papers":[]}
+{
+  "schemaVersion": 1,
+  "papers": [
+    "qh-hsk1-01.json",
+    "qh-hsk1-02.json"
+  ]
+}
